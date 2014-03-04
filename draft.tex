@@ -70,7 +70,7 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{Paul Klemm}
+\author{TBA}
 \authorfooter{
 %% insert punctuation at end of each item
 \item
@@ -149,13 +149,51 @@ Shape based grouping of subjects is facilitated using hierarchical agglomerative
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
 
-My Text
-
 \section{Medical and Technical Background}
+\textbf{Image aquisition}\\
+- standardization of MR Scanners
+
+\subsection{Epidemiological Workflow}
+Bernhards Paper
+
+\subsection{The Spine Dataset}
+
 
 \section{Prior and Related Work}
+- VMV Paper\\
+- Analysis of data in the Rotterdam study\\
+- VA in Epidemiology Part of Bernhards Paper
+	- Commercial visual Analytics Systems
 
 \section{Interactive Visual Analytics in Cohort Study Data}
+
+
+According to Steffens Terminology in Interactive Visual Analysis of Perfusion Data
+\\\\
+\textbf{Object Space}\\
+- Medical Image Data / Spine Segmentations\\
+\textbf{Attribute Space}\\
+- SHIP-Variables\\
+- Derived visualizations
+
+? Where to incorporate Levels of IVA
+
+\subsection{Feature Localization}
+- Projection from Image Space to Attribute data. This is more difficult in our application, because we currently only brush on derived features.\\
+- Clustering in Image Space yields Groups which can be analyzed using the attribute space
+
+\subsection{Local Investigation}
+- Selection of Information using Bar Charts, Scatterplots or Parallel Coordinates which projects the selection into the Object space\\
+- this selection is for categorical data already given implicitly bei projecting the 3D-View onto the Bar Charts/Mosaik Plots!\\
+- this aims to locale features of the data!\\
+- Gain Information about SHIP-Variables by putting them into the context of each other. The Pivot Table allows for direct numerical\\ analysis, while the information visualizations allow for better insight of the combination
+
+\subsection{Multivariate Analysis}
+- Selection of Elements in Scatterplots, Barcharts or Parallel Coordinates Views - observe how selection changes another view - this allows for multivariate analysis\\
+- Becker, R.A., Cleveland, W.S.: Brushing scatterplots. Technometrics 29(2) (1987)\\
+- Wang Baldonado, M.Q., Woodruff, A., Kuchinsky, A.: Guidelines for using multiple views in information visualization. In: AVI ’00: Proceedings of the working conference on Ad- vanced visual interfaces, pp. 110–119. ACM Press, New York, NY, USA (2000). DOI\\ http://doi.acm.org/10.1145/345513.345271
+- By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
+- by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
 
 \section{Application}
 
