@@ -1,0 +1,172 @@
+\documentclass[journal]{style/vgtc}           % final (journal style)
+%\documentclass[review,journal]{style/vgtc}         % review (journal style)
+%\documentclass[widereview]{style/vgtc}             % wide-spaced review
+%\documentclass[preprint,journal]{style/vgtc}       % preprint (journal style)
+%\documentclass[electronic,journal]{style/vgtc}     % electronic version, journal
+
+%% Uncomment one of the lines above depending on where your paper is
+%% in the conference process. ``review'' and ``widereview'' are for review
+%% submission, ``preprint'' is for pre-publication, and the final version
+%% doesn't use a specific qualifier. Further, ``electronic'' includes
+%% hyperreferences for more convenient online viewing.
+
+%% Please use one of the ``review'' options in combination with the
+%% assigned online id (see below) ONLY if your paper uses a double blind
+%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
+%% in the past.
+
+%% Please note that the use of figures other than the optional teaser is not permitted on the first page
+%% of the journal version.  Figures should begin on the second page and be
+%% in CMYK or Grey scale format, otherwise, colour shifting may occur
+%% during the printing process.  Papers submitted with figures other than the optional teaser on the
+%% first page will be refused.
+
+%% These three lines bring in essential packages: ``mathptmx'' for Type 1
+%% typefaces, ``graphicx'' for inclusion of EPS figures. and ``times''
+%% for proper handling of the times font family.
+
+\usepackage{mathptmx}
+\usepackage{graphicx}
+\usepackage{times}
+
+%% We encourage the use of mathptmx for consistent usage of times font
+%% throughout the proceedings. However, if you encounter conflicts
+%% with other math-related packages, you may want to disable it.
+
+%% This turns references into clickable hyperlinks.
+\usepackage[bookmarks,backref=true,linkcolor=black]{hyperref} %,colorlinks
+\hypersetup{
+  pdfauthor = {},
+  pdftitle = {},
+  pdfsubject = {},
+  pdfkeywords = {},
+  colorlinks=true,
+  linkcolor= black,
+  citecolor= black,
+  pageanchor=true,
+  urlcolor = black,
+  plainpages = false,
+  linktocpage
+}
+
+%% If you are submitting a paper to a conference for review with a double
+%% blind reviewing process, please replace the value ``0'' below with your
+%% OnlineID. Otherwise, you may safely leave it at ``0''.
+\onlineid{0}
+
+%% declare the category of your paper, only shown in review mode
+\vgtccategory{Research}
+
+%% allow for this line if you want the electronic option to work properly
+\vgtcinsertpkg
+
+%% In preprint mode you may define your own headline.
+%\preprinttext{To appear in an IEEE VGTC sponsored conference.}
+
+%% Paper title.
+
+\title{Interactive Visual Analytics of Image-Centric Cohort Study Data}
+
+%% This is how authors are specified in the journal style
+
+%% indicate IEEE Member or Student Member in form indicated below
+\author{Paul Klemm}
+\authorfooter{
+%% insert punctuation at end of each item
+\item
+ Otto-v.-Guericke-University Magdeburg
+}
+
+%other entries to be set up for journal
+\shortauthortitle{Klemm \MakeLowercase{\textit{et al.}}: Interactive Visual Analytics of Image-Centric Cohort Study Data}
+%\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
+
+%% Abstract section.
+\abstract{Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease specific risk factors.
+%
+Cohort studies comprise heterogenous data variables describing the medical condition as well as demographic and lifestyle factors of a subject.
+%
+Using well established statistical methods the data is hypothesis driven analyzed to find statistically significant variable correlations ('\emph{interactions}').
+%
+Modern cohort studies also incorporate medical image data.
+%
+Analyzing these data requires image segmentation, extraction of key figures and shape based subject grouping.
+\\
+We propose a Interactive Visual Analytics approach that enables epidemiologists to examine both image-based as well as sociodemographic and medical attribute data.
+%We propose a Interactive Visual Analytics approach to provide epidemiologists with the tools necessary to analyze this data.
+%
+It allows for both classical hypothesis validation approaches as well as hypothesis generation by incorporating data mining methods.
+%
+Adaptive linked information visualization views and 3d-shape renderings are combined with epidemiological techniques.
+%
+Similarity measures between data variables are used to compute interesting changes in variable interactions for the current variable selection.
+%
+Shape based grouping of subjects is facilitated using hierarchical agglomerative clustering.
+} % end of abstract
+
+
+%% Keywords that describe your work. Will show as 'Index Terms' in journal
+%% please capitalize first letter and insert punctuation after last keyword
+\keywords{Interactive Visual Analytics, Epidemiology}
+
+%% ACM Computing Classification System (CCS). 
+%% See <http://www.acm.org/class/1998/> for details.
+%% The ``\CCScat'' command takes four arguments.
+
+\CCScatlist{ % not used in journal version
+ \CCScat{K.6.1}{Management of Computing and Information Systems}%
+{Project and People Management}{Life Cycle};
+ \CCScat{K.7.m}{The Computing Profession}{Miscellaneous}{Ethics}
+}
+
+%% Uncomment below to include a teaser figure.
+  % \teaser{
+  % \centering
+  % \includegraphics[width=16cm]{CypressView}
+  % \caption{In the Clouds: Vancouver from Cypress Mountain.}
+  % }
+
+%% Uncomment below to disable the manuscript note
+%\renewcommand{\manuscriptnotetxt}{}
+
+%% Copyright space is enabled by default as required by guidelines.
+%% It is disabled by the 'review' option or via the following command:
+% \nocopyrightspace
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% START OF THE PAPER %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% The ``\maketitle'' command must be the first command after the
+%% ``begin{document}'' command. It prepares and prints the title block.
+
+%% the only exception to this rule is the \firstsection command
+\firstsection{Introduction}
+
+\maketitle
+
+%% \section{Introduction} %for journal use above \firstsection{..} instead
+
+My Text
+
+\section{Medical and Technical Background}
+
+\section{Prior and Related Work}
+
+\section{Interactive Visual Analytics in Cohort Study Data}
+
+\section{Application}
+
+\section{Summary and Conclusion}
+
+
+%% if specified like this the section will be committed in review mode
+\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
+
+\bibliographystyle{abbrv}
+%%use following if all content of bibtex file should be shown
+%\nocite{*}
+\bibliography{bibliography}
+\end{document}
