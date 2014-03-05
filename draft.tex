@@ -65,7 +65,7 @@
 
 %% Paper title.
 
-\title{Interactive Visual Analytics of Image-Centric Cohort Study Data}
+\title{Interactive Visual Analysis of Image-Centric Cohort Study Data}
 
 %% This is how authors are specified in the journal style
 
@@ -101,7 +101,7 @@ Adaptive linked information visualization views and 3d-shape renderings are comb
 %
 Similarity measures between data variables are used to compute interesting changes in variable interactions for the current variable selection.
 %
-Shape based grouping of subjects is facilitated using hierarchical agglomerative clustering.
+Shape based grouping of subjects is facilitated using hierarchical agglomerative clustering. (Remove Clustering reference?)
 } % end of abstract
 
 
@@ -148,25 +148,142 @@ Shape based grouping of subjects is facilitated using hierarchical agglomerative
 \maketitle
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
+Epidemiology aims to characterize health and disease by determining risk factors.
+%
+Clinical problems and questions answered using epidemiological methods comprise diagnosis accuracy, disease frequency, risk factors, disease prognosis, effectiveness of treatments or preventions and cause of diseases \cite{Fletcher2012}.
+%
+%Cohort studies are a epidemiological method to gather data about a group of subjects (a \emph{cohort)}) to make general statements about these problems.
+%
+Observations made by clinicians in the daily routine are translated into hypothesis.
+%
+These are used to determine environmental and lifestyle factors are as well as medical attributes which are believed to influence a condition of interest.
+%
+The data variables necessary are gathered using interviews and clinical examinations.
+%
+Statistical methods like regression analysis aim aim to check the attribute list for plausibility.
+%
+
+Longitudinal population-based studies like the Study of Health in Pomerania \cite{Volzke2011} aim to gather as much information as possible about a defined sample of people (a \emph{cohort}).
+%
+The sample is drawn randomized to avoid selection bias prohibit statements based on statistical correlations in the cohort to be inferred to the whole population.
+%
+Also a information bias needs to be avoided by strictly standardizing the data acquisition.
+%
+Statistical correlations are also prone to confounding, meaning that two factors influence each other and therefore should be normalized with respect to each other.
+%
+When for example one investigates risk factors for prostate cancer in male subjects the outcome is strongly dependent on the age.
+%
+Therefore results need to be age adjusted to be comparable.
+%
+Confounding variables, however, are often not obvious at all and characterizing them is already an epidemiological result.
+\\\\
+Modern cohort studies often include medical image data which introduces new problems.
+%
+Since it is unethical to expose people to radiation, non-harming imaging like Magnetic Resonance Imaging (MRI) or Ultrasound Imaging is used.
+%
+As MRI scans are expensive there exists a tradeoff between quality of the image data and their associated costs.
+%
+To quantify these data it is necessary to segment it.
+%
+Manual segmentation via radiological experts is possible but very costly and prone to inter- and intra observer variability.
+%
+Segmentation algorithms allow for (semi)-automated analysis of the data but require sophisticated methods due to high inter-subject variability caused by the subject diversity.
+%
+Analyzing spatial data with other epidemiological factors require techniques which reach beyond standard statistical methods.
+\\
+We propose a Interactive Visual Analysis approach to provide a way to analyze both image- and non-image data.
+%
+Visual queries and direct feedback of Visual Analytics systems allow for a fast exploration of the data space.
+%
+Intended as a extension to the well established epidemiological tools it provides a way to rapidly validate hypothesis as well as trigger hypothesis generation using Data Mining methods such as clustering.
+%
+
+
+%Interactive Visual Analysis (IVA) TODO QUELLE provides techniques which not only show promising potential for combining both 3d visualization with 
+
+Our contributions are:
+\begin{itemize}
+	\item Applying the Interactive Visual Analysis approach to the epidemiological problem domain by characterizing special affordances of this context.
+	\item Provide an overview over the workflow for analyzing cohort study data to gain insigth into the large subject spaces.
+	\item Provide Visualization Techniques which combine both Information Visualization and 3D Rendering of Organ Shapes as well as combining them with well known epidemiological graphics and key figures.
+	\item Implement the presented methods in a Web Framework based on WebGL, D3js and Nodejs as backend.
+\end{itemize}
+
+%Statistical correlations derived from analyzing the data itself may be misleading since 
+
+%Include Implementation details - web based; how are image data included; what technologies are used?
 
 \section{Medical and Technical Background}
-\textbf{Image aquisition}\\
-- standardization of MR Scanners
-
+In this section we want to give insight into the epidemiological workflow when analyzing cohort study data to identify the problems we address in this paper.
+%
+ToDo Define Epidemiological Outcome
+%
 \subsection{Epidemiological Workflow}
-Bernhards Paper
+Epidemiologists follow a strict workflow mainly driven by statistic tools to validate hypothesis.
+%
+Following Thew and colleagues publication on this matter, the workflow can be characterized as follows.
+%
+Hypothesis most commonly base on observations made by clinicians in their daily routine.
+%
+A set of attributes depicting conditions affected by the hypothesis is compiled accordingly.
+%
+Confounding variables need to be adjusted so that they do not affect the effect size of a attribute.
+%
+Statistical methods such as regression analysis are applied to measure the effect size of attributes to the outcome of interest.
+%
 
-\subsection{The Spine Dataset}
+Reproducibility of results is an epidemiological key requirement.
+%
+Longitudinal epidemiological studies require the acquired attributes to be comparable to evaluate them.
+%
+If the data acquisition process changes, a information bias is introduced to the data, disallowing inference between acquisition cycles.
+%
+This underlines the high quality standards to methods processing the data, whether to extract additional parameters or gain insight.
+%
+To determine, whether a subject is prone to be affected by a certain disease, relative risks a expressed through the evaluation of p values which indicate statistical significance.
+%
+Statistics tools such as SPSS and STATA play a major role for analyzing epidemiolgical data. 
+%
+Graphic data representation is largely used to show results rather than gaining insight.
+
+Bernhards Paper\\
+- Missing Data\\
+- Follow-Up Questions?\\
+- grouping essentiell\\
+- problems when analyzing image data\\
+	- what are Problems there\\
+	- how can shape be included?\\
+	- show image data of multiple subjects
+	
+\subsection{Epidemiological Data}
+Benrhard Paper
+- sociodemographic data
+- medical data
+- pain indicators
+- DATA TYPES
+	- dichotomous data
+
+	
+\paragraph{Image acquisition}: standardization of MR Scanners
+
+\subsection{The Study of Health in Pomerania (SHIP)}
 
 
 \section{Prior and Related Work}
 - VMV Paper\\
 - Analysis of data in the Rotterdam study\\
-- VA in Epidemiology Part of Bernhards Paper
-	- Commercial visual Analytics Systems
+- VA in Epidemiology Part of Bernhards Paper\\
+	- Commercial visual Analytics Systems\\
+- GPloms\\
+Unterlagen Wissenschaftliche Projekt
 
 \section{Interactive Visual Analytics in Cohort Study Data}
-
+\begin{figure}[htb]
+ \centering
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ \includegraphics[width=3.0in]{figures/InteractionLoop}
+ \caption{Interaction Overview}
+\end{figure}
 
 According to Steffens Terminology in Interactive Visual Analysis of Perfusion Data
 \\\\
@@ -180,7 +297,8 @@ According to Steffens Terminology in Interactive Visual Analysis of Perfusion Da
 
 \subsection{Feature Localization}
 - Projection from Image Space to Attribute data. This is more difficult in our application, because we currently only brush on derived features.\\
-- Clustering in Image Space yields Groups which can be analyzed using the attribute space
+- Clustering in Image Space yields Groups which can be analyzed using the attribute space\\
+- Create a Pipeline Overview over different Levels of different IVA Patterns and Stages
 
 \subsection{Local Investigation}
 - Selection of Information using Bar Charts, Scatterplots or Parallel Coordinates which projects the selection into the Object space\\
@@ -195,7 +313,14 @@ According to Steffens Terminology in Interactive Visual Analysis of Perfusion Da
 - By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
 - by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
 
+\subsection{Implementation}
+Diagram of used Technologies
+
 \section{Application}
+
+\subsection{The Spine Dataset}
+- Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
+- Input of Epidemiologists goes here!
 
 \section{Summary and Conclusion}
 
