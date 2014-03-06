@@ -197,6 +197,7 @@ Visual queries and direct feedback of Visual Analytics systems allow for a fast 
 %
 Intended as a extension to the well established epidemiological tools it provides a way to rapidly validate hypothesis as well as trigger hypothesis generation using Data Mining methods such as clustering.
 %
+\textbf{Characterization of the healthy aging process! Which change indicates a unusual pathological change?}
 
 
 %Interactive Visual Analysis (IVA) TODO QUELLE provides techniques which not only show promising potential for combining both 3d visualization with 
@@ -245,23 +246,47 @@ To determine, whether a subject is prone to be affected by a certain disease, re
 Statistics tools such as SPSS and STATA play a major role for analyzing epidemiolgical data. 
 %
 Graphic data representation is largely used to show results rather than gaining insight.
+\\
+Group subjects using epidemiological factors is essential in order to make statements about their statitical power.
+%
+Grouping is carried out hypothesis driven.
+%
+Age for example is also divided into groups (\emph{binned}) when investigating its influence on a condition.
+%
+These groups depend strongly on the condition of interest and therefore there is no defined standard on how to categorize these values.
+	
+\subsection{Epidemiological Data}
+Epidemiological data is highly heterogenous.
+%
+Information about medical history and examinations, genetic conditions, geographical data, questionaire answers, and image data yield complex data spaces for each subject.
+%
+Often data are derived from acquired variables to either group or threshold values or get information derived from reviewed data such as breast density data for women.
+%
+This underlines also the problem of missing data since for ethical, legal or medical reasons some data variables can not be gathered for each subject.
+%
+Follow-up examinations or -questions for conditions also produce variables only available for a small amount of subjects.
+%
+\\
+Indicators for medical conditions as well as questions about a subjects lifestyle are also often \emph{dichotomous}, meaning that they only have two manifestations (often \emph{Yes} or \emph{No}).
+%
+This allows for the calculation of \emph{odds ratios} which describe the relation of two \emph{dichotomous} variables, allowing for direct comparison of their influences.
+%
+Dichotomous data can also be derived by combining aggregating data variables to yield only two manifestations (e.g. subjects younger or older than 50).
 
-Bernhards Paper\\
+Bernhard Paper\\
+- sociodemographic data\\
+- medical data\\
+- pain indicators\\
+- DATA TYPES\\
+	- dichotomous data\\
+\\
 - Missing Data\\
 - Follow-Up Questions?\\
-- grouping essentiell\\
+- grouping essential\\
 - problems when analyzing image data\\
 	- what are Problems there\\
 	- how can shape be included?\\
 	- show image data of multiple subjects
-	
-\subsection{Epidemiological Data}
-Benrhard Paper
-- sociodemographic data
-- medical data
-- pain indicators
-- DATA TYPES
-	- dichotomous data
 
 	
 \paragraph{Image acquisition}: standardization of MR Scanners
