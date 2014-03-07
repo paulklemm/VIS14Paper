@@ -215,6 +215,11 @@ Our contributions are:
 %Include Implementation details - web based; how are image data included; what technologies are used?
 
 \section{Medical and Technical Background}
+Wer ist an epidemiologischen Studien beteiligt?\\
+•  Ärzte (Facharzt für öffentliches Gesundheitswesen, Gene@ker)\\
+•  Medizinische Informa@ker mit Fokus auf Biometrie und Sta@s@k\\
+•  Bei klinischen Studien: Ärzte des entsprechenden Fachs
+
 In this section we want to give insight into the epidemiological workflow when analyzing cohort study data to identify the problems we address in this paper.
 %
 ToDo Define Epidemiological Outcome
@@ -266,33 +271,70 @@ This underlines also the problem of missing data since for ethical, legal or med
 %
 Follow-up examinations or -questions for conditions also produce variables only available for a small amount of subjects.
 %
-\\
+
 Indicators for medical conditions as well as questions about a subjects lifestyle are also often \emph{dichotomous}, meaning that they only have two manifestations (often \emph{Yes} or \emph{No}).
 %
 This allows for the calculation of \emph{odds ratios} which describe the relation of two \emph{dichotomous} variables, allowing for direct comparison of their influences.
 %
 Dichotomous data can also be derived by combining aggregating data variables to yield only two manifestations (e.g. subjects younger or older than 50).
+%
 
-Bernhard Paper\\
-- sociodemographic data\\
-- medical data\\
-- pain indicators\\
-- DATA TYPES\\
-	- dichotomous data\\
-\\
-- Missing Data\\
-- Follow-Up Questions?\\
-- grouping essential\\
-- problems when analyzing image data\\
-	- what are Problems there\\
-	- how can shape be included?\\
-	- show image data of multiple subjects
+\paragraph{Image acquisition.} Imaging techniques emitting an hazardous amount of radiation for the subject are not suited for ethical reasons.
+%
+MRI data is more expensive to obtain as CT data but does not affect the subjects health and is therefore the main method for collecting cohort study imaging data.
+%
+The quality of medical image data acquired for cohort studies is a tradeoff between accuracy and affordability \cite{Preim2014}.
+%
+This often yields image resolutions inferior to those of clinical day-to-day practice, which makes their analysis more challenging.
 
-	
-\paragraph{Image acquisition}: standardization of MR Scanners
+\paragraph{Image analysis.} When analyzing medical image data there have decisions to be made on how they are \emph{compared} and \emph{quantified}.
+%
+Segmentations masks describing all parts of the shape of interest would be ideal since many different key figures can be derived from them.
+%
+Since these masks require sophisticated algorithms custom tailored to the data sets the epidemiologists are forced to measure the data by hand, which is a very tedious work with respect to the number of necessary landmarks and number of subjects.
+%
+Information derived by landmarks are also not nearly as expressive and versatile as segmentation masks.
+%
+They are also prone to a high inter-observer variability and hard to reproduce.
+%
+This gains even more momentum when analyzing multiple time steps!
+%
+Morphometric information from landmarks comprises thickness, diameter or length of a structure as well as grey-value distribution in an area (used for determine type of tissue).
+
+% Bernhard Paper\\
+% - sociodemographic data\\
+% - medical data\\
+% - pain indicators\\
+% - DATA TYPES\\
+% 	- dichotomous data\\
+% \\
+% - Missing Data\\
+% - Follow-Up Questions?\\
+% - grouping essential\\
+% - problems when analyzing image data\\
+% 	- what are Problems there\\
+% 	- how can shape be included?\\
+% 	- show image data of multiple subjects
+
 
 \subsection{The Study of Health in Pomerania (SHIP)}
-
+Starting 1997 with a cohort consisting of 4.308 subjects this cohort study located in northern germany aims to characterize health and disease in the widest range possible \cite{Volzke2011}.
+%
+Data is collected independent of diseases in mind.
+%
+This allows the data set to be queried regarding many different diseases and conditions.
+%
+Subjects were examined in a 5-year time span, continuously adding new parameters including MRI scans in the last iteration of 2012.
+%
+The MRI protocol features a rich number of different sequences.
+%
+Also for women, breast MRI scans were acquired.
+%
+A second cohort \texttt{SHIP-Trend} was established in 2008 to acquire data about a younger population.
+%
+The protocols for analyzing the subjects between \texttt{SHIP} and \texttt{SHIP-Trend} remained the same, making them comparable.
+%
+The overall examination time for each person attending the study is two days.
 
 \section{Prior and Related Work}
 - VMV Paper\\
@@ -303,6 +345,12 @@ Bernhard Paper\\
 Unterlagen Wissenschaftliche Projekt
 
 \section{Interactive Visual Analytics in Cohort Study Data}
+\begin{figure}[htb]
+ \centering
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ \includegraphics[width=3.0in]{figures/workflow_comparison}
+ \caption{Workflow Comparison}
+\end{figure}
 \begin{figure}[htb]
  \centering
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
@@ -320,18 +368,26 @@ According to Steffens Terminology in Interactive Visual Analysis of Perfusion Da
 
 ? Where to incorporate Levels of IVA
 
-\subsection{Feature Localization}
+\subsection{Feature Selection}
+- Automatic using Clustering\\
+- Automatic using Statistical Recommendations\\
+- Via User Input
+
+\subsection{Brushing the information space} 
+- derive new groups which serve as input for the feature selection
+
+\subsubsection{Feature Localization}
 - Projection from Image Space to Attribute data. This is more difficult in our application, because we currently only brush on derived features.\\
 - Clustering in Image Space yields Groups which can be analyzed using the attribute space\\
 - Create a Pipeline Overview over different Levels of different IVA Patterns and Stages
 
-\subsection{Local Investigation}
+\subsubsection{Local Investigation}
 - Selection of Information using Bar Charts, Scatterplots or Parallel Coordinates which projects the selection into the Object space\\
 - this selection is for categorical data already given implicitly bei projecting the 3D-View onto the Bar Charts/Mosaik Plots!\\
 - this aims to locale features of the data!\\
 - Gain Information about SHIP-Variables by putting them into the context of each other. The Pivot Table allows for direct numerical\\ analysis, while the information visualizations allow for better insight of the combination
 
-\subsection{Multivariate Analysis}
+\subsubsection{Multivariate Analysis}
 - Selection of Elements in Scatterplots, Barcharts or Parallel Coordinates Views - observe how selection changes another view - this allows for multivariate analysis\\
 - Becker, R.A., Cleveland, W.S.: Brushing scatterplots. Technometrics 29(2) (1987)\\
 - Wang Baldonado, M.Q., Woodruff, A., Kuchinsky, A.: Guidelines for using multiple views in information visualization. In: AVI ’00: Proceedings of the working conference on Ad- vanced visual interfaces, pp. 110–119. ACM Press, New York, NY, USA (2000). DOI\\ http://doi.acm.org/10.1145/345513.345271
@@ -345,7 +401,14 @@ Diagram of used Technologies
 
 \subsection{The Spine Dataset}
 - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
-- Input of Epidemiologists goes here!
+- Input of Epidemiologists goes here!\\
+\\\\
+\textbf{From VMV'13 Paper}\\
+
+All whole-body MRI scans were acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way. Subjects were placed in the supine position. Five phased-array surface coils were placed to the head, neck, abdomen, pelvis, and lower extremities for whole-body imaging. The spine coil is embedded in the patient table. The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels). First, both sequences were placed over the cervical and upper thoracic spine. Then, they were placed over the lower thoracic and lumbar spine. The MRI software automatically composed a whole spine sequence from the two T1-weighted and T2-weighted sequences \cite{Hegenscheid2013}. We were provided with 490 data sets.
+
+The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{FEM2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm \cite{Kabsch1976}, which is designed to minimize the root mean squared deviation between paired sets of points.
+The model-based detection captures information about the spine canal curvature as well as the alignment of the vertebrae. It is not meant to capture information about vertebrae deformation and differences in spine canal extent.
 
 \section{Summary and Conclusion}
 
