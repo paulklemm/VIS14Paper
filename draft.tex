@@ -165,7 +165,7 @@ Statistical methods like regression analysis aim aim to check the attribute list
 
 Longitudinal population-based studies like the Study of Health in Pomerania \cite{Volzke2011} aim to gather as much information as possible about a defined sample of people (a \emph{cohort}).
 %
-The sample is drawn randomized to avoid selection bias prohibit statements based on statistical correlations in the cohort to be inferred to the whole population.
+The sample is drawn randomized to avoid selection bias prohibit statements based on statistical correlations in the cohort to be inferred to the whole population (\emph{external validity}) \cite{Fletcher2012}.
 %
 Also a information bias needs to be avoided by strictly standardizing the data acquisition.
 %
@@ -191,14 +191,13 @@ Segmentation algorithms allow for (semi)-automated analysis of the data but requ
 %
 Analyzing spatial data with other epidemiological factors require techniques which reach beyond standard statistical methods.
 \\
-We propose a Interactive Visual Analysis approach to provide a way to analyze both image- and non-image data.
+We propose a Interactive Visual Analysis approach \cite{Thomas2005} to provide a way to analyze both image- and non-image data.
 %
 Visual queries and direct feedback of Visual Analytics systems allow for a fast exploration of the data space.
 %
 Intended as a extension to the well established epidemiological tools it provides a way to rapidly validate hypothesis as well as trigger hypothesis generation using Data Mining methods such as clustering.
 %
-\textbf{Characterization of the healthy aging process! Which change indicates a unusual pathological change?}
-
+\textbf{ToDo Characterization of the healthy aging process! Which change indicates a unusual pathological change?}
 
 %Interactive Visual Analysis (IVA) TODO QUELLE provides techniques which not only show promising potential for combining both 3d visualization with 
 
@@ -214,7 +213,7 @@ Our contributions are:
 
 %Include Implementation details - web based; how are image data included; what technologies are used?
 
-\section{Medical and Technical Background}
+\section{Medical and Technical Background} \label{MedicalAndTechnicalBackground}
 Wer ist an epidemiologischen Studien beteiligt?\\
 •  Ärzte (Facharzt für öffentliches Gesundheitswesen, Gene@ker)\\
 •  Medizinische Informa@ker mit Fokus auf Biometrie und Sta@s@k\\
@@ -224,7 +223,7 @@ In this section we want to give insight into the epidemiological workflow when a
 %
 ToDo Define Epidemiological Outcome
 %
-\subsection{Epidemiological Workflow}
+\subsection{Epidemiological Workflow} \label{EpidemiologicalWorkflow}
 Epidemiologists follow a strict workflow mainly driven by statistic tools to validate hypothesis.
 %
 Following Thew and colleagues publication on this matter, the workflow can be characterized as follows.
@@ -260,7 +259,7 @@ Age for example is also divided into groups (\emph{binned}) when investigating i
 %
 These groups depend strongly on the condition of interest and therefore there is no defined standard on how to categorize these values.
 	
-\subsection{Epidemiological Data}
+\subsection{Epidemiological Data} \label{EpidemiologicalData}
 Epidemiological data is highly heterogenous.
 %
 Information about medical history and examinations, genetic conditions, geographical data, questionaire answers, and image data yield complex data spaces for each subject.
@@ -279,7 +278,7 @@ This allows for the calculation of \emph{odds ratios} which describe the relatio
 Dichotomous data can also be derived by combining aggregating data variables to yield only two manifestations (e.g. subjects younger or older than 50).
 %
 
-\paragraph{Image acquisition.} Imaging techniques emitting an hazardous amount of radiation for the subject are not suited for ethical reasons.
+\paragraph{Image acquisition.} \label{ImageAcquisition} Imaging techniques emitting an hazardous amount of radiation for the subject are not suited for ethical reasons.
 %
 MRI data is more expensive to obtain as CT data but does not affect the subjects health and is therefore the main method for collecting cohort study imaging data.
 %
@@ -287,7 +286,7 @@ The quality of medical image data acquired for cohort studies is a tradeoff betw
 %
 This often yields image resolutions inferior to those of clinical day-to-day practice, which makes their analysis more challenging.
 
-\paragraph{Image analysis.} When analyzing medical image data there have decisions to be made on how they are \emph{compared} and \emph{quantified}.
+\paragraph{Image analysis.} \label{ImageAnalysis} When analyzing medical image data there have decisions to be made on how they are \emph{compared} and \emph{quantified}.
 %
 Segmentations masks describing all parts of the shape of interest would be ideal since many different key figures can be derived from them.
 %
@@ -318,7 +317,7 @@ Morphometric information from landmarks comprises thickness, diameter or length 
 
 
 \subsection{The Study of Health in Pomerania (SHIP)}
-Starting 1997 with a cohort consisting of 4.308 subjects this cohort study located in northern germany aims to characterize health and disease in the widest range possible \cite{Volzke2011}.
+Starting 1997 with a cohort consisting of 4.308 subjects this cohort study located in northern Germany aims to characterize health and disease in the widest range possible \cite{Volzke2011}.
 %
 Data is collected independent of diseases in mind.
 %
@@ -337,19 +336,124 @@ The protocols for analyzing the subjects between \texttt{SHIP} and \texttt{SHIP-
 The overall examination time for each person attending the study is two days.
 
 \section{Prior and Related Work}
-- VMV Paper\\
-- Analysis of data in the Rotterdam study\\
-- VA in Epidemiology Part of Bernhards Paper\\
-	- Commercial visual Analytics Systems\\
-- GPloms\\
-Unterlagen Wissenschaftliche Projekt
+Einfuehren von Helwigs Terminologie?
+
+Finding a visualization which fits all needs and communicates all aspects of the data equally is challenging.
+%
+Given the number of features of epidemiological data sets and their different manifestations, it is often a good solution to combine the strength of different visualization techniques in a unified system \cite{Buja91, Konyha2009}
+%
+Data mining tools like the Principal Component Analysis are able to reduce the dimension by extracting most expressive components, but making the influence of each variable hard to determine.
+\\\\
+The work of Turkay and colleagues is closest to ours albeit our focus on processing medical image data and variables with categorical manifestations \cite{Turkay2013}.
+%
+Investigating Data on an norwegian aging study their methods aim to amplify a hypothesis generation process when analyzing the data.
+%
+Statistical measures of metric variables such as mean, standard deviation, skewness, or inter-quartile range are used to create \emph{dimension plots}.
+%
+These transform dimensions into data points and make them comparable with respect to the derived descriptive measures.
+%
+This not only allows for comparing all continuous variables in a single plot but make their distribution change comprehensible.
+%
+This of course requires a good descriptive measure which captures the kind of change the user is interested in or which reflects unexpected data behavior.
+%
+The technique was applied to variables generated by segmenting the the brain into 45 parts and measure the number of voxel, volume and properties of the intensity values.
+%
+The method is strongly dependent on the descriptive derived measures of the epidemiological factors.
+%
+Hypothesis based on observations of changes in these plots may impose over-fitting to the data because the measure highlights certain statistical changes.
+%
+Our approach sticks more to the information extracted from the segmented image data and derive variable interaction with non-image epidemiological factors.
+% Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
+
+Gresh and colleagues suggest with \texttt{WEAVE} one of the first systems which analyzed medical image and non-image data using linked views \cite{Gresh2000}.
+%
+Blaas and colleagues presented a similar system which analyzed medical image data and variables derived from them using views from the feature- and physical space \cite{Blaas2007}.
+%
+This approach already incorporated Data Mining approaches like dividing the data space using a k-nearest-neighbor technique and Principal Component Analysis.
+%
+Steenwijk and colleagues employ a relational database to organize the data to visualize subject data using linked views like parallel coordinates, scatterplots and time plots \cite{Steenwijk2010}.
+%
+Zhang and colleagues provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set \cite{Zhang2012}.
+%
+Their understanding of a cohort differs from the understanding of the term in an epidemiolgical context.
+
+Commercial systems like Tableau or Spotfire provide a rich user interface that allows to apply Visual Analytics techniques without the need of writing any code.
+%
+With little efford linked views can be created using these tools, but the data procesinng possibilities like derivation of new variables or the volume rendering capabilities are very limited.
+%
+These systems share limitations in extensibility to a specific problem domain.
+%Spotfire offers the possibilities to interact with the \texttt{R} statistical programming language 
+
+% *********************** Our own Work ***********************
+Klemm and colleagues used captured lumbar spine variabilities based on an semi-automatic shape-detection algorithm of 490 participants of the \texttt{SHIP-2} \cite{Klemm2013VMV}.
+%
+Hierarchical agglomerative clustering was used to divide the population into shape-related groups.
+%
+As proof of concept a relation between size of the segmented shape and measured size of the subjects was measured and behaved as expected.
+%
+This work focuses on incorporating these data as new features of the overall data set, making it possible to include it into the hypothesis validation and generation process.
+%
+When applying clustering techniques on the non-image data is was found that \texttt{k-Prototypes} and \texttt{DBSCAN} is appropriate in the epidemiological context but is strongly dependent on the chosen variables and distance measure \cite{Klemm2014BVM}.
+% *********************** / Our own Work ***********************
+
+Generalized Pairs Plot (\emph{GPLOMS}) is an information visualization technique that allows for heterogenous variables to be pairwise visualized using appropriate plots in a plot matrix grouped by type.
+%
+This technique is also useful to gain an overview over numerous variables and their distributions.
+%
+It uses histograms, bar charts, scatterplots and heat maps to visualize the different variable combinations with regard to their type.
+%
+Brushing capabilities allow for brushing and linking as well as filtering, but has limitations like making only one category brushable at a time.
+%
+We applied this technique to our data and it shows promising potential for simultaneously visualizing many different variable but does not fit in the scope of this paper.
+%
+A similar approach was taken by Dai and colleagues for risk factor exploration as they also incorporate choropleth maps of epidemiological factors (e.g. mortality rates in a region) with parallel coordinates, bar charts and scatterplots integrated regression lines \cite{Dai2005}.
+%
+From their findings regarding the interaction of cancer-related socio-demographic factors are drawn in a \emph{Concept Map} where related factors are connected via graph-edges.
+
+Chui and colleagues visualized interactions in time-dependant epidemiological data using time-series plots highlighting risk factors differences in age and gender \cite{Chui2011}.
+%
+\\\\
+% Image Data
+Comparing tissue between many subjects in an epidemiological context requires methods which allow for shape variance visualizations.
+%
+Caban and colleagues investigated the suitability of variance visualizations of shape distribution models and concluded in their user study that user favor spherical glyph representations over deformation grids and likelihood volumes \cite{Caban2011}.
+%
+The distribution of shapes in a space derived from a principal component analysis is plotted by Busking and Colleagues in a 2D-projected plane of the space \cite{Busking2010a}.
+%
+We incorporate the idea of combining 3D-Shape rendering with information visualization techniques.
+%
+Differences between structures are highlighted using color mapping of the difference to the mean shape, but is rather hard to recognize due to small renderings of each subject in the shape-space.
+%
+Via mesh morphing interpolated views can be created by the user in a separate view as well as comparisons in contour-view.
+%
+Applying our data sets to this technique yielded a cluttered shape space due to the many subjects.
+%
+The data needs to abstracted or summarized in order to work in this context.
+%
+In order to detect local deformation changes, Hermann and colleagues investigating shape related difference by letting the user specify a deformation of interest and showing corresponding changes in the shape using covariance tensors \cite{Hermann2014}.
+%
+This method allowed for rapid hypothesis validation and was able to reproduce textbook knowledge.
+%
+By plotting p-values in ventricle surfaces, Chou and colleagues were able to map disease-associated values directly on a 3D tissue representations \cite{Chou2009}.
+%
+This requires a geographic colocation of associated features.
+%
+
+% Interactive Visual Analysis - Steffens Paper
+The strength of the Interactive Visual Analysis approach described in the next section is it's versatility with respect to the application field \cite{Konyha2009}.
+%
+Oeltze and colleagues combined a linked view representation of results from a statistical analysis with feature localizations of the human blood flow with the goal of its evaluation \cite{Oeltze2007}.
+%
+%They aim to provide methods to analyze perfusion data with respect to 
+While we take similar steps when analyzing the data like employing statistical tests, our data is mostly independent from the medical image data and is not describing it--except the variables derived the segmentation model itself.
 
 \section{Interactive Visual Analytics in Cohort Study Data}
 \begin{figure}[htb]
  \centering
+ \label{fig:WorkflowComparison}
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.0in]{figures/workflow_comparison}
- \caption{Workflow Comparison}
+ \caption{Visual Analytics systems are able to complement parts of the epidemiological workflow, not to replace it. The appropriate combination of statistical- and interactive driven analysis shows promising potential to unveil the information in the data.}
 \end{figure}
 \begin{figure}[htb]
  \centering
@@ -357,6 +461,38 @@ Unterlagen Wissenschaftliche Projekt
  \includegraphics[width=3.0in]{figures/InteractionLoop}
  \caption{Interaction Overview}
 \end{figure}
+
+As described in subsection~\ref{EpidemiologicalWorkflow}, the epidemiolgical workflow is a strict sequence of steps taken by domain experts and needs to be reproducible and comprise statistical integrity.
+%
+Figure~\ref{fig:WorkflowComparison} (a) describes this workflow as steps consecutive series of steps.
+%
+The workflow we propose by introducing the \emph{IVA} principle into the epidemiological problem domain does not aim to replace the existing workflow but to complement its weaknesses 
+%
+In the current state the workflow handles the data as a black box.
+%
+A list of features describing the hypothesis is compiled and analyzed using statistical tests. 
+%
+The resulting value decides whether the data supports the hypothesis or not.
+%
+It would be possible that there actually are features of the data set which support the hypothesis by discriminating the population in the expected way, but with this approach it is not able to find those.
+%
+This becomes even more imminent when the workflow is adapted to the analysis of the medical image data.
+%
+Domain experts annotate tediously landmarks which allow to derive metrics like distances which are then handled like other features and analyzed using the same set of statistical tools.
+%
+Not only does this leave out the majority of the information in the medical image data by abstracting it to metrics, it is easily possible that information left out would heavily influence the result.
+%
+Considering more complex parts of the data would make those results more trustworthy and also could identify possible anatomical confounders--an epidemiolgical research result in itself.
+%
+Statistical tests check for validity of the number but not for their completeness or plausibility!
+\\\\
+IVA tries to illuminate the data black box by making the domain experts part of the feature list selection process.
+%
+Figure~\ref{fig:WorkflowComparison} (b) highlights the iterative process as part of the epidemiolgical workflow.
+%
+Note that the process also aims to project back into the hypothesis formulation step to amplify hypothesis generation 
+%
+This has to be handled with care since overfitting of expectations to the available data is an imminent danger as described by Turkay and colleagues \cite{Turkay2013}.
 
 According to Steffens Terminology in Interactive Visual Analysis of Perfusion Data
 \\\\
@@ -407,14 +543,14 @@ Diagram of used Technologies
 
 All whole-body MRI scans were acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way. Subjects were placed in the supine position. Five phased-array surface coils were placed to the head, neck, abdomen, pelvis, and lower extremities for whole-body imaging. The spine coil is embedded in the patient table. The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels). First, both sequences were placed over the cervical and upper thoracic spine. Then, they were placed over the lower thoracic and lumbar spine. The MRI software automatically composed a whole spine sequence from the two T1-weighted and T2-weighted sequences \cite{Hegenscheid2013}. We were provided with 490 data sets.
 
-The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{FEM2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm \cite{Kabsch1976}, which is designed to minimize the root mean squared deviation between paired sets of points.
+%The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{Rak2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm \cite{Kabsch1976}, which is designed to minimize the root mean squared deviation between paired sets of points.
+The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{Rak2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm, which is designed to minimize the root mean squared deviation between paired sets of points.
 The model-based detection captures information about the spine canal curvature as well as the alignment of the vertebrae. It is not meant to capture information about vertebrae deformation and differences in spine canal extent.
 
 \section{Summary and Conclusion}
 
-
 %% if specified like this the section will be committed in review mode
-\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
+%\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
 
 \bibliographystyle{abbrv}
 %%use following if all content of bibtex file should be shown
