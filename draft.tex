@@ -73,8 +73,8 @@
 \author{TBA}
 \authorfooter{
 %% insert punctuation at end of each item
-\item
- Otto-v.-Guericke-University Magdeburg
+% \item
+%  Otto-v.-Guericke-University Magdeburg
 }
 
 %other entries to be set up for journal
@@ -453,13 +453,13 @@ While we take similar steps when analyzing the data like employing statistical t
  \label{fig:WorkflowComparison}
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.0in]{figures/workflow_comparison}
- \caption{Visual Analytics systems are able to complement parts of the epidemiological workflow, not to replace it. The appropriate combination of statistical- and interactive driven analysis shows promising potential to unveil the information in the data.}
+ \caption{Visual Analytics systems are able to complement parts of the epidemiological workflow, not to replace it. The appropriate combination of statistical- and interactive driven analysis shows promising potential to unveil the information in the data. (a) shows the standard epidemiological workflow, (b) the IVA supported one. The iterative red highlighted part is called the \emph{IVA Loop}.}
 \end{figure}
 \begin{figure}[htb]
  \centering
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.0in]{figures/InteractionLoop}
- \caption{Interaction Overview}
+ \caption{Detailed Version of the \emph{IVA Loop}. Usually starting with a selection of Variable of interest (user-driven or via data mining techniques), the data is mapped using a visualization technique appropriate for the selected data types. The data is visualized in the independent and dependent domain space, which can then be brushed, yielding new groups which can be investigated using further variables. Note that adjacent steps are directly connected via feedback loops allowing for iterative refinement and give as much freedom to the user as possible.}
 \end{figure}
 
 As described in subsection~\ref{EpidemiologicalWorkflow}, the epidemiolgical workflow is a strict sequence of steps taken by domain experts and needs to be reproducible and comprise statistical integrity.
@@ -496,44 +496,164 @@ This has to be handled with care since overfitting of expectations to the availa
 
 According to Steffens Terminology in Interactive Visual Analysis of Perfusion Data
 \\\\
-\textbf{Object Space}\\
-- Medical Image Data / Spine Segmentations\\
-\textbf{Attribute Space}\\
-- SHIP-Variables\\
-- Derived visualizations
 
-? Where to incorporate Levels of IVA
+\subsection{Image Centric Cohort Study Data in Interactive Visual Analytics Context}
+In the IVA context, data is divided to belong into two major view types.
+%
+The human body exposing shape information for the \emph{physical view}, also referred as the \emph{independent variables} \cite{Oeltze2013}.
+%
+This information space is usually displayed via volume rendering techniques \cite{Oeltze2007}.
+%
+%Spatiotemporal views include data from the \emph{Object Space Domain} renders data centered to the focused domain, in our example the medical image data space.
+%
+\emph{Dependent variables} in the epidemiological context can be divided twofold:
+\begin{itemize}
+	\item Variables derived from the image data. 
+	%
+	These measures abstracts shape information as quantification to allow for comparison. 
+	%
+	These variables describe image data and can also be used to brush in the image space.
+	\item Epidemiological socio-demographic or medical attribute data.
+	%
+	These values belong to every subject which is represented in the image space, but does not describe shape information.
+	%
+	This is the data epidemiologists usually want to correlate with image data.
+\end{itemize}
+%Other data associated to elements in the object space are considered to be the \emph{Attribute Space Domain} and are displayed using various range based views using statistical graphics and information visualization techniques like scatterplots, bar charts or parallel coordinates \cite{Oeltze2013, Oeltze2007}.
+%
+%Specific for the epidemiological application domain is that both Object- and Feature Space Domain influence the outcome of interest.
+% \textbf{Object Space}\\
+% - Medical Image Data / Spine Segmentations\\
+% \textbf{Attribute Space}\\
+% - SHIP-Variables\\
+% - Derived visualizations
+% 
+% ? Where to incorporate Levels of IVA
 
-\subsection{Feature Selection}
-- Automatic using Clustering\\
-- Automatic using Statistical Recommendations\\
-- Via User Input
+\subsection{Data Preprocessing}
+To include heterogenous epidemiological data in an IVA framework it is necessary to process it to obtain standardized views to the available features.
+%
+Due to the different acquisition modalities there have to be different techniques incorporated.
+%
+Data obtained using questionnaires or medical tests are often stored using statistical packages like \texttt{SPSS} or \texttt{Stata} which have a proprietary data format with limited export capabilities.
+%
+We found the best and easiest solution was to simply export the data in the respective tool to a character separated text file and then convert it to data types which are easier manageable like JSON or XML using our own classes.
+%
+In order to verify that the conversion worked as expected and the data is valid it is good practice to use data wrangling tools like \texttt{OpenRefine} to validate the data.
+%
+Exporting the data dictionary which stores information about each manifestation of a feature is also an important step to get a detailed description of data variables and the meaning and unit of measurement of their values.
+%
+Since the reasons for missing data have a wide range from ethical to medical and personal reasons, these are also included as error codes which have to marked as such in the data dictionary.
+\\\\
+Processing the image data associated to each subject is for the most part the extraction of information about a structure of interest.
+%
+This is either done manually by experts setting land marks (sometimes supported by algorithms connecting the land marks like Graph cuts) or by a (semi)-automatic detection, registration and segmentation.
+%
+Algorithms applied to the data do not only have to deal with a large inter-subject variability of the structure of interest but also needs to be reproducible \cite{Preim2014}.
+%
+Model based approaches have shown to be effective for this task \cite{Gloger2010, Gloger2012, Rak2013}.
+%
+If a segmentation yields only binary masks separating the structures, algorithms like the growing and adaptive shape can be applied creating a surface grid where each point is comparable throughout the population \cite{Ferrarini2007}.
+%
+Intensity based comparison can be achieved using rigid image registration, but model based results however are preferable \cite{Klemm2012}.
+%
+Comparison based on grey values is usually carried out to to measuring the quantity of fat, water or iron (liver) or distribution of grey and white brain tissue.
 
-\subsection{Brushing the information space} 
-- derive new groups which serve as input for the feature selection
+Morphometric variables are derived to allow for statistical comparison of the tissue which incorporate mostly position, volume and relative distances and alignment to other structures.
+% 
+% - Data Format\\
+% - Missing Data\\
+% - Registration of Image Data (VMV'12)\\
+% - Extraction of Image Parameter
 
-\subsubsection{Feature Localization}
-- Projection from Image Space to Attribute data. This is more difficult in our application, because we currently only brush on derived features.\\
-- Clustering in Image Space yields Groups which can be analyzed using the attribute space\\
-- Create a Pipeline Overview over different Levels of different IVA Patterns and Stages
+\subsection{IVA Patterns}
+%ToDo Groups are Variables as well!\\
+
+The explorative procedures when analyzing data using IVA can be divided into three different patterns, handling interaction between domain and range variables.
 
 \subsubsection{Local Investigation}
-- Selection of Information using Bar Charts, Scatterplots or Parallel Coordinates which projects the selection into the Object space\\
-- this selection is for categorical data already given implicitly bei projecting the 3D-View onto the Bar Charts/Mosaik Plots!\\
-- this aims to locale features of the data!\\
-- Gain Information about SHIP-Variables by putting them into the context of each other. The Pivot Table allows for direct numerical\\ analysis, while the information visualizations allow for better insight of the combination
+This pattern projects information from image space to the range perspective.
+%
+As opposing to other IVA application domains this step is more complicated in the epidemiological context.
+%
+Shape information can not be brushed by incorporating ROI-selections but rather has to employ techniques that specify local deformation changes \cite{Hermann2014} or subjects that belong to a shape class.
+%
+Methods available for \emph{feature selection} strongly depend on the type of registration that was applied to extract the tissue of interest.
+%
+Model based segmentations or masks yield data structures capable of calculating mean shapes and distances between individuals or subject groups.
+%
+Feature selection is also possible by applying clustering algorithms in order to get shape-groups \cite{Klemm2013}.
+%
+These algorithms can be used to investigate interactions between shape-groups and other non-image based variables.
+%
+Another application is the outlier analysis.
+%
+Outliers can indicate segmentation errors or an outstanding group of individuals who may share a pathology.
+
+% Local Investigation
+% - Projection from Image Space to Attribute data. This is more difficult in our application, because we currently only brush on derived features.\\
+% - Clustering in Image Space yields Groups which can be analyzed using the attribute space\\
+% - Create a Pipeline Overview over different Levels of different IVA Patterns and Stages
+
+% \subsection{Feature Selection}
+
+% \subsection{Brushing the information space}
+% - derive new groups which serve as input for the feature selection
+
+\subsubsection{Feature Localization}
+% Subset selection of range variables yields features
+As described before, the vast majority of data points are considered to be dependent with respect to the image domain in the IVA context.
+%
+Selecting subjects based on image derived data can be seen as additional possibility of shape-related grouping.
+%
+For the most part the epidemiologist is interested in the shape of subjects within a range of a set of variables that describe the current hypothesis.
+%
+Epidemiologists are used to categorize data into groups that fit their hypothesis formulation.
+%
+Continuous variables like age are for example often divided in categories like young, aged and elderly.
+%
+Categorization is strongly dependent on the hypothesis and therefore requires suitable brushing techniques as described in section TODO.
+%
+%To gain insight into interactions between SHIP-
+
+% - Selection of Information using Bar Charts, Scatterplots or Parallel Coordinates which projects the selection into the Object space\\
+% - this selection is for categorical data already given implicitly bei projecting the 3D-View onto the Bar Charts/Mosaik Plots!\\
+% - this aims to locale features of the data!\\
+% - Gain Information about SHIP-Variables by putting them into the context of each other. The Pivot Table allows for direct numerical\\ analysis, while the information visualizations allow for better insight of the combination
 
 \subsubsection{Multivariate Analysis}
-- Selection of Elements in Scatterplots, Barcharts or Parallel Coordinates Views - observe how selection changes another view - this allows for multivariate analysis\\
-- Becker, R.A., Cleveland, W.S.: Brushing scatterplots. Technometrics 29(2) (1987)\\
-- Wang Baldonado, M.Q., Woodruff, A., Kuchinsky, A.: Guidelines for using multiple views in information visualization. In: AVI ’00: Proceedings of the working conference on Ad- vanced visual interfaces, pp. 110–119. ACM Press, New York, NY, USA (2000). DOI\\ http://doi.acm.org/10.1145/345513.345271
-- By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
-- by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
+Introduced in the information visualization, the mutlivariate analysis means selecting subjects in like in the feature localization step and get have the result highlighted in another linked view displaying other non-image parameter.
+%
+This represents for the most part the usual approach which essentially is the analysis of how variables interact with each other, only in a visual analysis context.
+%
+Special for the application domain is the need of statistic measures which describe how variables correlate with each other given the selected groups.
+%
+These association also summarized using Pivot Tables which are popular in epidemiology and which are described in the following section.
+% - Selection of Elements in Scatterplots, Barcharts or Parallel Coordinates Views - observe how selection changes another view - this allows for multivariate analysis\\
+% - Becker, R.A., Cleveland, W.S.: Brushing scatterplots. Technometrics 29(2) (1987)\\
+% - Wang Baldonado, M.Q., Woodruff, A., Kuchinsky, A.: Guidelines for using multiple views in information visualization. In: AVI ’00: Proceedings of the working conference on Ad- vanced visual interfaces, pp. 110–119. ACM Press, New York, NY, USA (2000). DOI\\ http://doi.acm.org/10.1145/345513.345271
+% - By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
+% - by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
+
+\section{Visualization Techniques}
+\subsection{combined views}
+\subsection{Adaptive information visualization views}
+- Focus on intuitive Brushing!
+\subsection{Pivot Tables}
+\subsection{Interaction Workflow}
+- Automatic Suggestion of Variables
 
 \subsection{Implementation}
 Diagram of used Technologies
 
 \section{Application}
+\begin{figure}[htb]
+ \centering
+ \label{fig:technologies}
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ \includegraphics[width=3.5in]{figures/technologies}
+ \caption{Bla}
+\end{figure}
 
 \subsection{The Spine Dataset}
 - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
