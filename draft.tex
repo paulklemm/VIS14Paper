@@ -396,7 +396,7 @@ This work focuses on incorporating these data as new features of the overall dat
 When applying clustering techniques on the non-image data is was found that \texttt{k-Prototypes} and \texttt{DBSCAN} is appropriate in the epidemiological context but is strongly dependent on the chosen variables and distance measure \cite{Klemm2014BVM}.
 % *********************** / Our own Work ***********************
 
-Generalized Pairs Plot (\emph{GPLOMS}) is an information visualization technique that allows for heterogenous variables to be pairwise visualized using appropriate plots in a plot matrix grouped by type.
+Generalized Pairs Plot (\emph{GPLOMS}) is an information visualization technique that allows for heterogenous variables to be pairwise visualized using appropriate plots in a plot matrix grouped by type \cite{Francois2013}.
 %
 This technique is also useful to gain an overview over numerous variables and their distributions.
 %
@@ -582,7 +582,7 @@ Methods available for \emph{feature selection} strongly depend on the type of re
 %
 Model based segmentations or masks yield data structures capable of calculating mean shapes and distances between individuals or subject groups.
 %
-Feature selection is also possible by applying clustering algorithms in order to get shape-groups \cite{Klemm2013}.
+Feature selection is also possible by applying clustering algorithms in order to get shape-groups \cite{Klemm2013VMV}.
 %
 These algorithms can be used to investigate interactions between shape-groups and other non-image based variables.
 %
@@ -635,28 +635,148 @@ These association also summarized using Pivot Tables which are popular in epidem
 % - By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
 % - by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
 
-\section{Visualization Techniques}
-\subsection{combined views}
-\subsection{Adaptive information visualization views}
-- Focus on intuitive Brushing!
+\section{Interaction- and Visualization Techniques}
+\begin{figure}[htb]
+ \centering
+ \label{fig:visualization}
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ \includegraphics[width=3.5in]{figures/visualization}
+ \caption{\emph{Image is not final} Screenshot from the front-end which is divided as follows: (a) Sidebar which contains all features as well as the groups defined in the analysis process; (b) Canvas area where features can be added via drag and drop and the visualization chosen automatically according to the data type; (c) Interactive Pivot Table which shows exact numbers for each displayed variable combination. The data displayed is used to analyze the lumbar spine.
+ }
+\end{figure}
+IVA levels defines different interaction levels. 
+%
+We employ the fourth and highest levels which includes next to brushing and linking, advanced brushing, extraction of attributes the development of visualizations custom tailored to the data sets.
+%
+The employed techniques needs to respect the epidemiological affordances.
+%
+Hypothesis generation bears the chance of over-fitting the data to expectations.
+%
+To avoid this, a timeline needs to be introduced which keeps track how many variable variations the user evaluated before coming to an conclusion.
+%
+Since epidemiologists are used to process groups based on table representations we decided to introduce an interactive solution in form of a Pivot Table.
+
+\subsection{Structure and Workflow}
+We divide the workspace into three major parts as seen in Figure~\ref{fig:visualization}.
+%
+The sidebar holds all available variables as well as groups either derived by user input or automatic clustering.
+
+From the sidebar, elements of interest can be put into the canvas area via drag and drop.
+%
+Doing so will automatically create a information visualization suitable for the current data type.
+%
+3D shape information about the investigated structure is displayed for each variable manifestation.
+%
+By dropping variables on existing visualizations the system creates a visualization that allows for comparison (e.g. mosaic plots for ordinal variables).
+%
+Elements can be brushed in the information visualizations and are linked to the other representations in the canvas.
+%
+Shape based clustering can either be applied to all subjects or subgroups.
+
+All elements in the canvas view are also represented in the interactive Pivot Table which gives detailed information how the subjects are distributed given the displayed variables.
+%
+Details to the different views are presented in the following sub-sections.
+
+\subsection{Sidebar}
+A overview of all variables is presented in a sidebar where they are categorized to different types like somatometric, disease- or lifestyle related, pain indicators and laboratory data.
+%
+It also contains subject groups either defined by user brushing or by automated clustering.
+%
+Groups are treated exactly like other variables since they work exactly the same way which is dividing the subject space into different labeled categories.
+% TODO Implement
+Bar charts show the distribution of manifestations of each variable in the sidebar.
+
+\subsection{Adaptive Feature Visualization}
+Inspired be the previously discussed \emph{GPloms} \cite{Francois2013} the visualization type is chosen dynamically based on the variable types and number of visualizations which need to be displayed.
+% TODO Implement MOSAIC PLOTS, Scatterplots, Parallel Coordinates
+If possible the medical image data is directly included into the plot as well by including mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
+%
+The 3D-plots can be navigated using standard mouse inputs and the camera is synced so that a direct comparison is given.
+%
+If a feature is dropped on an existing plot, the visualization changes dynamically to properly make them comparable. 
+%
+Each plot can be brushed using widgets.
+%
+It is able to duplicate brushes in order to create new groups which are evenly spread out.
+%
+A use case for this is when a continuous feature has to be divided into even groups.
+
 \subsection{Pivot Tables}
-\subsection{Interaction Workflow}
-- Automatic Suggestion of Variables
+When opening a random epidemiological paper the reader will in almost all cases find some sort of pivot table to present the data.
+%
+As seen in Figure~\ref{fig:visualization} (c) it is a good way to display how many subjects are in each group.
+%
+Pivot table quickly get confusing and cluttered when they are divided into to many subgroups.
+%
+We tackled this problem by making the order and number of displayed variables adaptable.
+%
+This also applies on the designation of Row or Column Variables.
+% TODO IMPLEMENT
+The mean shape for each resulting sub-group is also displayed for each subject.
+\\\\
+In the following sections we will discuss details on the implementation which relies on modern Web-Technologies.
 
 \subsection{Implementation}
-Diagram of used Technologies
-
-\section{Application}
 \begin{figure}[htb]
  \centering
  \label{fig:technologies}
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.5in]{figures/technologies}
- \caption{Bla}
+ \caption{\emph{Image is not final}. The front-end solution (left) uses state of the art web technologies like HTML5/CSS3, WebGL and SVG to display the data.
+ % 
+ The NodeJS based back-end (right) stores all image- and non-image data and transfers it to connected clients.
+ %
+ All computation heavy operations like calculation of mean-shapes or -distances as well as statistical processing is done by the server to keep hardware requirements of client systems low. 
+ %
+ Client-Server communication is accomplished via the WebSocket protocol.
+ }
 \end{figure}
+%
+In order to provide a fast communication loop between method development and expert input we decided to base all implementations on modern web technologies which employs various advantages.
+\begin{itemize}
+	\item No additional software needs to be installed, most people use decent state of the art web browser. If developed using proper standards, the applications even run on mobile devices. 
+	\item The Client-Server structure allows it to employ heavy computation on a server machine and transfer results to the client
+	\item Since Image data for several thousand subjects claims hundreds of Gigabytes disk space it can remain safely on the server and elements can be transferred on demand.
+	%
+	High confidentiality standards of the data can be met by restricting access via a account system
+	\item Recent developments in WebGL applications running in browsers with near native performance push the development into to the web which results in many open source libraries which are well documented, rich in examples and driven by active communities.
+\end{itemize}
+These advantages do not come without drawbacks.
+%
+Many methods which specialized libraries like the Visualization Toolkit (VTK) or R for statistics have build in need to be written from scratch in order to fit in the context.
+%
 
+The back-end is written using Node, which based on the Google V8 Javascript runtime environment.
+%
+Due to its event-driven non-blocking I/O model it is fast and does not freeze in case of heavy workload like mesh calculation.
+\\\\
+Non-image data for all Subjects including the data dictionary is stored on the Server in a JSON file.
+%
+Image data is available as raw MRI DICOM files as well as segmented Meshes which can be used to compare subjects.
+%
+On client connection the requested files are transferred.
+%
+The server processes calculation heavy statistical tasks like calculation of Odds Ratios or Chi Square tests for all variable combinations in order to keep the computation time on the client as low as possible.
+%
+
+The front-end is created using Twitter Bootstrap as foundation for the layout and basic UI elements using HTML5, CSS3 and Javascript.
+%
+Information Visualizations like Scatterplots and bar charts are created using the popular Data Driven Documents library which works well for attaching data to visible elements like vector graphics.
+%
+WebGL rendering is done using the Threejs which allows GPU Accelerated data rendering.
+%
+Communication between Client and Server runs through the WebSockets protocol.
+%
+Since our clustering algorithms are written in MatLab we hat to access them using the Node Server.
+%
+We accomplished this by converting them to parameterized standalone console applications which are spawned by node on client request and then reads the result from the console standard-out and returns it in a proper format to the client.
+%
+All parameter steered console applications can be incorporated in this context.
+
+\section{Application}
 \subsection{The Spine Dataset}
 - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
+- Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
 - Input of Epidemiologists goes here!\\
 \\\\
 \textbf{From VMV'13 Paper}\\
