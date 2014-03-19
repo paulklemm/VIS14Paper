@@ -70,7 +70,7 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{TBA}
+\author{--blind--}
 \authorfooter{
 %% insert punctuation at end of each item
 % \item
@@ -78,44 +78,83 @@
 }
 
 %other entries to be set up for journal
-\shortauthortitle{Klemm \MakeLowercase{\textit{et al.}}: Interactive Visual Analytics of Image-Centric Cohort Study Data}
+\shortauthortitle{Klemm \MakeLowercase{\textit{et al.}}: Interactive Visual Analysis of Image-Centric Cohort Study Data}
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
-\abstract{Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease specific risk factors.
+\abstract{%
+%(The problem). 
+Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease specific risk factors.
 %
 Cohort studies comprise heterogenous variables (\emph{features}) describing the medical condition as well as demographic and lifestyle factors.
 %
-%Using well established statistical methods the data is hypothesis driven analyzed to find statistically significant variable correlations (\emph{interactions}).
-Driven by a priori defined hypotheses, the data is analyzed using well established statistical methods in order to find statistically significant correlations between variables (\emph{interactions}).
+The data is analyzed using a priori defined hypotheses to find statistically significant correlations between variables (\emph{interactions}).
 %
 Modern cohort studies also incorporate medical image data.
 %
-Analyzing these data requires image segmentation, extraction of key figures, and shape based subject grouping.
+%Analyzing these data requires image segmentation, extraction of key figures, and shape based subject grouping.
 %
 The statistically driven epidemiological workflow only allows to determine \emph{interactions} between image-derived metrics such as distances extracted from landmarks of the segmentation model.
 \\\\
+%(New Solution).
 We propose an Interactive Visual Analysis approach that enables epidemiologists to examine both image-based as well as non-image data, e.g., sociodemographic variables and attributes derived from the image data.
 %
+This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D-shape renderings with epidemiological data representations such as pivot tables and key figures as odds ratios.
+%incorporating coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
+%
+%Multiple coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
+%
+%(Validation).
+The presented concepts are applied expert-guided to gather and evaluate hypothesis about the aging process of the lumbar spine.
+%
+%(Results). 
+It shows to be a more flexible comparison between image-and non-image data.
+%
+%(Implications).
+The new framework allows for hypothesis validation and hypothesis generation by incorporating human pattern recognition as well as data mining methods.
+%
 Using all reliable information from the image segmentation linked to non-image variables aims to unveil \emph{interactions} by applying an iterative analysis approach.
-%As extension to the epidemiological workflow it aims to unveil interactions based on all reliable shape information rather than abstracting it to a few key figures.
-%Iterative analysis between ... allows for extracting interactions which without the visiual analysis driven approach maybe would be overlooked. %Einsicht in Interaktionen zwischen nicht-bilddaten und bilddaten auf basis aller verfügbarer Informationen 
-%Iterative Analyse von Organstrukturen im Bezug auf Bilddaten 
-%Iterative analysis of image-based epidemiological datasets aims to provide insight into interactions between organ shape and % in order to provide insights into \emph{interactions} by incorporating additional information
-%It extends the epidemiological workflow with an iterative Analysis process and 
-It allows for hypothesis validation and hypothesis generation by incorporating human pattern recognition as well as data mining methods.
+
 %
-Multiple coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
+%Similarity measures between data variables are used to compute interesting changes in variable interactions for the current variable selection.
 %
-Similarity measures between data variables are used to compute interesting changes in variable interactions for the current variable selection.
-%
-Shape based grouping of subjects is facilitated using clustering techniques which operate on surface meshes extracted from the image segmentation.
+%Shape based grouping of subjects is facilitated using clustering techniques which operate on surface meshes extracted from the image segmentation.
 } % end of abstract
+
+% \abstract{Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease specific risk factors.
+% %
+% Cohort studies comprise heterogenous variables (\emph{features}) describing the medical condition as well as demographic and lifestyle factors.
+% %
+% %Using well established statistical methods the data is hypothesis driven analyzed to find statistically significant variable correlations (\emph{interactions}).
+% Driven by a priori defined hypotheses, the data is analyzed using well established statistical methods in order to find statistically significant correlations between variables (\emph{interactions}).
+% %
+% Modern cohort studies also incorporate medical image data.
+% %
+% Analyzing these data requires image segmentation, extraction of key figures, and shape based subject grouping.
+% %
+% The statistically driven epidemiological workflow only allows to determine \emph{interactions} between image-derived metrics such as distances extracted from landmarks of the segmentation model.
+% \\\\
+% We propose an Interactive Visual Analysis approach that enables epidemiologists to examine both image-based as well as non-image data, e.g., sociodemographic variables and attributes derived from the image data.
+% %
+% Using all reliable information from the image segmentation linked to non-image variables aims to unveil \emph{interactions} by applying an iterative analysis approach.
+% %As extension to the epidemiological workflow it aims to unveil interactions based on all reliable shape information rather than abstracting it to a few key figures.
+% %Iterative analysis between ... allows for extracting interactions which without the visiual analysis driven approach maybe would be overlooked. %Einsicht in Interaktionen zwischen nicht-bilddaten und bilddaten auf basis aller verfügbarer Informationen 
+% %Iterative Analyse von Organstrukturen im Bezug auf Bilddaten 
+% %Iterative analysis of image-based epidemiological datasets aims to provide insight into interactions between organ shape and % in order to provide insights into \emph{interactions} by incorporating additional information
+% %It extends the epidemiological workflow with an iterative Analysis process and 
+% It allows for hypothesis validation and hypothesis generation by incorporating human pattern recognition as well as data mining methods.
+% %
+% Multiple coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
+% %
+% Similarity measures between data variables are used to compute interesting changes in variable interactions for the current variable selection.
+% %
+% Shape based grouping of subjects is facilitated using clustering techniques which operate on surface meshes extracted from the image segmentation.
+% } % end of abstract
 
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
 %% please capitalize first letter and insert punctuation after last keyword
-\keywords{Interactive Visual Analytics, Epidemiology}
+\keywords{Interactive Visual Analysis, Epidemiology}
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
@@ -560,7 +599,7 @@ Therefore, these are also included as error codes which have to marked as such i
 \\\\
 Processing the image data associated to each subject consists for the most part of information extraction about a structure of interest.
 %
-This is either done manually by experts setting landmarks (sometimes supported by algorithms connecting the land marks such as Graph-Cuts TODO: REFERENCE) or by a (semi)-automatic detection, registration and segmentation.
+This is either done manually by experts setting landmarks (sometimes supported by algorithms connecting the land marks such as graph cuts \cite{GraphCut}) or by a (semi)-automatic detection, registration and segmentation.
 %
 Algorithms, applied to the data, do not only have to deal with a large inter-subject variability of the structure of interest but also need to be reproducible \cite{Preim2014}.
 %
@@ -830,6 +869,7 @@ We accomplished this by converting them to parameterized standalone console appl
 All parameter steered console applications can be incorporated in this context.
 
 \section{Application}
+- Acceptance plays a big role - you have to pick up the user by presenting information they are used to in a new way
 \subsection{The Spine Dataset}
 - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
 - Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
@@ -844,6 +884,8 @@ The model is placed in the scene using an empirically chosen initialization poin
 The model-based detection captures information about the spine canal curvature as well as the alignment of the vertebrae. It is not meant to capture information about vertebrae deformation and differences in spine canal extent.
 
 \section{Summary and Conclusion}
+- Future Work: Matrix-View of differences - more intuitive\\
+- UI more flexible by hiding UI-panes
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
