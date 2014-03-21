@@ -99,7 +99,7 @@ The statistically driven epidemiological workflow only allows to determine \emph
 %(New Solution).
 We propose an Interactive Visual Analysis approach that enables epidemiologists to examine both image-based as well as non-image data, e.g., sociodemographic variables and attributes derived from the image data.
 %
-This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D shape renderings with epidemiological data representations such as pivot tables and key figures as odds ratios.
+This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D shape renderings with epidemiological data representations such as pivot tables and key figures as association measures.
 %incorporating coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
 %
 %Multiple coordinated views from information visualization and 3D-shape renderings are combined with epidemiological data representations such as Pivot Tables.
@@ -504,13 +504,14 @@ Oeltze and colleagues combined a linked view representation of results from a st
 %They aim to provide methods to analyze perfusion data with respect to 
 While we take similar steps when analyzing the data such as employing statistical tests, our data is mostly independent from the medical image data and is not describing it--except the variables derived the segmentation model itself.
 
-\section{Interactive Visual Analytics in Cohort Study Data}
+\section{Interactive Visual Analyis in Cohort Study Data}
 \begin{figure}[htb]
  \centering
  \label{fig:WorkflowComparison}
  \includegraphics[width=3.0in]{figures/workflow_comparison}
  \caption{ToDo Abbildung noch nicht final. Visual Analytics systems are able to complement parts of the epidemiological workflow, not replace it. The appropriate combination of statistical- and interactive driven analysis shows promising potential to unveil the information in the data. (a) shows the standard epidemiological workflow, (b) the IVA supported one. The iterative red highlighted part is called the \emph{IVA Loop}.}
 \end{figure}
+- Acceptance plays a big role - you have to pick up the user by presenting information they are used to in a new way\\
 %
 As described in subsection~\ref{EpidemiologicalWorkflow}, the epidemiolgical workflow is a sequence of steps taken by domain experts and needs to be reproducible and comprise statistical integrity.
 %
@@ -869,19 +870,51 @@ We accomplished this by converting them to parameterized standalone console appl
 All parameter steered console applications can be incorporated in this context.
 
 \section{Application}
-- Acceptance plays a big role - you have to pick up the user by presenting information they are used to in a new way
+We apply the presented set of techniques to a data set which is compiled to analyze lower back pain which is one of the most common reasons for an adult to see a physicians \cite{Backpain}.
+%
+Data confidentiality and ethical reasons prohibit us from accessing the complete data space of the SHIP feature space.
+%
+The epidemiologists compiled feature list which is a tradeoff between complexity and ability to pass the ethics committee.
+%
+%The goal is to find features which \emph{interact} with lower back pain based on image and non-image data.
+%
 \subsection{The Spine Dataset}
-- Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
-- Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
-- Input of Epidemiologists goes here!\\
-\\\\
-\textbf{From VMV'13 Paper}\\
+We divide the data set in image and non-image data.
+%
+There are 136 features describing diagnosed diseases, lifestyle factors, women specific factors, pain indicators, laboratory values somatometric variables and are ordered accordingly.
+%
+The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
+%
+The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
 
-All whole-body MRI scans were acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way. Subjects were placed in the supine position. Five phased-array surface coils were placed to the head, neck, abdomen, pelvis, and lower extremities for whole-body imaging. The spine coil is embedded in the patient table. The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels). First, both sequences were placed over the cervical and upper thoracic spine. Then, they were placed over the lower thoracic and lumbar spine. The MRI software automatically composed a whole spine sequence from the two T1-weighted and T2-weighted sequences \cite{Hegenscheid2013}. We were provided with 490 data sets.
+\subsection{Processing the Image data}
+The lumbar spine was detected in the image data using a hierarchical finite element method according to \cite{Rak2013}.
+%
+This semi-automatic method requires the user to initialize the Tetrahedron-based finite element models (FEM) with a click on the L2-vertebra.
+%
+It uses a weighted sum of T1- and T2-weighted MRI images to detect the lumbar spine shape.
+%
+The registered models capture resilient information about shape of the lumbar spine canal as well as the position of the L1 -L5 vertebrae.
+%
+For clustering purposes we extracted the centerline of the spine canal of the lumbar spine canal which captures information about lordosis and scoleoses which is the medical term for spine curvature \cite{Klemm2013VMV}.
+%
+%This information is a major feature for diagnosing lumbar back pain.
+\subsection{Processing the Non-Image data}
+- SPSS Export? JSON-Export? Automatisches Anfuegen des Dictionaries?
 
-%The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{Rak2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm \cite{Kabsch1976}, which is designed to minimize the root mean squared deviation between paired sets of points.
-The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{Rak2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm, which is designed to minimize the root mean squared deviation between paired sets of points.
-The model-based detection captures information about the spine canal curvature as well as the alignment of the vertebrae. It is not meant to capture information about vertebrae deformation and differences in spine canal extent.
+%\subsection{The Spine Prototype}
+
+- Clustering using Steffens Algorithm
+% - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
+% - Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
+% - Input of Epidemiologists goes here!\\
+% \\\\
+% \textbf{From VMV'13 Paper}\\
+% 
+% All whole-body MRI scans were acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way. Subjects were placed in the supine position. Five phased-array surface coils were placed to the head, neck, abdomen, pelvis, and lower extremities for whole-body imaging. The spine coil is embedded in the patient table. The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels). First, both sequences were placed over the cervical and upper thoracic spine. Then, they were placed over the lower thoracic and lumbar spine. The MRI software automatically composed a whole spine sequence from the two T1-weighted and T2-weighted sequences \cite{Hegenscheid2013}. We were provided with 490 data sets.
+
+% The model is placed in the scene using an empirically chosen initialization point. The force acting on the model stems from aggregation of loads, which are derived from a potential field resulting from a weighted sum of the T1- and T2-weighted MRI images, see \cite{Rak2013}. After detecting all spines, we register the models because in a later clustering step we only want to capture the local deformation of the lumbar spine, not different locations in world space. The models are registered using the Kabsch Algorithm, which is designed to minimize the root mean squared deviation between paired sets of points.
+% The model-based detection captures information about the spine canal curvature as well as the alignment of the vertebrae. It is not meant to capture information about vertebrae deformation and differences in spine canal extent.
 
 \section{Summary and Conclusion}
 - Future Work: Matrix-View of differences - more intuitive\\
