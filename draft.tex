@@ -154,7 +154,7 @@ Using all reliable information from the image segmentation linked to non-image v
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
 %% please capitalize first letter and insert punctuation after last keyword
-\keywords{Interactive Visual Analysis, Epidemiology}
+\keywords{Interactive Visual Analysis, Epidemiology, Spine}
 
 %% ACM Computing Classification System (CCS). 
 %% See <http://www.acm.org/class/1998/> for details.
@@ -403,7 +403,7 @@ The work of Turkay and colleagues is closest to ours albeit our focus on process
 %
 Investigating Data on an norwegian aging study their methods aim to amplify a hypothesis generation process.
 %
-Statistical measures of metric variables such as mean, standard deviation, skewness, or inter-quartile range are used to create \emph{dimension plots}.
+Statistical measures of continuous variables such as mean, standard deviation, skewness, or inter-quartile range are used to create \emph{dimension plots}.
 %
 These transform dimensions into data points and make them comparable with respect to the derived descriptive measures.
 %
@@ -688,7 +688,7 @@ These associations also summarized using Pivot Tables which are popular in epide
 % - By brushing individual parameters or create new binnings of parameter it is possible to see how they change in coordinated views. This is already implemented in the Cargo framework\\
 % - by creating comparative 3d Visualizations it is possible to assess the influence of non-image parameters to the visual space.
 
-\section{Interaction- and Visualization Techniques}
+\section{Interaction- and Visualization Techniques} \label{Interaction- and Visualization Techniques}
 % TODO: Bernhard: Section anders beginnen!
 We employ the fourth and highest level which includes next to brushing and linking, advanced brushing, extraction of attributes the development of visualizations custom tailored to the data sets.
 \begin{figure}[htb]
@@ -786,6 +786,9 @@ This also applies on the designation of Row or Column Variables.
 The mean shape for each resulting sub-group is also displayed for each subject.
 
 \subsection{Automated Feature Suggestion}
+% https://de.wikipedia.org/wiki/Kontingenzkoeffizient#Cram.C3.A9rs_V
+TODO REWRITE USING CRAMERS V
+
 As discussed previously, highlighting potential interesting values in the data set is one major benefit of the \emph{IVA} powered approach.
 %
 Turkay and colleagues used the approach to calculate various key figures based in the distribution functions of each feature derived from the image data \cite{Turkay2013}.
@@ -872,13 +875,29 @@ All parameter steered console applications can be incorporated in this context.
 \section{Application}
 We apply the presented set of techniques to a data set which is compiled to analyze lower back pain which is one of the most common reasons for an adult to see a physicians \cite{Backpain}.
 %
+Epidemiological analysis of lumbar back pain such the work of Harreby and colleagues \cite{Harreby1996} is largely focused on non-image information.
+%
+If at all, only a few shape related features are included in comparable studies \cite{Lang2011}.
+%
+To our knowledge, this is the first approach on analyzing shape related information of the whole lumbar spine with other epidemiological features.
+
+%
+Determining risk factors can lead to \cite{Fletcher2012}:
+\begin{itemize}
+	\item a better understanding of effects of preventive measures such as occupational health and safety regulations
+	\item prognostic features for diagnosis and treatment of lumbar back pain
+	\item determination of particularly effected risk groups
+\end{itemize}
+%
+Characterizing the healthy aging process of the spine is a large stretch goal that allows to determine age-normalized probabilities for diseases using individual risk factors.
+
 Data confidentiality and ethical reasons prohibit us from accessing the complete data space of the SHIP feature space.
 %
 The epidemiologists compiled feature list which is a tradeoff between complexity and ability to pass the ethics committee.
 %
 %The goal is to find features which \emph{interact} with lower back pain based on image and non-image data.
 %
-\subsection{The Spine Dataset}
+\subsection{The Lumbar Spine Dataset}
 We divide the data set in image and non-image data.
 %
 There are 136 features describing diagnosed diseases, lifestyle factors, women specific factors, pain indicators, laboratory values somatometric variables and are ordered accordingly.
@@ -887,24 +906,103 @@ The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Med
 %
 The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
 
-\subsection{Processing the Image data}
+\subsection{Data Preprocessing} \label{Data Preprocessing}
+
+\paragraph{Image-Data.} \label{Image-Data}
 The lumbar spine was detected in the image data using a hierarchical finite element method according to \cite{Rak2013}.
 %
 This semi-automatic method requires the user to initialize the Tetrahedron-based finite element models (FEM) with a click on the L2-vertebra.
 %
 It uses a weighted sum of T1- and T2-weighted MRI images to detect the lumbar spine shape.
 %
-The registered models capture resilient information about shape of the lumbar spine canal as well as the position of the L1 -L5 vertebrae.
+The registered models capture resilient information about shape of the lumbar spine canal as well as the position of the L1-L5 vertebrae.
 %
-For clustering purposes we extracted the centerline of the spine canal of the lumbar spine canal which captures information about lordosis and scoleoses which is the medical term for spine curvature \cite{Klemm2013VMV}.
+For clustering purposes we extracted the centerline of the spine canal of the lumbar spine canal which captures information about lordosis and scoliosis which are medical terms for spine curvature \cite{Klemm2013VMV}.
+
+TODO HOW MANY SUBJECTS?
+
+\paragraph{Non-Image Data.} 
+
+In order to allow for fast and easy access of the data outside of tools like \texttt{SPSS} or \texttt{STATA} the data was exported to a JSON file format which can easily be loaded using Javascript.
 %
-%This information is a major feature for diagnosing lumbar back pain.
-\subsection{Processing the Non-Image data}
-- SPSS Export? JSON-Export? Automatisches Anfuegen des Dictionaries?
+Each variable is stored as object which contains: 
+\begin{itemize}
+	\item the data as array of values--categorical values and error codes are stored using IDs
+	\item the data type (continuous, nominal, ordinal, dichotomous)
+	\item a detailed description of the variable
+	\item the data dictionary which translates value- or error IDs to the actual values
+\end{itemize}
+%
+% Binning: https://www.researchgate.net/post/What_metric_best_captures_the_information_loss_when_binning_a_large_data-set_into_a_histogram_representation
+Continuous variables are discretized to allow for CramérsV contingency coefficient assessment.
+%
+In epidemiology, continuous data is usually categorized into ordinal groups of equal size.
+%
+Since the number of categories often strongly depends on the hypothesis, the discretization steps can be adapted dynamically.
+%
+To allow for hypothesis generation we set the number of groups to five if not specified otherwise.
+TODO Formula?
 
-%\subsection{The Spine Prototype}
+\subsection{Shape Visualization and Clustering}
+The detection algorithm described in Section~\ref{Data Preprocessing} yields a model that determines voxel belonging to the lumbar spine.
+%
+The tetrahedron-based model has consists of corresponding grid points for each structure instance.
+%
+This allows for calculation of shape-distance and similarity.
+%
+We use this information to calculate mean-shapes for groups for plotting them as described in Section~\ref{Interaction- and Visualization Techniques}.
+%
+For dichotomous variables the color codes distances between mean shapes of the two groups, for variables with more than two manifestation the color encodes the distance to the mean shape of all variables.
+\\\\
+Shape based clustering is carried out via Agglomerative Hierarchical Clustering of the spine canal centerlines that are described in Section~\ref{Data Preprocessing} \cite{Klemm2013VMV}.
+%
+Since it is not possible to determine the number of clusters in a given group, it is determined automatically by computing a \emph{knee/elbow} point which is described as good tradeoff between number of cluster and a cluster evaluation metric \cite{Salvador2004}.
+%
+For details, see \cite{Klemm2013VMV}.
+%
+The method has proven to produce comprehensible results on a preliminary data set and was able to reproduce textbook knowledge before \cite{Klemm2013VMV}.
 
-- Clustering using Steffens Algorithm
+\subsection{Exploratory Analysis of the Lumbar Spine Dataset}
+%
+We analyzed the given dataset expert guided to assess its suitability for both hypothesis validation and generation.
+%
+\subsubsection{Hypothesis free Analysis}
+\begin{figure}[htb]
+ \centering
+ \label{fig:hypopthesisfree}
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ \includegraphics[width=3.5in]{figures/hypothesisfree}
+ \caption{\emph{Image is not final}. (a) Clustering result of all subjects. The bar chart height indicates the number of subjects in the cluster. The difference to the mean-shape is color-coded where blue represents no difference and red a large difference.}
+\end{figure}
+%
+Analyzing the data set without a prior hypothesis requires a starting point which gives a overview over the data first \cite{Shneiderman1996}.
+%
+Shape based hypothesis free exploration starts with a shape-grouping step achieved by image-based clustering.
+%
+The results for this step can be seen in Figure~\ref{fig:hypopthesisfree}.
+%
+Cluster 9 represents the subjects with average shape.
+%
+Other shapes differ with respect to size, such as Cluster 2, 8, 10 and 3 where the last one also is more straight, which is expected for larger subjects.
+%
+Cluster 4, 7 and 5 contain outliers, characterized by their unusual shape and small number.
+%
+Cluster 8 - Viele nicht erwerbstätige - weiter hier
+
+TODO: While this approach does not assume any hypothesis, the data is met with a selection bias when compiling the list of related features by the domain experts.
+
+TODO Implement Color coding only in a certain direction!
+
+\subsubsection{Hypothesis based Analysis}
+%
+
+%
+
+\subsubsection{Concluding Domain-Expert Feedback}
+Our clinical partners were interested in the MRI data for the subjects in the outlier clusters because they are highly likely to exhibit pathologies.
+%
+We plan to include a \texttt{DICOM}-viewer to meet this wish.
+
 % - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
 % - Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
 % - Input of Epidemiologists goes here!\\
@@ -919,6 +1017,18 @@ For clustering purposes we extracted the centerline of the spine canal of the lu
 \section{Summary and Conclusion}
 - Future Work: Matrix-View of differences - more intuitive\\
 - UI more flexible by hiding UI-panes
+- Dynamic Discretization to better fit the data distributions
+- More Shape based filtering - reorder by size, curvature, etc. ...
+- Color code different Aspects - Only difference in x or y direction
+
+Discretization of continous variables into bins of equal size may bias the underlying data by not considering the variable distribution function \cite{Fletcher2012}.
+% Fletcher 2012 - S. 257
+To reduce the number of false positive findings, the data space can be randomly be cut in half the hypothesis then can be cross-validated for statistical soundness.
+%
+This requires a large number of subjects, especially if the investigated features are rare and are only presented by a few subjects.
+%
+As suggested by Fletcher and Fletcher, we plan to validate the hypothesis using the \texttt{SHIP-TREND} cohort \cite{Fletcher2012}.
+
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
