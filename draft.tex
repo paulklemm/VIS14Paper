@@ -195,7 +195,7 @@ Using all reliable information from the image segmentation linked to non-image v
 \maketitle
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
-\textbf{(Background)} Epidemiology aims at characterizing health and disease by determining risk factors.
+Epidemiology aims at characterizing health and disease by determining risk factors.
 %
 Clinical problems, such as the selection of diagnostic tools and efficient treatment, are tackled using results of epidemiological research.
 %
@@ -210,7 +210,6 @@ The data variables necessary are gathered using structured interviews and clinic
 Statistical methods like regression analysis aim to check the attribute list for plausibility.
 %
 \\\\
-\textbf{(Problem)}
 Longitudinal population-based studies, such as the Study of Health in Pomerania (SHIP) \cite{Volzke2011}, aim to gather as much information as possible about a defined sample of people (a \emph{cohort}).
 %
 % The sample is drawn randomized to avoid selection \cite{Fletcher2012}.
@@ -257,7 +256,6 @@ The standard workflow lacks methods which highlight features of interest the epi
 % %
 % Analyzing spatial data with respect to other epidemiological factors requires techniques which reach beyond standard statistical methods.
 \\\\
-\textbf{(Goals)}
 We propose an Interactive Visual Analysis (\emph{IVA}) approach \cite{Thomas2005} to provide a way to analyze image- and non-image data.
 %
 Visual queries and direct feedback of Visual Analytics systems allow for a fast exploration of the data space.
@@ -268,7 +266,6 @@ Easy publishing of developed methods driven by modern web technologies intends t
 % http://wiki.infowiss.net/Gulf_of_execution ?
 We applied our approach to a data set compiled to analyze diseases related to the lumbar spine and aim to determine features, which indicate pathological changes.
 \\\\
-\textbf{(Contributions)}
 Our contributions are:
 \begin{itemize}
 %	\item providing an overview over the workflow for analyzing cohort study data to gain insight into the large diverse subject spaces.
@@ -784,7 +781,7 @@ Hypothesis-generation with focus on image-data starts with a shape based cluster
 %
 The feature is mapped using a automatically chosen visualization appropriate for its data type.
 %
-The Visualization techniques have to combine both image-and non image data in order to set domain and range data in relation to each other.
+The visualization techniques have to combine both image-and non image data in order to set domain and range data in relation to each other.
 %
 Subsequently the visualization can be either brushed or new variables can be added to the analysis.
 %
@@ -801,14 +798,15 @@ A sample workflow using interaction- and visualization techniques described in t
 \subsection{Interaction- and Visualization Techniques} \label{Interaction- and Visualization Techniques}
 %-------------------------------- Figure --------------------------------
 % TODO: VISUALIZATION Figure sollte umgebaut werden, sodass sie die Schritte bei der Analyse hervorhebt
-\begin{figure}[htb]
+\begin{figure*}[htb]
  \centering
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.5in]{figures/visualization}
+ % \includegraphics[width=1\textwidth]{figures/visualization}
  \caption{\emph{Image is not final} Screenshot from the front-end which is divided as follows: (a) Sidebar which contains all features as well as the groups defined in the analysis process; (b) Canvas area where features can be added via drag and drop and the visualization chosen automatically according to the data type; (c) Interactive Pivot Table which shows exact numbers for each displayed variable combination. The data displayed is used to analyze the lumbar spine.
  }
  \label{fig:visualization}
-\end{figure}
+\end{figure*}
 %-------------------------------- /Figure -------------------------------
 %We employ the fourth and highest level which includes next to brushing and linking, advanced brushing, extraction of attributes the development of visualizations custom tailored to the data sets.
 %
@@ -833,71 +831,72 @@ In the following sections we present the different parts of our proposed \emph{I
 % %
 % Since epidemiologists are used to process groups based on table representations we decided to introduce an interactive solution in form of a Pivot Table.
 
-\subsubsection{Structure of the system} \label{Structure and Workflow}
-We divide the workspace into three major parts as seen in Figure~\ref{fig:visualization}.
+\subsubsection{System Structure} \label{Structure and Workflow}
+We divide the workspace into four major parts as seen in Figure~\ref{fig:visualization}.
 \begin{itemize}
 	\item The sidebar, which contains all epidemiological features. Cluster results are treated like features and are part of the sidebar as well.
 	\item The canvas which holds all visualizations. Elements can be added, arranged, resized and removed freely.
 	\item The interactive Pivot Table gives detailed numerical information of the features in the canvas view. This view on the data come natural to epidemiologists.
-	\item The contingency view which depicts relations for features in the canvas.
+	\item The contingency view depicting relations for features in the canvas.
 \end{itemize}
 %
-The sidebar holds all available variables as well as groups either derived by user input or automatic clustering.
+% TODO Include:
+% The sidebar holds all available variables as well as groups either derived by user input or automatic clustering.
+% 
+% Features can be dragged from the sidebar into the canvas area.
+% %
+% Doing so will automatically create an information visualization suitable for the current data type.
+% %
+% 3D shape information about the investigated structure is displayed for each variable manifestation.
+% %
+% By dropping variables on existing visualizations the system creates a visualization that allows for comparison (e.g. mosaic plots for ordinal variables).
+% %
+% Elements can be brushed in the information visualizations and are linked to the other representations in the canvas.
+% %
+% Shape based clustering can either be applied to all subjects or subgroups.
+% 
+% All elements in the canvas view are also represented in the interactive Pivot Table which gives detailed information how the subjects are distributed given the displayed variables.
+% %
+% Details to the different views are presented in the following sub-sections.
 
+\paragraph{Sidebar.}
+An overview of all features is presented in a sidebar where they are categorized to different types such as somatometric, disease- or lifestyle related, pain indicators and laboratory data.
+%
+It also contains subject groups either defined by brushing or automated shape-clustering.
+%
+Groups are treated like features since they work exactly the same way by dividing the subject space into labeled categories.
+%
 Features can be dragged from the sidebar into the canvas area.
 %
-Doing so will automatically create an information visualization suitable for the current data type.
-%
-3D shape information about the investigated structure is displayed for each variable manifestation.
-%
-By dropping variables on existing visualizations the system creates a visualization that allows for comparison (e.g. mosaic plots for ordinal variables).
-%
-Elements can be brushed in the information visualizations and are linked to the other representations in the canvas.
-%
-Shape based clustering can either be applied to all subjects or subgroups.
+This triggers an adaptive feature visualization suitable for the current data type.
+%Bar charts show the distribution of manifestations of each variable in the sidebar.
 
-All elements in the canvas view are also represented in the interactive Pivot Table which gives detailed information how the subjects are distributed given the displayed variables.
+\paragraph{Adaptive Feature Visualization.} \label{sec:AdaptiveFeatureVisualization}
+Inspired be previously the discussed \texttt{GPloms} \cite{Francois2013} the visualization type is chosen dynamically based on the variable types and number of visualizations which need to be displayed.
 %
-Details to the different views are presented in the following sub-sections.
-
-ToDo\\
-- wie werden Confounder gefunden?\\
-- welche statistischen Kennzahlen werden eingebunden?\\
-
-\paragraph{Sidebar}
-An overview of all variables is presented in a sidebar where they are categorized to different types such as somatometric, disease- or lifestyle related, pain indicators and laboratory data.
-%
-It also contains subject groups either defined by user brushing or by automated clustering.
-%
-Groups are treated exactly like other variables since they work exactly the same way which is dividing the subject space into different labeled categories.
-% TODO Implement
-Bar charts show the distribution of manifestations of each variable in the sidebar.
-
-\paragraph{Adaptive Feature Visualization} \label{sec:AdaptiveFeatureVisualization}
-Inspired be the previously discussed \emph{GPloms} \cite{Francois2013} the visualization type is chosen dynamically based on the variable types and number of visualizations which need to be displayed.
 % TODO Implement MOSAIC PLOTS, Scatterplots, Parallel Coordinates
-If possible the medical image data is directly included into the plot as well by including mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
+Following Tuftes concept of \emph{small multiples} \cite{Tufte1983} the medical image data is directly included into the plot by including color coded mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
+%If possible the medical image data is directly included into the plot as well by including mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
 %
-The 3D-plots can be navigated using standard mouse inputs and the camera is synchronized so that a direct comparison is given.
+The 3D-plots can be navigated using standard mouse inputs, the camera is synchronized between all views to enable direct comparison.
 %
+Mapping the distance from a group mean shape to the global mean to color allows to assess local shape changes.
+%%TODO Adaptive visualization!
 If a feature is dropped on an existing plot, the visualization changes dynamically to properly make them comparable. 
 %
 Each plot can be brushed using widgets.
 %
-It is able to duplicate brushes in order to create new groups which are evenly spread out.
+Brush selections are propagated to all visualizations allowing for fast feature querying.
+% TODO Timeline
 %
-A use case for this is when a continuous feature has to be divided into even groups.
-\\
-ToDo\\
-- Dichotomous data\\
-- Time-Line\\
-- Statistical Analysis (Odds ratios)\\
+%It is possible to duplicate brushes in order to create new groups which are evenly spread out.
+%
+%A use case for this is when a continuous feature has to be divided into even groups.
 
-TODO 2\\
-- 3D Plots are small multiples - reference Tufte!
-
-\paragraph{Pivot Tables}
-Pivot tables are frequently used to present the data in epidemiological paper.
+\paragraph{Pivot Tables.}
+Pivot tables are frequently used to present the data in epidemiological publications.
+%
+Epidemiologists are used to process groups based on table representations so decided to introduce an interactive pivot table.
 %When opening a random epidemiological paper the reader will in almost all cases find some sort of pivot table to present the data.
 %
 As seen in Figure~\ref{fig:visualization} (c) it is a good way to display how many subjects are in each group.
@@ -907,38 +906,75 @@ Pivot table quickly get confusing and cluttered when they are divided into to ma
 We tackled this problem by making the order and number of displayed variables adaptable.
 %
 This also applies on the designation of Row or Column Variables.
+%
+Another way to avoid clutter is the user-driven selection of displayed variables.
+%
+To allow better comparison with respect to features the values of each cell can also be displayed as percentage of the feature represented of either the row or the column.
 % TODO IMPLEMENT
-The mean shape for each resulting sub-group is also displayed for each subject.
+%The mean shape for each resulting sub-group is also displayed for each subject.
 
-\subsubsection{Automated Feature Suggestion}
-% https://de.wikipedia.org/wiki/Kontingenzkoeffizient#Cram.C3.A9rs_V
-TODO REWRITE USING CRAMERS V
-
+\paragraph{Automated Feature Suggestion using a Contingency Matrix.}
 As discussed previously, highlighting potential interesting values in the data set is one major benefit of the \emph{IVA} powered approach.
 %
 Turkay and colleagues used the approach to calculate various key figures based in the distribution functions of each feature derived from the image data \cite{Turkay2013}.
 %
 Since the majority of our data are categorical features, we have to employ different solutions.
 %
-A solution for this problem are odds ratios, which are a standard statistical tool for stating relations between features.
+The \emph{Cram\'{e}rs' V} contingency coefficient can be used to calculate coherences between categorical variables \cite{CramerV}.
 %
-Odds ratios can only be calculated for $2\times2$ contingency tables which usually represent the presence of a condition in a population divided by a characteristic (e.g. male/female subjects with presence or absence of back pain).
+It is based on \emph{Pearson's $X^2$} distribution test \cite{ChiSquare}, which uses contingency tables holding the counts of subjects for all possible manifestations of two variables.
 %
-To calculate odds ratios for variables with more than two manifestations, we calculate local odds ratios for each possible combination, yielding a matrix for each feature combination \cite{Rudas1998}.
+\emph{Cram\'{e}rs' V} is defined as:
+\begin{equation}
+V = \sqrt{\frac{X^2}{N(k-1)}},
+\end{equation}
+where $X^2$ equals \emph{Pearson's chi squared}, $N$ is the total of observations and $k$ either the row or column count, depending on which one is lower.
 %
-When the subjects are divided into groups and the calculation is carried out again for all feature combination, the difference in sum of the odds weighted with the number of manifestations per feature can be used to indicate if the feature combination yields a difference.
+$V$ assumes values between $0$, meaning two variables are completely independent and $1$ indicating they are the same.
 %
-These difference are then highlighted in a separate tab of the side bar "Interactions".
-%
-Interesting interactions then can be assessed creating a linked view using the standard drag and drop workflow.
-\\\\
-In the following sections we will discuss details on the implementation which relies on modern Web-Technologies.
-\\\\
-ToDo\\
-- This can be improved--summing up the values possibly not the cleverest solution--calculation of variance etc. possible\\
-- Matrix Visualization?
+\emph{Cram\'{e}rs' V} is always positive and does therefore not allow statements about dependency direction.
 
-
+It shares the same restrictions as \emph{Pearson's $X^2$} which include next to others expected count larger than 5 for $80\%$ of the contingency table entry and no expected value can be smaller than one.
+%
+Therefore are manifestations who are only exposed by small subject groups not assessable using this technique.
+%
+This makes them not assessable for epidemiological analysis as well since statistical validation needs a minimum count to be seen as valid.
+% Limitations and usual space
+The contingency matrix highlights contingencies of visualized features with features in the data set.
+%
+This aims to highlight features which may interact with the focused hypothesis as well as trigger new hypotheses.
+%
+Contingency is visualized using an interactive adjacency matrix with association power mapped to color hue.
+%
+The distinction whether a interaction is a confounder or and effect depends on the context defined by the hypothesis and is a decision to be made by the domain expert.
+\\\\
+In the following Section we discuss how we implemented the presented methods using free on open Web standards.
+% \subsubsection{Automated Feature Suggestion}
+% % https://de.wikipedia.org/wiki/Kontingenzkoeffizient#Cram.C3.A9rs_V
+% 
+% As discussed previously, highlighting potential interesting values in the data set is one major benefit of the \emph{IVA} powered approach.
+% %
+% Turkay and colleagues used the approach to calculate various key figures based in the distribution functions of each feature derived from the image data \cite{Turkay2013}.
+% %
+% Since the majority of our data are categorical features, we have to employ different solutions.
+% %
+% A solution for this problem are odds ratios, which are a standard statistical tool for stating relations between features.
+% %
+% Odds ratios can only be calculated for $2\times2$ contingency tables which usually represent the presence of a condition in a population divided by a characteristic (e.g. male/female subjects with presence or absence of back pain).
+% %
+% To calculate odds ratios for variables with more than two manifestations, we calculate local odds ratios for each possible combination, yielding a matrix for each feature combination \cite{Rudas1998}.
+% %
+% When the subjects are divided into groups and the calculation is carried out again for all feature combination, the difference in sum of the odds weighted with the number of manifestations per feature can be used to indicate if the feature combination yields a difference.
+% %
+% These difference are then highlighted in a separate tab of the side bar "Interactions".
+% %
+% Interesting interactions then can be assessed creating a linked view using the standard drag and drop workflow.
+% \\\\
+% In the following sections we will discuss details on the implementation which relies on modern Web-Technologies.
+% \\\\
+% ToDo\\
+% - This can be improved--summing up the values possibly not the cleverest solution--calculation of variance etc. possible\\
+% - Matrix Visualization?
 
 \subsection{Implementation}
 \begin{figure}[htb]
@@ -956,46 +992,49 @@ ToDo\\
  }
 \end{figure}
 %
-In order to provide a fast communication loop between method development and expert input, we decided to base all implementations on modern web technologies which benefits from various advantages:
+To provide a fast communication loop between method development and expert input, we decided to rely on modern web technologies which benefits from various advantages:
 \begin{itemize}
 	\item No additional software needs to be installed, most people use decent state-of-the-art web browser, even on mobile devices.
-	\item The Client-Server structure allows it to employ heavy computation on a server machine and transfer results to the client
-	\item Since image data for several thousand subjects claims hundreds of Gigabytes disk space it can remain safely on the server and elements can be transferred on demand.
+	\item The client-server structure allows for employing heavy computation on a server machine and transfer results to the client.
+	\item Since image data for several thousand subjects claims hundreds of gigabytes disk space it can remain safely on the server and elements can be transferred on demand.
 	%
 	High confidentiality standards of the data can be met by restricting access via a account system
 	\item Recent developments in WebGL applications running in browsers with near native performance push the development into to the web which results in many open source libraries which are well documented, rich in examples and driven by active communities.
+	\item Web technologies are free.
 \end{itemize}
 These advantages do not come without drawbacks.
 %
-Many methods which specialized libraries like the Visualization Toolkit (VTK) or R for statistics have build in need to be written from scratch in order to fit in the context.
+Many methods which specialized libraries, like the Visualization Toolkit (VTK) or R for statistics have build in, need to be written from scratch in order to fit in the context.
 %
 
-The back-end is written using Node, which based on the Google V8 Javascript runtime environment.
+The back-end is written using \texttt{NodeJS}\footnote{Developed by Joyent Inc, \url{nodejs.org}}, which based on the Google V8 Javascript runtime environment.
 %
 Due to its event-driven non-blocking I/O model it is fast and does not freeze in case of heavy workload like mesh calculation.
 \\\\
-Non-image data for all subjects including the data dictionary is stored on the Server in a JSON file.
+Non-image data for all subjects including the data dictionary is stored in a JSON file on the Server.
 %
-Image data is available as raw DICOM files as well as segmented Meshes which can be used to compare subjects.
+Image data is available as raw DICOM files as well as segmented meshes, which can be used to compare subjects.
 %
 On client connection the requested files are transferred.
 %
-The server processes calculation heavy statistical tasks such as calculation of Odds Ratios or Chi Square tests for all variable combinations in order to keep the computation time on the client as low as possible.
+The server processes calculation heavy statistical tasks such as calculation of \emph{Cram\'{e}rs' V} values for all variable combinations in order to keep the computation time on the client as low as possible.
 %
 
-The front-end is created using Twitter Bootstrap as foundation for the layout and basic UI elements using HTML5, CSS3 and Javascript.
+The front-end is created using \texttt{Twitter Bootstrap}\footnote{Developed by Twitter, \url{getbootstrap.com}} as foundation for the layout and basic UI elements using \texttt{HTML5}, \texttt{CSS3} and \texttt{Javascript}.
 %
-Information Visualizations such as Scatterplots and bar charts are created using the popular Data Driven Documents library which works well for attaching data to visible elements like vector graphics.
+Information Visualizations such as scatterplots and bar charts are created using the popular \texttt{Data-Driven Documents (D3.js)} \cite{D3} library, which works well for attaching data to visible elements like vector graphics and provides powerful transformation and mapping tools.
 %
-WebGL rendering is done using the Threejs which allows GPU Accelerated data rendering.
+\texttt{WebGL} rendering is done using the \texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{threejs.org}} and allows GPU Accelerated data rendering.
 %
 Communication between Client and Server runs through the WebSockets protocol.
 %
-Since our clustering algorithms are written in MatLab we hat to access them using the Node Server.
+Since our clustering algorithms are written in \texttt{MatLab}\footnote{Owned by The MathWorks, \url{www.mathworks.com}} we hat to access them using the \texttt{NodeJS} Server.
 %
-We accomplished this by converting them to parameterized standalone console applications which are spawned by node on client request and then reads the result from the console standard-out and returns it in a proper format to the client.
+We accomplished this by converting it to a parameterized standalone console application, that is spawned by \texttt{NodeJS} on client request and then reads the result from the console standard-out and returns it in a proper format to the client.
 %
 All parameter steered console applications can be incorporated in this context.
+
+The following section describes how our presented \emph{IVA} workflow works for a epidemiological use case.
 
 \section{Application}
 We applied the presented set of techniques to a data set which is compiled to analyze lower back pain. 
@@ -1075,7 +1114,9 @@ It uses a weighted sum of T1- and T2-weighted MRI images to detect the lumbar sp
 %
 The registered models capture resilient information about shape of the lumbar spine canal as well as the position of the L1-L5 vertebrae \cite{Klemm2013VMV}.
 %
-Due to TODO ANTWORT VON MARKO HIER, 983 models are obtained.
+Due to incorrect initialization, strongly deformed spines, contrast-differences and artifacts, the model was not able to detect lumbar spines for all subjects.
+%
+We obtained and work with 983 models.
 %
 For clustering purposes we extracted the centerline of the spine canal of the lumbar spine canal which captures information about lordosis and scoliosis which are medical terms for spine curvature \cite{Klemm2013VMV}.
 
@@ -1130,8 +1171,9 @@ Cluster 8 was of special interest because of its large distance to the mean shap
 %
 Looking at the \emph{Cram\'{e}rs' V} contingency values of the group reveals interactions of this group with employment status, body size, age, thyroid nodules and blood-fat value.
 %
-TODO Feedback einholen von Frau Hegenscheid, TODO Implement Color coding only in a certain direction!\\
-TODO Selection of the variables and display them using the pivot table!
+TODO Feedback Greifswald, 
+%TODO Implement Color coding only in a certain direction!\\
+%TODO Selection of the variables and display them using the pivot table!
 \\\\
 While this approach does not assume any hypothesis, the data is met with a selection bias when compiling the list of related features by the domain experts.
 %
@@ -1209,21 +1251,54 @@ We plan to include a \texttt{DICOM}-viewer to meet this wish.
 % - Input of Epidemiologists goes here!\\
 
 \section{Summary and Conclusion}
-- Future Work: Matrix-View of differences - more intuitive\\
-- UI more flexible by hiding UI-panes
-- Dynamic Discretization to better fit the data distributions
-- More Shape based filtering - reorder by size, curvature, etc. ...
-- Color code different Aspects - Only difference in x or y direction
-- Calculation of contingency based on the contingency differences - how does the current selection differ compared to the whole data set?
-
-Discretization of continuos variables into bins of equal size may bias the underlying data by not considering the variable distribution function \cite{Fletcher2012}.
-% Fletcher 2012 - S. 257
-To reduce the number of false positive findings, the data space can be randomly be cut in half the hypothesis then can be cross-validated for statistical soundness.
+%Seen as an extension to the existing statistics driven workflow, image-centric analysis of epidemiological data from a IVA approach by illuminating the data-black box.
+The presented are classified as extension to the existing statistics driven epidemiological.
+%
+Image-centric epidemiological analysis benefits from a IVA approach by illuminating the data-black box.
+%
+Visualization of multivariate data using connected views and different views allows to get fast visual feedback about subject groups.
+%
+Brushing and linking makes the data tangible and adaptable to formulated hypotheses.
+%
+The use of pivot tables is familiar to epidemiologist while embracing the power of interactive adjustment of the features shown.
+%
+Automatic suggestion of correlations using contingency methods like \emph{Cram\'{e}rs' V} trigger \emph{hypothesis generation} by highlighting features potentially overlooked by the experts.
+%
+Shape based clustering assesses variability of a anatomical structure in the context of non-image features such as disease indicators or lifestyle factors.
+%
+The iterative nature of the \emph{IVA} approach reflects versatility as both \emph{hypothesis driven analysis} and \emph{hypothesis generation} is allowed.
+\\\\\
+Our future work comprises a number of improvements:
+\begin{itemize}
+	\item dynamic discretization of continuous variables to better fit the data distributions
+	\item shape brushing methods to intuitively query subjects using image-data
+	\item incorporate more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots)
+	\item calculation of contingency differences for selected sub groups--highlight how feature correlation change for a given groups
+	\item more visualization techniques which incorporate both image and non-image data
+	\item support control-groups to check resilience of observations as suggested by Fletcher and Fletcher \cite{Fletcher2012}.
+\end{itemize}
+% These benefits 
+% - Future Work: Matrix-View of differences - more intuitive\\
+% - UI more flexible by hiding UI-panes
+% - More Shape based filtering - reorder by size, curvature, etc. ...
+% - Color code different Aspects - Only difference in x or y direction
+% - Adjacency Matrix is symmetrical, space can be saved
+% - Calculation of contingency based on the contingency differences - how does the current selection differ compared to the whole data set?
+To reduce the number of false positive findings, the data space can also be randomly be cut in half the hypothesis then can be cross-validated for statistical soundness.
 %
 This requires a large number of subjects, especially if the investigated features are rare and are only presented by a few subjects.
 %
-As suggested by Fletcher and Fletcher, we plan to validate the hypothesis using the \texttt{SHIP-TREND} cohort \cite{Fletcher2012}.
+%As suggested by Fletcher and Fletcher, we plan to validate the hypothesis using the \texttt{SHIP-TREND} cohort \cite{Fletcher2012}.
+\\\\
+As the number of image-centric cohort studies, participating subjects, gathered features and imaging modalities rises and advances towards comparability between cohort studies are made, the gap between data complexity and assessability increases.
+%
+Our work focuses on closing this gap, allowing the domain experts to dig deep into the data and potentially obtain unexpected findings.
+%
+We believe web technologies pave the way to allow as many experts as possible to analyze this data and provide a fast exchange between users and developers employing many different devices.
+%
+Visual analysis shows to be a promising way to clear the view on complex epidemiological data to uncover its secrets.
 
+%With increasing number of image-centric cohort studies, >evalueted< subjects, features collected and major advantages in methods that allow for comparabality of findings in different studies the gap between 
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
