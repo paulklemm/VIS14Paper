@@ -869,6 +869,18 @@ Morphometric variables are derived to allow for statistical comparison of the ti
  \caption{Detailed Version of the \emph{IVA Loop}. Usually starting with a selection of Feature of interest (user-driven or via data mining techniques), the data are mapped using a visualization technique appropriate for the selected data types. The data are visualized in the range and domain space, which can then be brushed, yielding new groups, which can be investigated using further features. Note that adjacent steps are directly connected via feedback loops allowing for iterative refinement and give as much freedom to the user as possible.}
  \label{fig:InteractionLoop}
 \end{figure}
+%-------------------------------- Figure --------------------------------
+\begin{figure*}[htb]
+ \centering
+ %\includegraphics[width=1.5in]{figures/InteractionLoop}
+ % \includegraphics[width=3.5in]{figures/visualization}
+ %\includegraphics[width=1\textwidth]{figures/visualization}
+ \includegraphics[width=1\textwidth, resolution=300]{figures/visualization}
+ \caption{(Left) Screenshot from the front-end, which is divided as follows: (a) Sidebar containing all features as well as the groups defined in the analysis process; (b) Canvas area where features can be added via drag and drop and the visualization chosen automatically according to the data type; (c) Interactive Pivot Table showing the exact numbers for each displayed variable combination. The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop. Dropping the \emph{age} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
+ }
+ \label{fig:visualization}
+\end{figure*}
+%-------------------------------- /Figure -------------------------------
 Our proposed \emph{IVA} workflow knows three major steps as illustrated in Figure~\ref{fig:InteractionLoop}: Feature selection, -visualization and -brushing.
 %
 An hypothesis-driven analysis usually starts with the selection of features.
@@ -896,19 +908,6 @@ Selecting features also triggers a \emph{multivariate analysis} using contingenc
 A sample workflow using interaction- and visualization techniques described in the next section can be seen in Figure~\ref{fig:visualization}.
 
 \subsection{Interaction- and Visualization Techniques} \label{Interaction- and Visualization Techniques}
-%-------------------------------- Figure --------------------------------
-% TODO: VISUALIZATION Figure sollte umgebaut werden, sodass sie die Schritte bei der Analyse hervorhebt
-\begin{figure*}[htb]
- \centering
- %\includegraphics[width=1.5in]{figures/InteractionLoop}
- % \includegraphics[width=3.5in]{figures/visualization}
- %\includegraphics[width=1\textwidth]{figures/visualization}
- \includegraphics[width=1\textwidth, resolution=300]{figures/visualization}
- \caption{(Left) Screenshot from the front-end, which is divided as follows: (a) Sidebar containing all features as well as the groups defined in the analysis process; (b) Canvas area where features can be added via drag and drop and the visualization chosen automatically according to the data type; (c) Interactive Pivot Table showing the exact numbers for each displayed variable combination. The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop. Dropping the \emph{age} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
- }
- \label{fig:visualization}
-\end{figure*}
-%-------------------------------- /Figure -------------------------------
 %We employ the fourth and highest level which includes next to brushing and linking, advanced brushing, extraction of attributes the development of visualizations custom tailored to the data sets.
 %
 %\emph{IVA} levels define different levels interaction. 
@@ -1114,13 +1113,13 @@ In the following section we discuss how we implemented the presented methods usi
  \label{fig:technologies}
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.5in]{figures/technologies}
- \caption{\emph{Image is not final}. The front-end solution (left) uses state of the art web technologies such as HTML5/CSS3, WebGL and SVG to display the data.
+ \caption{The front-end solution (left) uses state of the art web technologies such as HTML5/CSS3, WebGL and SVG to display the data.
  % 
  The NodeJS based back-end (right) stores all image- and non-image data and transfers it to connected clients.
  %
  All computation heavy operations like calculation of mean-shapes or -distances as well as statistical processing is done by the server to keep hardware requirements of client systems low. 
  %
- Client-Server communication is accomplished via the WebSocket protocol.
+ Client-Server communication is accomplished via the Websocket protocol.
  }
 \end{figure}
 %
