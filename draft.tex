@@ -8,7 +8,6 @@
 %% submission, ``preprint'' is for pre-publication, and the final version
 %% doesn't use a specific qualifier. Further, ``electronic'' includes
 %% hyperreferences for more convenient online viewing.
-% TODO: Incomplete data: Cramers V kann nur für bestimmte mindestgrößen funktionieren - entweder Daten unvollständig oderz u wneige Probanden in einer Gruppe
 %% Please use one of the ``review'' options in combination with the
 %% assigned online id (see below) ONLY if your paper uses a double blind
 %% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
@@ -51,7 +50,7 @@
 %% If you are submitting a paper to a conference for review with a double
 %% blind reviewing process, please replace the value ``0'' below with your
 %% OnlineID. Otherwise, you may safely leave it at ``0''.
-\onlineid{0}
+\onlineid{194}
 
 %% declare the category of your paper, only shown in review mode
 \vgtccategory{Research}
@@ -69,7 +68,7 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{--blind--}
+\author{Submission 194}
 \authorfooter{
 %% insert punctuation at end of each item
 % \item
@@ -200,13 +199,13 @@ Clinical problems, such as the selection of diagnostic tools and efficient treat
 %
 Also, the introduction of preventive measures in medicine and beyond is based on epidemiological research, where, for example, subgroups with increased risk are identified \cite{Fletcher2012}.
 %
-On the other hand, observations made by clinicians in the daily routine are translated into hypotheses for epidemiological research.
+Observations made by clinicians in the daily routine are translated into hypotheses for epidemiological research.
 %
 These are used to determine environmental and lifestyle factors as well as medical examination results that may influence a disease.
 %
 Potentially useful data variables (\emph{features}) are gathered using structured interviews and clinical examinations.
 %
-Methods like regression analysis are used to check the attribute list for statistical soundness.
+Methods like regression analysis are employed to check the attribute list for statistical soundness.
 %
 \\\\
 Longitudinal population-based studies, such as the Study of Health in Pomerania (SHIP) \cite{Volzke2011}, gather as much information as possible about a defined sample of people (a \emph{cohort}).
@@ -245,6 +244,9 @@ Compiling a list of features for tests of statistical resilience based on experi
 This also applies to the chosen landmarks used to quantify medical image data information.
 %
 The standard workflow lacks methods, which identify correlations that the epidemiologists did not consider.
+%
+%Also, statistics tools are limited 
+Also, only a small subset of variables can be concurrently analyzed, depending on the statistical measure.
 %The hypothesis driven analysis approach of these data based on expectations of epidemiologists leaves out features which potentially interact with a disease outside.
 %The hypothesis driven analysis approach of these data leaves out features which potentially interact with a disease because they they are it is outside of the erwartungshaltung of the epidemiologists.
 %leaves out features which potentially interact with a disease because they are usually outside of the practical experience of the epidemiologists.
@@ -266,9 +268,10 @@ The standard workflow lacks methods, which identify correlations that the epidem
 % %
 % Analyzing spatial data with respect to other epidemiological factors requires techniques which reach beyond standard statistical methods.
 \\\\
-We propose an Interactive Visual Analysis (\emph{IVA}) approach \cite{Thomas2005} to provide a way to analyze image and non-image data.
+%We propose an Interactive Visual Analysis (\emph{IVA}) approach \cite{Thomas2005} to provide a way to analyze image and non-image data.
+We propose an Interactive Visual Analysis (\emph{IVA}) approach \cite{Thomas2005} for the combined analysis of image and non-image data.
 %
-Visual queries and direct feedback of Visual Analytics systems allow for a fast exploration of the data space.
+Visual queries and direct feedback of Visual Analytics systems allow for a fast exploration of the data space incorporating many different variables.
 %
 Intended as an extension to the well-established epidemiological tools it provides a way to rapidly validate hypotheses and to trigger \emph{hypothesis generation} using data mining methods, such as clustering.
 %
@@ -283,7 +286,8 @@ This data set comprises 127 features and 2 sequences of MRI data from 2,333 pati
 Our contributions are:
 \begin{itemize}
 %	\item providing an overview over the workflow for analyzing cohort study data to gain insight into the large diverse subject spaces.
-	\item an Interactive Visual Analysis workflow for analyzing image-based epidemiological data both hypothesis-driven and for hypothesis-generation based on a characterization of the standard epidemiological workflow,
+	%\item an Interactive Visual Analysis workflow for analyzing image-based epidemiological data both hypothesis-driven and for hypothesis generation--based on a characterization of the standard epidemiological workflow,
+	\item an Interactive Visual Analysis workflow for cohort study data to allow both, hypothesis-driven analysis and hypothesis generation--based on a characterization of the standard epidemiological workflow,
 	%\item an Interactive Visual Analysis workflow for analyzing image-based epidemiological data including both hypothesis-driven and for hypothesis-generation based on a characterization of the standard epidemiological workflow
 	\item visualization techniques, which incorporate both information visualization and 3D rendering of organ shapes as well as combining them with epidemiological graphics and key figures,
 	\item highlighting interesting subject groups and feature associations using shape-based clustering and statistical contingency measures,
@@ -294,7 +298,7 @@ Our contributions are:
 % 	\item Applying the Interactive Visual Analysis technique set to the epidemiological problem domain by characterizing requirements of this context.
 % 	\item Provide an overview over the workflow for analyzing cohort study data to gain insight into the large diverse subject spaces.
 % 	\item Provide visualization techniques which combine both information visualization and 3D rendering of organ shapes as well as combining them with well known epidemiological graphics and key figures.
-	\item implementing the presented methods as a web framework based on \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}.
+	\item an implementation of the presented methods in a web framework based on \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}.
 \end{itemize}
 
 %Statistical correlations derived from analyzing the data itself may be misleading since 
@@ -375,7 +379,7 @@ To determine whether a subject is prone to be affected by a certain disease, \em
 %
 Statistical correlations are prone to \emph{confounding}, meaning that the association of two features is influenced by a third feature, which needs to be isolated.
 %
-A famous example for a confounder is the correlation observable between shoe size and mortality, where it can be observed that people with larger shoe size have a smaller life expectation than people with small shoe size.
+A famous example for a confounder is the association between shoe size and mortality, where it can be observed that people with larger shoe size have a smaller life expectation than people with small shoe size.
 %
 The shoe size is actually associated with gender, where women have smaller feet than men but also a longer life expectation.
 % Statistical correlations are prone to \emph{confounding}, meaning that two features are dependent and therefore should be normalized with respect to each other.
@@ -425,7 +429,8 @@ Segmentation masks representing the voxels of an anatomical structure would be i
 %
 Since reliable and efficient segmentation techniques for these data are not available in general, epidemiologists are forced to measure the data by hand, which is a very tedious work with respect to the number of necessary landmarks and the number of subjects.
 %
-Information derived by landmarks, such as top and bottom point, are by far not as expressive and versatile as segmentation masks describing the whole vertebra.
+Information derived by landmarks, such as top and bottom point of a vertebra, are by far not as expressive and versatile as segmentation masks describing its whole shape.
+%Information derived by landmarks, such as top and bottom point, are by far not as expressive and versatile as segmentation masks describing the whole vertebra.
 %Information derived by landmarks such as top and bottom point of a vertebra are also not nearly as expressive and versatile as segmentation masks describing the whole vertebra.
 %
 They are also prone to a high inter-observer variability and are hard to reproduce.
@@ -572,8 +577,10 @@ We incorporate the idea of combining 3D shape rendering with information visuali
 %The data needs to abstracted or summarized in order to work in this context.
 %
 Hermann and colleagues identify local deformation changes by investigating shape-related differences on rodent mandibles \cite{Hermann2014}.
-% TODO: Blöde formulierung
-Specifying a change in shape of a certain area by the user shows how other parts of the model would react using covariance tensors.
+%
+User specified regions of interests are mapped to associated anatomic covariation using tensor visualization.
+%Anatomic covariation induced by user input is displayed using tensors 
+%Specifying a change in shape of a certain area by the user shows how other parts of the model would react using covariance tensors.
 %Covariance tensors indicate how a model is deformed when the user given a user specified deformation.
 %The user specifies a deformation of interest and showing corresponding changes in the shape using covariance tensors.
 %
@@ -617,7 +624,6 @@ While we take similar steps when analyzing the data, such as employing statistic
 %\section{Interactive Visual Analyis in Cohort Study Data}
 \section{Image Centric Cohort Study Data in Interactive Visual Analysis Context} \label{Image Centric Cohort Study Data in Interactive Visual Analysis Context}
 %- Acceptance plays a big role - you have to pick up the user by presenting information they are used to in a new way\\
-% TODO: Epidemiologist compiled list ist sehr weit gefasst - bei Begründung ob die Einschränkung der Liste ein Problem darstellt
 We described the epidemiological workflow as a sequence of steps taken by domain experts which need to comprise reproducibility and statistical integrity (recall Subsection~\ref{EpidemiologicalWorkflow}).
 %
 Figure~\ref{fig:WorkflowComparison} (a) shows this workflow as a consecutive series of steps.
@@ -670,7 +676,7 @@ However, our current work neglects geographical and temporal aspects.
 %
 Instead we employ a more abstract model and consider the subjects as living in a joint image space where each of them is represented by a particular segmented organ or structure.
 %
-For instance, the spine is segmented over all subjects and all spines are co-registered spanning a joint space.
+For instance, the lumbar spine is segmented over all subjects and all lumbar spines are co-registered spanning a joint space.
 %
 Then, two types of dependent variables exist: 
 \begin{enumerate}
@@ -683,7 +689,7 @@ Based on our abstract model, the three analysis patterns of \emph{IVA} can be em
 
 \paragraph{Local Investigation:} refers to the inspection of dependent variables with respect to certain subsets of the image or shape space.
 %
-For instance, the epidemiologist selects several spines with a common characteristic in the image or shape space and wishes to inspect the associated dependent variables in an attribute view \cite{Hermann2014}.
+For instance, the epidemiologist selects several lumbar spines with a common characteristic in the image or shape space and wishes to inspect the associated dependent variables in an attribute view \cite{Hermann2014}.
 %
 The selection step requires dedicated interaction techniques for defining a subset.
 %
@@ -877,8 +883,7 @@ Morphometric features are derived to allow for statistical comparison of the tis
 \begin{figure}[htb]
  \centering
  \includegraphics[width=3.0in]{figures/InteractionLoop}
- % TODO: Recreate Image: Also include Cramér´s V which is part of the visualization
- \caption{Detailed \emph{IVA Loop} as seen in Figure~\ref{fig:WorkflowComparison}.
+ \caption{Detailed \emph{IVA Loop} as extension from Figure~\ref{fig:WorkflowComparison}.
  %
  Usually starting with a selection of a feature of interest (user-driven or via data mining techniques), the data are mapped using a visualization technique appropriate for the selected data types.
  %
@@ -946,18 +951,10 @@ In the following sections we present the different parts of our proposed \emph{I
 %Chosing or creating well suited visualization- anassociationon techniques for epidemiological data
 %The employed techniques need to respect the epidemiological requirements.
 
-% TODO Einbauen
-% Overfitting bei SHIP-Trend
-% Hypothesis generation bears the chance of \emph{overfitting} the data to expectations.
-% %
-% To avoid this, a timeline needs to be introduced which keeps track how many variable variations the user evaluated before coming to an conclusion.
-% %
-% Since epidemiologists are used to process groups based on table representations we decided to introduce an interactive solution in form of a Pivot Table.
-
 \begin{figure}[htb]
  \centering
  \includegraphics[width=3.5in]{figures/similarity_matrix}
- \caption{Adjacency matrix of 131 features with a grand total of 17,161 combinations.
+ \caption{Adjacency matrix of 129 features (127 data set variables, 2 cluster results) with a grand total of 16,641 combinations.
  %
  Similarity is calculated using the \emph{Cram\'{e}r's V} contingency value.
  %
@@ -973,13 +970,12 @@ In the following sections we present the different parts of our proposed \emph{I
 \subsubsection{System Structure} \label{Structure and Workflow}
 We divide the workspace into four major parts, as illustrated in Figure~\ref{fig:visualization} and \ref{fig:similarity}.
 \begin{itemize}
-	\item The sidebar, which contains all epidemiological features. Cluster results are treated like features and are part of the sidebar as well.
-	\item The canvas holding all visualizations. Elements can be added, arranged, resized and removed freely.
-	\item The interactive pivot table gives detailed numerical information of the features in the canvas view. This view on the data comes natural to epidemiologists.
-	\item The contingency view depicting relations for features in the canvas in an adjacency matrix.
+	\item The \emph{sidebar}, which contains all epidemiological features. Cluster results are treated like features and are part of the sidebar as well.
+	\item The \emph{canvas} holding all visualizations. Elements can be added, arranged, resized and removed freely.
+	\item The interactive \emph{pivot table} gives detailed numerical information of the features in the canvas view. This view on the data comes natural to epidemiologists.
+	\item The \emph{contingency view} depicts relations for features in the canvas in an adjacency matrix.
 \end{itemize}
 %
-% TODO Include:
 % The sidebar holds all available variables as well as groups either derived by user input or automatic clustering.
 % 
 % Features can be dragged from the sidebar into the canvas area.
@@ -1015,7 +1011,12 @@ The visualization type is, inspired by \texttt{GPLOMS} \cite{Francois2013}, dyna
 %
 Categorical data are either mapped using bar charts (single features) or mosaic plots (multiple features).
 %
-Continuous data are discretized and therefore treated as categorical data.
+Figure \ref{fig:visualization} describes this dynamic adjustment.
+%
+%Continuous data are discretized and therefore treated as categorical data.
+Continuous data can be visualized using scatterplots (single features) or parallel coordinates (multiple features), but in epidemiology, this data type is usually categorized into ordinal groups of \emph{equal size}.
+%
+Since the number of categories often depends on the hypothesis, the discretization steps can be adapted dynamically.
 %
 Too many groups potentially generate sparse bins not suited for statistical evaluation. 
 %
@@ -1025,9 +1026,8 @@ Adaptive discretization is an option, but imposes overfitting to the data.
 %
 Drawn conclusions based on statistical relationships derived from groups already biased by feature distribution are heavily influenced by the used discretization.
 %
-It is, however, also possible to plot it using scatterplots (single features) or parallel coordinates (multiple features).
-%
-Figure \ref{fig:visualization} describes this dynamic adjustment.
+Therefore we follow the convention to use bins of equal size. 
+
 %Inspired by the previously discussed \texttt{GPloms} \cite{Francois2013} the visualization type is chosen dynamically based on the variable types and number of visualizations which need to be displayed.
 %
 % TODO Implement MOSAIC PLOTS, Scatterplots, Parallel Coordinates
@@ -1036,9 +1036,10 @@ Following Tufte's concept of \emph{small multiples} \cite{Tufte1983}, the medica
 %
 The 3D plots can be navigated using standard mouse inputs, the camera is synchronized between all views to enable direct comparison.
 %
-Mapping the distance from a group mean shape to the global mean to color allows to assess local shape changes.
+%Mapping the distance from a group mean shape to the global mean to color allows to assess local shape
+Mapping the distance from a group mean shape to the global mean using color allows to assess local shape changes.
 %%TODO Adaptive visualization!
-If a feature is dropped on an existing plot, the visualization changes dynamically to properly make them comparable. 
+If a feature is dropped on an existing plot, the visualization changes dynamically to properly make them comparable (Figure~\ref{fig:visualization} (right)).
 %
 Each plot can be brushed using widgets.
 %
@@ -1073,7 +1074,6 @@ To allow better comparison with respect to features, the values of each cell can
 %The mean shape for each resulting sub-group is also displayed for each subject.
 
 \paragraph{Automated Feature Suggestion using a Contingency Matrix.}
-% TODO: Has to be triggered since visualization is very large
 As previously discussed, highlighting potentially interesting values in the data set is one major benefit of the \emph{IVA}-powered approach and belongs to the \emph{multivariate analysis} pattern,  analyzing features outside the shape space.
 %
 Turkay and colleagues used the approach to calculate various key figures based on the distribution functions of each feature derived from the image data \cite{Turkay2013}.
@@ -1111,8 +1111,6 @@ This aims to highlight features possibly associated with the focused hypothesis 
 Contingency is visualized using an interactive adjacency matrix with association power mapped to color hue.
 %
 The distinction whether an association is a confounder or an effect, depends on the context defined by the hypothesis and is a decision to be made by the domain expert.
-\\\\
-In the following section we discuss how we implemented the presented methods using free, open web standards.
 % \subsubsection{Automated Feature Suggestion}
 % % https://de.wikipedia.org/wiki/Kontingenzkoeffizient#Cram.C3.A9rs_V
 % 
@@ -1155,6 +1153,7 @@ In the following section we discuss how we implemented the presented methods usi
  Client-server communication is accomplished via the \emph{Websocket} protocol.
  }
 \end{figure}
+In this section we discuss how we implemented the presented methods using free, open web standards.
 %
 To provide a fast communication loop between method development and expert input, we decided to rely on modern web technologies.
 %
@@ -1194,7 +1193,8 @@ Information visualizations such as scatterplots and bar charts are created using
 %
 The pivot table implementation was adapted using \texttt{PivotTable.js}\footnote{Developed by Nicolas Kruchten, \url{http://nicolas.kruchten.com/pivottable}}.
 %
-\texttt{WebGL} rendering is carried out by \texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{http://threejs.org}} and allows GPU-accelerated data rendering.
+%\texttt{WebGL} rendering is carried out by \texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{http://threejs.org}} and allows GPU-accelerated data rendering.
+\texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{http://threejs.org}} allows GPU-accelerated data rendering using \texttt{WebGL}.
 %
 Communication between client and server is enabled via the WebSockets protocol.
 %
@@ -1205,8 +1205,9 @@ We accomplished this by converting it to a parameterized standalone console appl
 All parameter-steered console applications can be incorporated in this context.
 \\\\
 %The following section describes how our presented \emph{IVA} workflow works for an epidemiological use case.
-The following section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
 \section{Application}
+This section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
+%
 We applied the presented set of techniques to a data set compiled to analyze lower back pain. 
 %
 This is one of the most common reasons for an adult to see a physician in the Western civilization \cite{Backpain}.
@@ -1243,7 +1244,7 @@ Our epidemiological collaborators compiled a feature list, which is a tradeoff b
 \subsection{The Lumbar Spine Data Set}
 We divide the data set in image and non-image data.
 %
-There are 136 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features. %and are ordered accordingly.
+There are 127 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features. %and are ordered accordingly.
 %
 The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
 %
@@ -1270,10 +1271,6 @@ Each feature is stored as an object containing:
 % Binning: https://www.researchgate.net/post/What_metric_best_captures_the_information_loss_when_binning_a_large_data-set_into_a_histogram_representation
 Continuous variables are discretized to allow for \emph{Cram\'{e}r's V} contingency coefficient assessment.
 %
-In epidemiology, continuous data are usually categorized into ordinal groups of equal size.
-%
-Since the number of categories often strongly depends on the hypothesis, the discretization steps can be adapted dynamically.
-% TODO: Bernhard, reicht es hier die Zahl 5 zu nennen oder muss das auch schon bei der adaptiven Visualisierung passieren?
 In consultation with the collaborating epidemiologists, we set the number of groups to five, to allow for contingency assessment.
 
 \paragraph{Image Data.} \label{Image-Data}
@@ -1352,16 +1349,15 @@ Performing a \emph{multivariate analysis} by looking at \emph{Cram\'{e}r's V} co
 %
 Another \emph{multivariate analysis} using a pivot table set gender and employment status in relation to clustering affiliation, showing that cluster~8 contains mostly women and also has a larger unemployment rate (see Figure~\ref{fig:hypothesisfree}), while the overall employment rate of women and men in the data set is almost exactly 50\%.
 %
-While all observed features seem to be plausible associations related to back pain, the values indicate that it contains subjects with chronic back pain radiating to the legs.
+While all observed features seem to be plausible associations related to back pain, the values indicate that cluster~8 contains subjects with chronic back pain radiating to the legs.
 %
 Metabolic parameters, such as blood fat and blood sugar, are also possibly associated features.
 % TODO: Mit Bernhard klären
 The employment status is a feature relating to many different lifestyle factors such as income or nutrition as well as age and might act as confounder.
 %TODO Implement Color coding only in a certain direction!\\
-%TODO Selection of the variables and display them using the pivot table!
 \\\\
-While this approach does not assume any hypothesis, the 136 epidemiological features were selected by domain experts. %the data are met with a selection bias when compiling the list of related features by the domain experts.
-% TODO: In der Einleitung erwähnen, dass man bisher nur maximal 3 Variablen gleichzeitig betrachten kann, damit man unsere Technik etwas in den Kontext rückt
+While this approach does not assume any hypothesis, the 127 epidemiological features were selected by domain experts with a wide range on potential influential factors.
+%While this approach does not assume any hypothesis, the 127 epidemiological features were selected by domain experts and also includes features, which are only remotly unter verdacht to be associating with back pain. %the data are met with a selection bias when compiling the list of related features by the domain experts.
 %
 This filtering step based on expert experience rules out possible confounder and useless associations and it is therefore arguable whether this represents a disadvantage \cite{Wiley2008}.
 %It is arguable whether this first filtering step, which is purely based on expert experience, represents a disadvantage, since it rules out many parameters possibly associated with the presented features, but the value of this knowledge would be small \cite{Wiley2008}.
@@ -1375,7 +1371,7 @@ This filtering step based on expert experience rules out possible confounder and
  \centering
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.5in]{figures/hypothesisbased}
- \caption{(a) Dichotomous questionnaire answer to ``emph{Did you experience back pain in the past three months?}''.
+ \caption{(a) Dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
  %
  Mean shapes between the groups show no difference.
  %
@@ -1461,13 +1457,15 @@ Displaying MRI scans for the subjects in the outlier cluster is promising becaus
 % - Input of Epidemiologists goes here!\\
 
 \section{Summary and Conclusion}
-% TODO: Include IVA Pattern here?
+In this paper, we presented an \emph{IVA} framework for the analysis of complex image-centric epidemiological data.
+%
+Hence, the framework allows for both, hypothesis-driven analysis and hypothesis generation.
 %Seen as an extension to the existing statistics driven workflow, image-centric analysis of epidemiological data from a IVA approach by illuminating the data-black box.
-The presented \emph{IVA} approach is classified as extension to the existing statistics-driven epidemiological approach.
+%The presented \emph{IVA} approach is classified as extension to the existing statistics-driven epidemiological approach.
 %
-Image-centric epidemiological analysis benefits from an IVA approach by illuminating the data-black box.
+%Image-centric epidemiological analysis benefits from an IVA approach by illuminating the data-black box.
 %
-The Visualization of multivariate data using connected views and different views allows to get fast visual feedback about subject groups.
+The visualization of multivariate data using connected views and different views allows to get fast visual feedback about subject groups.
 %
 Brushing and linking makes the data tangible and adaptable to formulated hypotheses.
 %
@@ -1477,20 +1475,27 @@ The automatic suggestion of correlations using contingency methods like \emph{Cr
 %
 Shape-based clustering assesses the variability of a anatomical structure in the context of non-image features such as disease indicators or lifestyle factors.
 %
-The iterative nature of the \emph{IVA} approach reflects versatility, as both \emph{hypothesis-driven analysis} and \emph{hypothesis generation} are allowed.
+%The iterative nature of the \emph{IVA} approach reflects versatility, as both \emph{hypothesis-driven analysis} and \emph{hypothesis generation} are allowed.
+
+Our clinical partners from the \texttt{SHIP} are for the first time able to assess shape information of the lumbar spine and its influence to diseases.
+%
+Findings from analyzing lumbar back pain using the \emph{IVA} approach range from deriving shape-based groups of subjects to detailed description of features potentially associated with the disease, such as waist circumference, thyroid nodules and blood fat values.
+%
+Other somatometric features, such as BMI, are not as influential as expected.
+%
 \\\\\
-A number of improvements is left open for future work:
+A number of improvements is left open for future work, e.g.,
 %TODO: Fragen ob die Liste so klar geht mit der Formulierung und ohne Kommas
 \begin{itemize}
 %	\item dynamic discretization of continuous variables to better fit the data distributions
-	\item shape brushing methods to intuitively query subjects using image data
-	\item incorporating more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots)
-	\item calculation of contingency differences for selected sub groups--highlighting how the feature correlation changes for a given group
-	\item integration of further visualization techniques, which incorporate both image and non-image data
-	\item support of control groups to check the resilience of observations \cite{Fletcher2012}.
+	\item shape brushing methods to intuitively query subjects using image data,
+	\item the inclusion of more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots), or
+	%\item calculation of contingency differences for selected sub groups--highlighting how the feature correlation changes for a given group
+	%\item integration of further visualization techniques, which incorporate both image and non-image data
+	%\item support of control groups to check the resilience of observations \cite{Fletcher2012}.
 %	\item understand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
 %	\item investigate which parts of the methods are applied by domain experts and what aspecunderstand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
-	\item adapt the shape visualization to other capture organ data with different variance type (such as texture of liver or white/gray matter distribution in the brain)
+	\item adapt the shape visualization to explore other organ data with different variance type (such as texture of liver or white/gray matter distribution in the brain).
 \end{itemize}
 % These benefits 
 % - Future Work: Matrix-View of differences - more intuitive\\
@@ -1499,19 +1504,21 @@ A number of improvements is left open for future work:
 % - Color code different Aspects - Only difference in x or y direction
 % - Adjacency Matrix is symmetrical, space can be saved
 % - Calculation of contingency based on the contingency differences - how does the current selection differ compared to the whole data set?
-To reduce the number of false positive findings, the data space can also be randomly cut in half.
 %
-Then the hypothesis then can be cross-validated for statistical soundness.
-%
-This requires a large number of subjects, especially if the investigated features are rare and only presented by a few subjects.
+% To reduce the number of false positive findings, the data space can also be randomly cut in half.
+% %
+% Then the hypothesis then can be cross-validated for statistical soundness.
+% %
+% This requires a large number of subjects, especially if the investigated features are rare and only presented by a few subjects.
 %
 %As suggested by Fletcher and Fletcher, we plan to validate the hypothesis using the \texttt{SHIP-TREND} cohort \cite{Fletcher2012}.
-\\\\
+% \\\\
 As the number of image-centric cohort studies, participating subjects, gathered features and imaging modalities rises, and advances towards comparability between cohort studies are made, the gap between data complexity and analyzability increases.
 %
 Our work focuses on closing this gap, allowing the domain experts to dig deep into the data and potentially obtain unexpected findings.
 %
-We believe that web technologies pave the way to allow as many experts as possible to analyze this data.
+%We believe that web technologies pave the way to allow as many experts as possible to analyze this data.
+We believe that web technologies pave the way to analyze this data in a convenient way.
 %
 They allow a fast exchange between users and developers and employ many different devices.
 %
@@ -1521,7 +1528,8 @@ Visual analysis shows to be a promising way to clear the view on complex epidemi
 
 %% if specified like this the section will be committed in review mode
 %\acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
-
+\clearpage
+\newpage
 \bibliographystyle{abbrv}
 %%use following if all content of bibtex file should be shown
 %\nocite{*}
