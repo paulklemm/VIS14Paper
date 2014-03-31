@@ -382,7 +382,7 @@ Shoe size actually is associated with gender where women have a smaller feet tha
 %
 %Statistics tools such as \texttt{SPSS}\footnote{Product of IBM; \url{www.ibm.com/software/de/analytics/spss/}} and \texttt{Stata}\footnote{Product of Stata Corp.; \url{http://www.stata.com/}} play a major role for analyzing epidemiological data.
 
-Statistics tools such as \texttt{SPSS}\footnote{Product of IBM; \url{www.ibm.com/software/de/analytics/spss/}} play a major role for analyzing epidemiological data.
+Statistics tools such as \texttt{SPSS}\footnote{Product of IBM; \url{http://ibm.com/software/analytics/spss/}} play a major role for analyzing epidemiological data.
 %
 Graphic data representation is largely used to present results rather than gaining insight.
 	
@@ -421,7 +421,7 @@ The equipment used to gather medical image data is kept, if possible, on the ini
 
 \paragraph{Image analysis.} \label{ImageAnalysis} Decisions have to be made on how image data are \emph{compared} and \emph{quantified}.
 %
-Segmentation masks labeling the voxels of an anatomical structure would be ideal since many different key figures, e.g., volume, largest diameter or aspect ratio, can be derived from them.
+Segmentation masks representing the voxels of an anatomical structure would be ideal since many different key figures, e.g., volume, largest diameter or aspect ratio, can be derived from them.
 %
 Since reliable and efficient segmentation techniques for these data are not available in general, epidemiologists are forced to measure the data by hand, which is a very tedious work with respect to the number of necessary landmarks and number of subjects.
 %
@@ -433,7 +433,7 @@ They are also prone to a high inter-observer variability and are hard to reprodu
 %This gains even more momentum when analyzing multiple time steps.
 This gains even more importance when analyzing multiple time steps.
 %
-Morphometric information from landmarks comprises thickness, diameter or length of a structure as well as grey-value distribution in an area (used for determining the type of tisse).
+Morphometric information from landmarks comprises thickness, diameter or length of a structure as well as grey-value distribution in an area (used for determining the type of tissue).
 
 % Bernhard Paper\\
 % - sociodemographic data\\
@@ -541,7 +541,7 @@ Their findings yielded a \emph{Concept Map}, which linked cancer-related associa
 Chui and colleagues visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factors differences in age and gender \cite{Chui2011}.
 
 \paragraph{Commercial Data Visualization.}
-Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \url{www.tableausoftware.com}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \url{spotfire.tibco.com}} provide a rich user interface that enable a Visual Analytics approach without the need of writing any code.
+Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \url{http://tableausoftware.com}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \url{http://spotfire.tibco.com}} provide a rich user interface that enable a Visual Analytics approach without the need of writing any code.
 %
 With little effort, linked views can be created, but the data processing possibilities such as derivation of new variables or the 3D rendering capabilities are very limited.
 %
@@ -834,11 +834,14 @@ Data obtained using questionnaires or medical tests are often stored using stati
 Exporting the data in the respective tool to a CSV file and then convert it to file types that are easily manageable such as JSON or XML makes it readable for all modern programming languages.
 %The best solution for us was to simply export the data in the respective tool to a CSV file and then convert it to data types which are easier manageable such as JSON or XML using our own classes.
 %
-This can be achieved using data wrangling tools such as \texttt{OpenRefine}\footnote{Developed by Google, Open Source; \url{http://openrefine.org/}}, which also validate the data (find missing data, clean up bad formatting, transform scales).
+This can be achieved using data wrangling tools such as \texttt{OpenRefine}\footnote{Developed by Google, Open Source; \url{http://openrefine.org}}, which also validate the data (find missing data, clean up bad formatting, transform scales).
 %In order to verify that the conversion worked as expected and the data is valid, it is good practice to use data wrangling tools such as \texttt{OpenRefine} to validate the data (find missing data, clean up bad formatting).
 %
 %Including the data dictionary, which stores information about each manifestation of a feature, helps to get a detailed description of data variables and the meaning and unit of measurement of their values.
-A data dictionary stores information about each manifestation of a feature and is stored as lookup table to get a detailed description of data variables, the meaning and unit of measurement of their values.
+%A data dictionary stores information about each manifestation of a feature and is stored as lookup table to get a detailed description of data variables and the meaning and unit of measurement of their values
+A data dictionary stores information about each manifestation of a feature.
+%
+Detailed description of data variables, its meaning as well as unit of measurement are stored as a lookup table.
 %Exporting the data dictionary, which stores information about each manifestation of a feature, is also an important step to get a detailed description of data variables and the meaning and unit of measurement of their values.
 %
 Missing data are denoted using error codes indicating its cause ranging from ethical to medical and personal issues (recall Subsection~\ref{EpidemiologicalData}).
@@ -875,7 +878,14 @@ Morphometric features are derived to allow for statistical comparison of the tis
  \centering
  \includegraphics[width=3.0in]{figures/InteractionLoop}
  % TODO: Recreate Image: Also include Cramér´s V which is part of the visualization
- \caption{Detailed \emph{IVA Loop} as seen in Figure~\ref{fig:WorkflowComparison}. Usually starting with a selection of a feature of interest (user-driven or via data mining techniques), the data are mapped using a visualization technique appropriate for the selected data types. The data are visualized in the range and domain space, which can then be brushed, yielding new groups, which can be investigated using further features. Note that adjacent steps are directly connected via feedback loops allowing for iterative refinement and give as much freedom to the user as possible.}
+ \caption{Detailed \emph{IVA Loop} as seen in Figure~\ref{fig:WorkflowComparison}.
+ %
+ Usually starting with a selection of a feature of interest (user-driven or via data mining techniques), the data are mapped using a visualization technique appropriate for the selected data types.
+ %
+ The data are visualized in the range and domain space, which can then be brushed, yielding new groups, to be investigated using further features.
+ % The data are visualized in the range and domain space, which can then be brushed, yielding new groups, to be investigated using further features. 
+ %
+ Note that adjacent steps are directly connected via feedback loops allowing for iterative refinement and give as much freedom to the user as possible.}
  \label{fig:InteractionLoop}
 \end{figure}
 %-------------------------------- Figure --------------------------------
@@ -894,7 +904,7 @@ Our proposed \emph{IVA} workflow knows three major steps as illustrated in Figur
 %
 An hypothesis-driven analysis usually starts with the selection of features.
 %
-A feature selection can also be derived from a shape-based clustering, which creates shape groups.
+A feature selection from a shape-based clustering, which creates shape groups.
 %
 \emph{Hypothesis-generation} with focus on image data starts with a shape-based clustering.
 %
@@ -1049,7 +1059,7 @@ This also applies to the assignment of row or column variables.
 %
 Another way to avoid clutter is the user-driven selection of displayed variables.
 %
-To allow better comparison with respect to features, the values of each cell can also be displayed as percentage of the feature represented of either the row or the column.
+To allow better comparison with respect to features, the values of each cell can also be displayed as percentage of the feature represented of either the row or column.
 % TODO IMPLEMENT
 %The mean shape for each resulting sub-group is also displayed for each subject.
 
@@ -1131,7 +1141,7 @@ In the following section we discuss how we implemented the presented methods usi
  % 
  The \emph{NodeJS} based back-end (right) stores all image- and non-image data and transfers it to connected clients.
  %
- All computation-heavy operations, such as calculation of mean-shapes or -distances, as well as statistical processing is done by the server to keep hardware requirements of client systems low. 
+ All computation-heavy operations, such as calculation of mean shapes or -distances, as well as statistical processing is done by the server to keep hardware requirements of client systems low. 
  %
  Client-server communication is accomplished via the \emph{Websocket} protocol.
  }
@@ -1142,51 +1152,51 @@ To provide a fast communication loop between method development and expert input
 In addition to the obvious advantages of web technologies, the following aspects are crucial for our work:
 \begin{itemize}
 %	\item No additional software needs to be installed, most people use a decent state-of-the-art web browser, even on mobile devices.
-	\item The client-server structure allows for employing heavy computation on a server machine and transfer results to the client.
+	\item The client-server structure allows for employing heavy computation on a capable server machine and transfer results to the client.
 	\item Since image data for several thousand subjects requires hundreds of gigabytes disk space it can remain safely on the server and elements can be transferred on demand.
 	%
-	High confidentiality standards of the data can be met by restricting access via a account system
-	\item Recent developments in \emph{WebGL} applications running in browsers with near native performance push the development into to the web resulting in many open source libraries, which are well documented, rich in examples and driven by active communities. We use \emph{WebGL} for rendering shape information.
+	High confidentiality standards of the data can be met by restricting access via an account system
+	\item Recent developments in \emph{WebGL} applications running in browsers with near native performance push the development further into to the web resulting in many open source libraries, which are well documented, rich in examples and driven by active communities. We use \emph{WebGL} for rendering shape information.
 %	\item Web technologies are free.
 \end{itemize}
 These advantages do not come without drawbacks.
 %
 %Many methods which specialized libraries, like the Visualization Toolkit (VTK) or R for statistics have build in, need to be written from scratch in order to fit in the context.
-Due to missing ports of sophisticated specialized libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{www.vtk.org}} or \texttt{R}\footnote{Open Source; \url{www.r-project.org}} for statistics, many standard methods need to be written from scratch for the web.
+Due to missing ports of sophisticated and specialized libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{http://vtk.org}} or \texttt{R}\footnote{Open Source; \url{http://r-project.org}} for statistics, many standard methods need to be written from scratch for the web.
 %Many methods, which specialized libraries, like the Visualization Toolkit (VTK) or R for statistics, have build in, need to be written from scratch in order to fit in the context.
 %
 
-The back-end is written using \texttt{NodeJS}\footnote{Developed by Joyent Inc, \url{nodejs.org}}, which is based on the Google V8 Javascript runtime environment.
+The back-end is written using \texttt{NodeJS}\footnote{Developed by Joyent Inc, \url{http://nodejs.org}}, which is based on the Google V8 Javascript runtime environment.
 %
 Due to its event-driven non-blocking I/O model it is fast and does not freeze in case of heavy workload like mesh calculation.
 \\\\
-Non-image data for all subjects including the data dictionary is stored in a JSON file on the Server.
+Non-image data for all subjects including the data dictionary is stored in a JSON file on the server.
 %
 Image data are available as raw DICOM files as well as meshes representing segmentation masks of anatomical structures, which can be used to compare subjects.
 %
 The requested data is transmitted when a client connects.
 %
-The server processes calculation heavy statistical tasks such as calculation of \emph{Cram\'{e}rs' V} values for all feature combinations in order to keep the computation time on the client as low as possible.
+The server performs heavy statistical tasks such as calculation of \emph{Cram\'{e}rs' V} values for all feature combinations in order to keep the computation time on the client as low as possible.
 %
 
-The front-end is created using \texttt{Twitter Bootstrap}\footnote{Developed by Twitter, \url{getbootstrap.com}} as foundation for the layout and basic UI elements using \texttt{HTML5}, \texttt{CSS3} and \texttt{Javascript}.
+The front-end is created using \texttt{Bootstrap}\footnote{Developed by Twitter, \url{http://getbootstrap.com}} as foundation for the layout and basic UI elements using \texttt{HTML5}, \texttt{CSS3} and \texttt{Javascript}.
 %
 Information visualizations such as scatterplots and bar charts are created using the popular \texttt{Data-Driven Documents (D3.js)} library \cite{D3}, which works well for attaching data to visible elements like vector graphics and provides powerful transformation and mapping tools.
 %
 The pivot table implementation was adapted using \texttt{PivotTable.js}\footnote{Developed by Nicolas Kruchten, \url{http://nicolas.kruchten.com/pivottable}}.
 %
-\texttt{WebGL} rendering is carried out using the \texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{threejs.org}} and allows GPU-accelerated data rendering.
+\texttt{WebGL} rendering is carried out by \texttt{Three.js}\footnote{Originally developed by Ricardo Cabello, \url{http://threejs.org}} and allows GPU-accelerated data rendering.
 %
 Communication between client and server is enabled via the WebSockets protocol.
 %
-Since our clustering algorithms are written in \texttt{MatLab}\footnote{Owned by The MathWorks, \url{www.mathworks.com}}, we hat to access them using the \texttt{NodeJS} server.
+Since our clustering algorithms are written in \texttt{MatLab}\footnote{Owned by The MathWorks, \url{http://mathworks.com}}, we hat to access them using the \texttt{NodeJS} server.
 %
 We accomplished this by converting it to a parameterized standalone console application, that is spawned by \texttt{NodeJS} on client request and then reads the result from the console standard-out and returns it in a proper format to the client.
 %
 All parameter-steered console applications can be incorporated in this context.
 \\\\
-The following section describes how our presented \emph{IVA} workflow works for an epidemiological use case.
-
+%The following section describes how our presented \emph{IVA} workflow works for an epidemiological use case.
+The following section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
 \section{Application}
 We applied the presented set of techniques to a data set compiled to analyze lower back pain. 
 %
@@ -1198,7 +1208,7 @@ Epidemiological analysis of lumbar back pain, such as the work of Harreby and co
 %In comparable studies, only a few shape-related features are included, for example by Lang and colleagues \cite{Lang2011}.
 In comparable studies, only a few shape-related features are included \cite{Lang2011}.
 %
-To our knowledge, this is the first approach, where shape-related information of the whole lumbar spine is analyzed along with other epidemiological features.
+To our knowledge, this is the first approach where shape-related information of the whole lumbar spine is analyzed along with other epidemiological features.
 %
 Determining risk factors in this area can lead to \cite{Fletcher2012}:
 \begin{itemize}
@@ -1272,7 +1282,7 @@ The registered models capture resilient information about shape of the lumbar sp
 %
 Due to incorrect initialization, strongly deformed spines, contrast-differences and artifacts, the model was not able to detect lumbar spines for all subjects.
 %
-We obtained and work with 983 tetrahedron models of the lumbar spine.
+We obtained and worked with 983 tetrahedron models of the lumbar spine.
 %
 For clustering purposes, we extracted the centerline of the lumbar spine canal, which captures information about lordosis and scoliosis (the medical terms for spine curvature \cite{Klemm2013VMV}).
 
@@ -1283,13 +1293,13 @@ The tetrahedron-based detection model described in Section~\ref{application:Data
 %
 This allows for calculation of shape-distance and similarity.
 %
-This information is used to calculate mean-shapes as described in Section~\ref{Interaction- and Visualization Techniques}.
+This information is used to calculate mean shapes as described in Section~\ref{Interaction- and Visualization Techniques}.
 
 Shape distance is mapped onto color.
 %
-For dichotomous variables, the color codes distances between mean shapes of the two groups, for variables with more than two manifestation it encodes the distance to the global mean shape of all subjects (see Figure~\ref{fig:hypothesisfree}).
+For dichotomous variables, the color codes distances between mean shapes of the two groups, for variables with more than two manifestations it encodes the distance to the global mean shape of all subjects (see Figure~\ref{fig:hypothesisfree}).
 \\\\
-Shape-based clustering is carried out via Agglomerative Hierarchical clustering of the spine canal centerlines, (recall Section~\ref{application:Data Preprocessing} and \cite{Klemm2013VMV}).
+Shape-based clustering is carried out via agglomerative hierarchical clustering of the spine canal centerlines, (recall Section~\ref{application:Data Preprocessing} and \cite{Klemm2013VMV}).
 %
 Since the "correct" number of clusters in a given group is unknown, an estimate is computed by means of the knee/elbow method \cite{Salvador2004}.
 %Since it is not possible to determine the number of clusters in a given group, it is automatically computed using a \emph{knee/elbow} point which is described as tradeoff between number of cluster and a cluster evaluation metric \cite{Salvador2004}.
@@ -1310,7 +1320,7 @@ The use of \emph{IVA} patterns as presented in Section~\ref{Image Centric Cohort
  \centering
  %\includegraphics[width=1.5in]{figures/InteractionLoop}
  \includegraphics[width=3.5in]{figures/hypothesisfree}
- \caption{(a) Clustering result of all subjects. The bar chart height indicates the number of subjects in the cluster. The difference to the mean-shape is color-coded where blue represents no difference and red a large difference. (b) A pivot table relates cluster results to gender and employment status. Cluster 8 is striking because of the high proportion of women, while Cluster 2, 3, 4 contain almost only men.}
+ \caption{(a) Clustering result of all subjects. The bar chart height indicates the number of subjects in the cluster. The difference to the mean shape is color-coded where blue represents no difference and red a large difference. (b) A pivot table relates cluster results to gender and employment status. Cluster 8 is striking because of the high proportion of women, while Cluster 2, 3, 4 contain almost only men.}
  \label{fig:hypothesisfree}
 \end{figure}
 %
@@ -1359,7 +1369,7 @@ This filtering step based on expert experience rules out possible confounder and
  \includegraphics[width=3.5in]{figures/hypothesisbased}
  \caption{(a) Dichotomous questionnaire answer to "\emph{Did you experience back pain in the past three month?}".
  %
- Mean-shapes between the groups show no difference.
+ Mean shapes between the groups show no difference.
  %
  (b) Shape-based clustering for all subjects who suffered from back-pain yields 6 groups. 
  %
@@ -1378,7 +1388,7 @@ In our use case, epidemiologists were interested in the dichotomous questionnair
 %
 The mean shapes of the resulting visualization show no difference between the two groups (see Figure~\ref{fig:hypopthesisbased} (a)).
 %
-Either there are no differences or the variance information was lost in the mean-shape calculation.
+Either there are no differences or the variance information was lost in the mean shape calculation.
 %
 Since the focus is on subjects suffering from back pain, the clustering result of these subjects are then drawn into the canvas area, yielding six clusters as seen in Figure~\ref{fig:hypopthesisbased} (b).
 %
@@ -1426,7 +1436,7 @@ The software was operated by a computer scientist following instructions of the 
 %
 The presented methods guide attention to features not in the focus of attention and expectance of clinical researchers.
 %
-The explorative nature of the methods work well for gathering associations possibly acting as confounder, as outcome of a disease or as an actual cause or risk factor.
+The explorative nature of the methods works well for gathering associations possibly acting as confounder, as outcome of a disease or as an actual cause or risk factor.
 %"\emph{Correlation does not imply causation}" is a famous saying in statistics, meaning that correlation does not necessarily imply causal relationships \cite{}.
 %
 This distinction is hard to make and requires a lot of clinical experience.
@@ -1478,7 +1488,7 @@ A number of improvements is left open for future work:
 % - Color code different Aspects - Only difference in x or y direction
 % - Adjacency Matrix is symmetrical, space can be saved
 % - Calculation of contingency based on the contingency differences - how does the current selection differ compared to the whole data set?
-To reduce the number of false positive findings, the data space can also be randomly be cut in half the hypothesis then can be cross-validated for statistical soundness.
+To reduce the number of false positive findings, the data space can also be randomly cut in half the hypothesis then can be cross-validated for statistical soundness.
 %
 This requires a large number of subjects, especially if the investigated features are rare and only presented by a few subjects.
 %
