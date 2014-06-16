@@ -29,9 +29,11 @@
 % TODO: Self added Packages - need to be removed afterwards
 %\usepackage{babel}
 \usepackage[normalem]{ulem}
-\usepackage{color}
+%\usepackage{color}
+\usepackage{xcolor}
 \newcommand{\rem}[1]{\textcolor{red}{\sout{#1}}}
 \newcommand{\add}[1]{\textcolor{blue}{\uline{#1}}}
+\newcommand{\com}[1]{\textcolor{orange}{\uline{#1}}}
 
 %% We encourage the use of mathptmx for consistent usage of times font
 %% throughout the proceedings. However, if you encounter conflicts
@@ -90,6 +92,8 @@
 %% Abstract section.
 \abstract{%
 %(The problem).
+\com{ToDo: Reviewer-Feedback: The abstract should be formulated more concisely and focus on What? 
+Why? How? What follows?}
 Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease-specific risk factors.
 %
 Cohort studies comprise of heterogenous variables (\emph{features}) describing the medical condition as well as demographic and lifestyle factors and more recently, medical image data.
@@ -180,7 +184,7 @@ Longitudinal population-based studies, such as the Study of Health in Pomerania 
 The cohort consists of several thousands of people who are randomly selected to avoid any bias.
 %
 \rem{Due to this random selection, the majority of the cohort does not suffer from a specific health problem.}
-\add{The people are selected without focus on a certain disease.}
+\add{The subjects are selected without focus on a certain disease.}
 %
 A large size of the cohort is therefore essential to investigate differences between healthy and diseased people.
 %
@@ -313,7 +317,9 @@ Statistical tools such as \texttt{SPSS}\footnote{Product of IBM; \url{http://ibm
 %
 Graphic data representation is largely used to present results rather than gaining insight.
 	
-\subsection{Epidemiological Data} \label{EpidemiologicalData}
+\section{Epidemiological Data} \label{EpidemiologicalData}
+\com{Primary Reviewer Feedback: Another weakness is on the data analysis; while there is information about the data within the text (including 2.2, 4.1, and 5.2) I would like to see a section that focuses on the data and the challenges thereof.
+This chapter needs to be enhanced! Maybe own section!}
 Epidemiological data are highly heterogenous and incomplete.
 %
 Information about medical history and examinations, genetic conditions, geographical data, questionnaire results and image data yield a complex data space for each subject.
@@ -331,7 +337,7 @@ Dichotomous data can also be derived by aggregating features to yield only two m
 %
 Medical examinations mostly comprise categorical (e.g. levels of back pain) and continuous values (e.g. age or body size).
 
-\paragraph{Image acquisition.} \label{ImageAcquisition} Imaging techniques involving ionizing radiation for the subject are not suitable for ethical reasons.
+\subsection{Image acquisition} \label{ImageAcquisition} Imaging techniques involving ionizing radiation for the subject are not suitable for ethical reasons.
 %
 Therefore, MRI is the main method for collecting cohort study imaging data.
 %
@@ -342,7 +348,7 @@ This often yields image resolutions inferior to those of clinical day-to-day pra
 %The equipment used to gather medical image data is not updated or changed during a longitudinal study to ensure comparability in and between acquisition cycles.
 The equipment used to gather medical image data is \rem{kept, if possible, on the initial software and hardware version} \add{not updated or changed} during a longitudinal study to ensure comparability in and between acquisition cycles.
 
-\paragraph{Image analysis.} \label{ImageAnalysis} Decisions have to be made on how image data are \emph{compared} and \emph{quantified}.
+\subsection{Image analysis} \label{ImageAnalysis} Decisions have to be made on how image data are \emph{compared} and \emph{quantified}.
 %
 Segmentation masks representing the voxels of an anatomical structure would be ideal, since many different key figures, e.g., volume, largest diameter or aspect ratio, can be derived from them.
 %
@@ -720,7 +726,9 @@ In the following sections we present the different parts of our proposed \emph{I
  \label{fig:similarity}
 \end{figure}
 
-\subsubsection{System Structure} \label{Structure and Workflow}
+\section{System Structure and Design} \label{Structure and Workflow}
+\com{Primary Reviewer Feedback: There is little detail about the design, and how it was decided to create this particular design; what interaction was made with the users, how did they influence this design?}
+% \subsubsection{System Structure}
 We divide the workspace into four major parts, as illustrated in Figure~\ref{fig:visualization} and \ref{fig:similarity}.
 \begin{itemize}
 	\item The \emph{sidebar}, which contains all epidemiological features. Cluster results are treated like features and are part of the sidebar as well.
@@ -946,6 +954,210 @@ We accomplished this by converting it to a parameterized standalone console appl
 All parameter-steered console applications can be incorporated in this context.
 \\\\
 \section{Application}
+\add{This Chapter needs to be reworked completely, since it was subject of the reviewer criticism.}
+This section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
+%
+We conducted a case study with two domain experts on a data set compiled to analyze lower back pain. 
+%
+This is one of the most common reasons for an adult to see a physician in the Western civilization \cite{Backpain}.
+%
+Epidemiological analysis of lumbar back pain, such as the work of Harreby et al. \cite{Harreby1996}, is largely focused on non-image information.
+%
+In comparable studies, only a few shape-related features are included \cite{Lang2011}.
+%
+To our knowledge, this is the first approach, where shape-related information of the whole lumbar spine is analyzed along with other epidemiological features.
+%
+Determining risk factors in this area can lead to \cite{Fletcher2012}:
+\begin{itemize}
+	\item a better understanding of effects of preventive measures such as occupational health and safety regulations,
+	\item prognostic features for diagnosis and treatment of lumbar back pain, and
+	\item determination of particularly affected risk groups.
+\end{itemize}
+%
+Characterizing the healthy aging process of the spine is a long-term goal for determining age-normalized probabilities for spine-related diseases by incorporating individual risk factors.
+%
+\subsection{The Lumbar Spine Data Set}
+We divide the data set into image and non-image data.
+%
+There are 127 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features.
+%
+The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
+%
+%The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
+The spine protocol consisted of sagittal T1- and T2-weighted turbo-spin-echo sequences with rather large slice distance only sufficient for characterizing the lumbar spine \cite{Hegenscheid2013}.
+
+\subsubsection{Data Preprocessing} \label{application:Data Preprocessing}
+The data are preprocessed as described in Section~\ref{Data Preprocessing}.
+%
+\paragraph{Non-Image Data.} 
+
+To ensure a fast and easy data access outside of statistical processors like \texttt{SPSS}, the data was exported to the JSON file format.
+%
+Each feature is stored as an object containing: 
+\begin{itemize}
+	\item the data as array of values--categorical data and error codes are stored using IDs,
+	\item the data type (continuous, nominal, ordinal, dichotomous),
+	\item a detailed description of the feature, and
+	\item the data dictionary translating value or error IDs to the actual values.
+\end{itemize}
+%
+% Binning: https://www.researchgate.net/post/What_metric_best_captures_the_information_loss_when_binning_a_large_data-set_into_a_histogram_representation
+Continuous variables are discretized to allow for \emph{Cram\'{e}r's V} contingency coefficient assessment.
+%
+In consultation with the collaborating epidemiologists, we set the number of groups to five, to allow for contingency assessment.
+
+\paragraph{Image Data.} \label{Image-Data}
+The lumbar spine was detected in the image data using a hierarchical finite element method by Rak et al. \cite{Rak2013}.
+%
+This semi-automatic method requires the user to initialize the tetrahedron-based finite element models (FEM) with a click on the L3 vertebra.
+%
+Two user-defined landmarks on the top and bottom of the L3 vertebra are used to obtain an initial height estimation of the model.
+%
+It uses a weighted sum of T1- and T2-weighted MR images to detect the lumbar spine shape.
+%
+The registered models capture resilient information about the shape of the lumbar spine canal as well as the position of the L1-L5 vertebrae \cite{Klemm2013VMV}.
+%
+Due to incorrect initialization, strongly deformed spines, contrast differences and artifacts, the model was not able to detect lumbar spines for all subjects.
+%
+We obtained and worked with 983 tetrahedron models of the lumbar spine.
+%
+For clustering purposes, we extracted the centerline of the lumbar spine canal, which captures information about lordosis and scoliosis (the medical terms for spine curvature \cite{Klemm2013VMV}).
+
+\subsubsection{Shape Visualization and Clustering}
+%
+The tetrahedron-based detection model described in Section~\ref{application:Data Preprocessing} consists of corresponding grid points for each structure instance.
+%
+This allows for calculation of shape distance and similarity.
+%
+This information is used to calculate mean shapes as described in Section~\ref{Interaction- and Visualization Techniques}.
+
+Shape distance is mapped onto color.
+%
+For dichotomous variables, the color codes distances between mean shapes of the two groups, for variables with more than two manifestations it encodes the distance to the global mean shape of all subjects (see Figure~\ref{fig:hypothesisfree}).
+\\\\
+Shape-based clustering is carried out via agglomerative hierarchical clustering of the spine canal centerlines (recall Section~\ref{application:Data Preprocessing} and \cite{Klemm2013VMV}).
+%
+Since the ``correct'' number of clusters in a given group is unknown, an estimate is computed by means of the knee/elbow method \cite{Salvador2004}.
+%
+The method has proven to produce sound results on a preliminary data set and was able to reproduce textbook knowledge \cite{Klemm2013VMV}.
+\subsection{Domain Experts, Setup and Procedure}
+%
+%Lam et al. divide evaluations of Visual Analysis systems in two categories, 
+%
+\com{Anmerkung von Steffen einbauen: Evaluierung geht um fachliches Feedback - Wissen über epidemiologie UND rücken und wissen um die Daten - deswegen schwer ganz viele Experten ranzuziehen}
+Guided by the work of Lam et al \cite{Lam2012}, we conducted an investigation of \emph{Visual Data Analysis and Reasoning} (VDAR).
+%
+This approach aims to characterizes the ability of a system to explore data, discover knowledge, generate hypotheses and help formulating decisions.
+%
+Since it is hard to quantify when these goals are achieved, Lam et al. suggest case studies for the VDAR analysis.
+
+We conducted a case study with two epidemiological domain experts.
+%
+Both of them are practicing clinicians with focus on epidemiological research.
+%
+The first clinician is an specialist in internal medicine and also the leader of the SHIP.
+%
+One clinician is an radiologist and responsible for the image acquisition of the SHIP and has a deep understanding on the available image data.
+%
+\paragraph{Setup.} To bypass the large geographical distance between us and the domain experts and to take their busy schedule into account, the case study was done completely web based.
+%
+Since one major reason for the focus on web technologies, no software needed to be exchanged.
+%
+A website link was send to the users, which they could open with their browser of choice and start using the tool.
+%
+To make the user input comprehensible, we observed their monitor via screen sharing.
+%
+Communication was enabled via webcam supported voice over ip.
+%
+The total setup time including installing the screen sharing application was about five minutes.
+%
+Video-recordings of the sessions made it possible to evaluate the sessions later on.
+\com{TODO: Name der Screensharing Software mit angeben (Teamviewer)?}
+\paragraph{Procedure.}
+At first, controlled mouse and keyboard of the clinicians pc and demonstrated the basic functionalities of the system.
+%
+This included the Heatmap, the correlation view, how to introduce parameter visualization, how the color coding of differences works and the pivot tables.
+%
+As they understood the concepts, we handed over the mouse and keyboard control and only observed from this point on.
+%
+The epidemiologists were given two tasks: one hypothesis-free analysis of the data and one starting with an assumption.
+
+% \subsection{Exploratory Analysis of the Lumbar Spine Data Set}
+\subsection{Hypothesis-free analysis}
+Analyzing the data set without prior hypothesis requires a starting point giving an overview over the data first \cite{Shneiderman1996}.
+%
+With our tool, there are two ways to achieve this.
+%
+Performing a \emph{local investigation} by clustering all subjects or use the contingency matrix for a \emph{multivariate analysis}.
+%
+The latter was chosen by both domain experts.
+%
+They were excited by the possibility to look at all variables in the context of each other.
+%
+They stated that it "illumunates the black box of the data", making it possible to look at the data in an unbiased way.
+%
+Due to the dense mapping of information in the contingency matrix it was suggested to make this visualization full screen.
+%
+The radiologist was looking for correlations with shape related features in the data, finding that they correlate strong with each other as well as with leg pain, age, body height and hormone replacement therapy.
+%
+
+After this initial overview, both experts performed a \emph{multivariate analysis} by introducing features, such as age, waist circumference, weight or lumbar spine centerline curvature as bar charts views into the canvas area and selected subgroups to see how they are distributed and if they could observe unusual behavior in the mean-shapes.
+%
+
+% TODO: Contingency Matrix or Adjecency Matrix
+\com{00.44 Clustering-Ergebnis Weiblich und Arbeitspensum Alter}
+
+\subsection{Hypothesis-based analysis}
+The radiologist performed a \emph{local investigation} by dragging the age variable into the canvas area, observing that age-bins 36-52 years and 52-68 years are nearly identical to the global mean, while 20-36 years and 68-84 years differ in size.
+%
+Performing a \emph{multivariate analysis} by selecting only female subjects via the additionally added gender feature it was observed, that distance was closest to subjects of 68-84 years old and largest to 20-36 years old.
+%
+The expert argued that this is most likely due to the shrinking of the spine with increasing age, making it more similar to the female average spine which is smaller than the global average \com{(00.29)}.
+%
+
+A second analysis was carried out on body weight.
+%\com{Video 00.29. Analysis of Gender and Age - older subjects are closer to females, younger to males. This is due to shrinking of the spine in the aging process.}
+\com{00.46 Second: Analysis of Female subjects via clustering, selction of cluster 2, analysis using Body weight and Age. Clustering Result if 1 gives large distance between other subjects. 00.49 How are can the differences be explained?}
+\com{00.46 Feedback Body-Size/Body weight. Some features are sparse, suggestion was made to use quantile/quintile, resulting in equally occupied results. This also depends on what the user is intersted in - for clinical use the outliers may be interesting (57.30). (58.30) From perspective of a radiologists, quartile and quintiles make sense when establishing reference values for diseases; clinical relevant parameter, einflussfaktoren oder risikofaktoren zu identifizieren, je nach dem welche hypothese man verwendet.}
+\com{Backpain three month > age. There are more subjects reporting backpain than those who dont. Since influences heavily the average shape - since most people have back pain, the average shape already is associated with back pain, which makes it difficult to extract parameters which reliably describe back pain. (1.05) The radiologist pointed out that for the mosaic view it would be beneficial to abstract the shape and curvature and categorize it into shapes s, i form. It was also pointed out that in the plot back pain>age, back pain can not be differenciated because the difference is mainly encoded via the age, more variables need to be added (gender, use of pain medications. this would be good for future work, providing a better way to subdivide the data set and construct groups. The presented method is very good to gain an overview).}
+\subsection{Lessons Learned}
+\com{ToDo: Noch einmal auf die VDAR Results eingehen}
+%
+The radiologist pointed out the unusual strong similarity of the L3 vertebrae throughout the population.
+%
+The medical explanation is that it represents a angular point of curvature of the lumbar spine.
+%
+A seconds explanation is the use of the L3 vertebra is initialization point of the lumbar spine model \com{(00.54)}.
+%
+The domain experts see another great potential in communicating insights efficiently using the presented visualizations \com{(1.08)}.
+%
+The radiologist pointed out that the image data representations would be better comparable if they would be abstracted into representative land marks, such as centers of the vertebrae and cardinal points of the lumbar spine canal.
+%
+Both experts emphasized the potential of the \emph{multivariate analysis} capabilities of the adjacency matrix for getting insight into a large amount of features simultaneously.
+%
+It is also useful to verify established but still controversial risk factors, such as the metabolic syndrome for coronary heart disease and whether the data set provides even more suitable risk factors.
+%
+Creating adjacency matrices for sub groups, such as different age bins can help to characterize the aging process by deriving age-specific risk factors.
+%
+%She also pointed out the benefits of an automatic categorization of the subjects into shape groups.%$$, which allows for even faster comparison.
+\com{Employ a more abstract visualization of the spine to capture reliable information and enable better comparison between subjects}
+%
+%Since many large population studies incorporate medical image data this gains importance.
+%\com{1.08 It was pointed out that this technique is also good for epidemiological publication because it is often more insigthfull to show these images instead of long tables. }
+\com{ToDo Fazit über Web-Austausch, das Experten begeistert davon waren und dass es hervorragend funktioniert. Kleine Änderungen können sogar live programmiert werden ohne das etwas neu kompiliert werden muss (hier wäre ein Beispiel nett, z.B. Größe der Schrift irgendwo. Außerdem bringt der Browser viele Funktionen mit, wie z.B. die Suchfunktionen.)}
+
+\com{Small User Interface Suggestions: Search-Bar for Subjects, making the elements of the contingency matrix selectable; See which Subject is currently selected}
+\com{Enhancement contingency matrix: Display exact value of correlations, also information about distribution. More focus on this}
+\com{Außerdem ein Anwendungsgebiet für die Matrix: Einschätzen metabolisches syndrom, eine Menge von Risikofaktoren die für Koronare Herzkrankheit Marker darstellen und die bereits länger in der Kritik sind. Hier kann getestet werden, ob es hierfür nicht bessere Indikatoren noch geben kann! (39.32)}
+%\com{Also mosaic plots can be incorporated for several sub groups to see where the main differences are (for different age groups to characterize age)}
+\com{1.20 More exact segmentations are useful since curvature changes are often the last change happening in a pathological process, after local deformations of the vertebrae}
+
+
+% ---------------------------------------------------------------------------------------------------------------------------------------
+% ---------------------------------------------------------------------------------------------------------------------------------------
+% ---------------------------------------------------------------------------------------------------------------------------------------
+\section{Old Application Section}
+%
 This section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
 %
 We applied the presented set of techniques to a data set compiled to analyze lower back pain. 
@@ -1178,6 +1390,7 @@ Displaying MRI scans for the subjects in the outlier cluster is promising becaus
 % - Input of Epidemiologists goes here!\\
 
 \section{Summary and Conclusion}
+% TODO: Future work Bulletliste zusammenkürzen
 In this paper, we presented an \emph{IVA} framework for the analysis of complex image-centric epidemiological data.
 %
 Hence, the framework allows for both, hypothesis-driven analysis and hypothesis generation.

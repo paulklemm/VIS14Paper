@@ -5,6 +5,10 @@ ToDo Submission:
 * Remove Packages
 * remove the keyword "Visualization System and Toolkit Design"
 
+Chapter 3 - Epidemiological Data
+--------------------------------
+Enhanced former subjection "2.2 Epidemiological Data" as requested by the primary reviewer and promoted it to be a section on its own.
+
 Fig. 3
 ------
 * Reviewer 2 noted that "In Figure 3 left there are 4 body size groups but on the right and in  the small image above the arrow there are only 3 groups." This is due to the the mapping on gender, the size-group 139-153.5 cm is only populated by women, while 182.5-197 contains only men.
