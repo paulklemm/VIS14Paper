@@ -686,7 +686,7 @@ A feature selection from a shape-based clustering, which creates shape groups.
 %
 \emph{Hypothesis generation} with focus on image data starts with a shape-based clustering.
 %
-\com{Multivariate analysis using the adjacency matrix may have also be explained here, depending on the Application chapter.}
+\com{ToDo: Multivariate analysis using the adjacency matrix may have also be explained here, depending on the Application chapter.}
 %
 The feature is mapped using an automatically chosen visualization appropriate for its data type (described in detail in the following section).
 %
@@ -892,6 +892,7 @@ The distinction whether an association is a confounder or an effect, depends on 
 % - This can be improved--summing up the values possibly not the cleverest solution--calculation of variance etc. possible\\
 % - Matrix Visualization?
 
+% TODO: This can be an Section of it's own? Or part of the design?
 \subsection{Implementation}
 \begin{figure}[htb]
  \centering
@@ -1045,20 +1046,20 @@ The method has proven to produce sound results on a preliminary data set and was
 %
 %Lam et al. divide evaluations of Visual Analysis systems in two categories, 
 %
-\com{Anmerkung von Steffen einbauen: Evaluierung geht um fachliches Feedback - Wissen über epidemiologie UND rücken und wissen um die Daten - deswegen schwer ganz viele Experten ranzuziehen}
-Guided by the work of Lam et al \cite{Lam2012}, we conducted an investigation of \emph{Visual Data Analysis and Reasoning} (VDAR).
+%\com{Anmerkung von Steffen einbauen: Evaluierung geht um fachliches Feedback - Wissen über epidemiologie UND rücken und wissen um die Daten - deswegen schwer ganz viele Experten ranzuziehen}
+Guided by the work of Lam et al \cite{Lam2012}, we conducted an investigation of \emph{Visual Data Analysis and Reasoning} (\emph{VDAR}).
 %
 This approach aims to characterizes the ability of a system to explore data, discover knowledge, generate hypotheses and help formulating decisions.
 %
-Since it is hard to quantify when these goals are achieved, Lam et al. suggest case studies for the VDAR analysis.
+Since it is hard to quantify when these goals are achieved, Lam et al. suggest case studies for the \emph{VDAR} analysis by applying the think aloud protocol to understand the domain experts observations, inferences and conclusions when using the system.
 
-We conducted a qualitative case study with two epidemiological domain experts.
+We conducted a qualitative case study with two epidemiological domain experts who also co-authored this publication.
 %
-Both of them are practicing clinicians with focus on epidemiological research.
+Both of them are practicing physicians with focus on epidemiological research.
 %
-The first clinician is an specialist in internal medicine and also the leader of the SHIP.
+One is an specialist in internal medicine and also the head of the SHIP, the other an radiologist and responsible for the MRI-data acquisition of the entire SHIP. %and has a deep understanding on the available image data.
 %
-One clinician is an radiologist and responsible for the image acquisition of the SHIP and has a deep understanding on the available image data.
+(Their expertise and experience with the data in their day to day research make them aware of the problems associated with the analysis of medical cohort study data.)
 %
 \paragraph{Setup.} To bypass the large geographical distance between us and the domain experts and to take their busy schedule into account, the case study was done completely web based.
 %
@@ -1073,9 +1074,9 @@ Communication was enabled via webcam supported voice over ip.
 The total setup time including installing the screen sharing application was about five minutes.
 %
 Video-recordings of the sessions made it possible to evaluate the sessions later on.
-\com{TODO: Name der Screensharing Software mit angeben (Teamviewer)?}
+%
 \paragraph{Procedure.}
-At first, controlled mouse and keyboard of the clinicians pc and demonstrated the basic functionalities of the system.
+At first, we controlled mouse and keyboard of the participants pc and demonstrated the basic functionalities of the system.
 %
 This included the Heatmap, the correlation view, how to introduce parameter visualization, how the color coding of differences works and the pivot tables.
 %
@@ -1096,24 +1097,30 @@ Performing a \emph{local investigation} by clustering all subjects or use the co
 The latter was chosen first by both domain experts.
 %
 %They pointed out the high potential they see in this visualization, because it allows to look at the data in an unbiased way.
-They pointed out the benefits of the possibility to look at all variables in the context of each other.
+%They pointed out the benefits of the possibility to look at all variables in the context of each other.
+Before, they were not able to to look at all variables in the context of each other.
 %
-To cite the radiologist, it "illumunates the black box of the data", making it possible to look at the data in an unbiased way.
 %
-Due to the dense mapping of information in the contingency matrix it was suggested to make this visualization full screen.
+To cite one expert, it "illumunates the data black box", making it possible to look at the data unbiased from assumptions.
 %
-The radiologist was looking for correlations with shape related features in the data, finding that they correlate strong with each other as well as with leg pain, age, body height and hormone replacement therapy.
+The radiologist was looking for correlations with shape related features in the data, finding that they correlate with \emph{leg pain}, \emph{age}, \emph{body height} and \emph{hormone replacement therapy status}.
 %
-The internist inspected features which are not derived from the images, such as parameters strongly related with age, such as income, blood fat values or number of born children.
+The internist inspected non-image-derived features, such as age-associated parameters like \emph{income}, \emph{blood fat values} or \emph{number of born children}.
 %
 This also shows, that even though the visualization may treat every feature equally, the domain experts is more likely interested in features they are familiar with and have personal clinical experience with.
 %
+Due to the dense mapping of information in the contingency matrix it was suggested to make this visualization full screen.
 %Many correlations observed in this view 
 
-After this initial overview, the expert performed a \emph{multivariate analysis} by introducing features, such as age, waist circumference, weight or lumbar spine centerline curvature as bar charts views into the canvas area and selected subgroups to see how they are distributed and if they could observe unusual behavior in the mean-shapes.
+After this initial overview, the expert performed a \emph{multivariate analysis} by introducing features, such as \emph{age}, \emph{waist circumference}, \emph{weight} or \emph{lumbar spine canal curvature} as bar charts views into the canvas area and selected subgroups to see how they are distributed and if they could observe unusual behavior in the mean-shapes.
 %
-+ Cramer test 
-\com{Allgemein: Workflow noch einmal grob beschreiben - Overview first, details on demand}
+This pointed out problems with the used categorization method splitting numerical variables into equally sized bins.
+%
+If an feature contains outliers, such as waist circumference (e.g. subjects with morbid obesity) this approach leads to sparse categories, making it hard to calculate associations.
+%
+Solutions for this were discussed with the domain experts and are described in more detail in Section~\ref{Lessons Learned}.
+%
+%\com{Allgemein: Workflow noch einmal grob beschreiben - Overview first, details on demand}
 %
 \paragraph{Analysis 2.}
 \begin{figure}[htb]
@@ -1132,58 +1139,74 @@ Therefore, he applied the \emph{local investigation} pattern by a shape grouping
 %
 The results for this step can be seen in Figure~\ref{fig:hypothesisfree} (a).
 
-Cluster 9 represents subjects with average shape.
+Cluster 4 represents subjects with average shape.
 %
-Other shapes differ with respect to size, such as cluster 2, 3, 8, 10 where the last one also represents a more straight spine, which is usual for subjects with larger body size.
+Other shapes differ with respect to size, such as cluster 2, 3, 7, where the last one and cluster 5 also represent a more straight spine, which is usual for subjects with larger body size.
 %
-Cluster 4, 5, 7 contain outliers, characterized by their unusual shape and small number.
+Cluster 1 and 6 contain outliers, characterized by their unusual shape and small number.
 %
-Cluster 8 has the second largest number of elements and was therefore of special interest.
+%Cluster 8 has the second largest number of elements and was therefore of special interest.
 %
-The user opened the contingency pane to performing a \emph{multivariate analysis} by looking at \emph{Cram\'{e}r's V} contingency values of cluster~8.
+%To perform an automatic feature suggestion using a \emph{multivariate analysis} by looking at \emph{Cram\'{e}r's V} contingency values of in the contingency pane.
+To get an overview over the suggested features, the user opened the contingency pane to perform a \emph{multivariate analysis} by looking at \emph{Cram\'{e}r's V} contingency values of all clusters, revealing a strong correlation with \emph{gender} and \emph{body size}.
 %
-This revealed associations of this group with employment status, gender, body size, age, thyroid nodules and blood fat value.
+Therefore another \emph{multivariate analysis} was carried out by the feature \emph{gender} to the canvas from the contingency pane and selecting all female subjects (Fig.~\ref{ToDo}).
 %
-Another \emph{multivariate analysis} using a pivot table set gender and employment status in relation to clustering affiliation\add{.} 
+Cluster 1 contained almost only female subjects.
 %
-\add{It s}hows that cluster~8 contains mostly women and also has a larger unemployment rate (see Figure~\ref{fig:hypothesisfree}), while the overall employment rate of women and men in the data set is almost exactly 50\%.
+Contingency values for this cluster revealed correlations with \emph{leg fatigue}, \emph{physical heavy work}, \emph{body weight}, \emph{dyspnoea} and \emph{headache intensity}.
 %
-While all observed features seem to be plausible associations related to back pain, the values indicate that cluster~8 contains subjects with chronic back pain radiating to the legs.
+%This revealed associations of this group with employment status, gender, body size, age, thyroid nodules and blood fat value.
 %
-Metabolic parameters, such as blood fat and blood sugar, are also possibly associated features.
+Since it is an pain indicator, headache was of special interest and was further investigated by incorporating a pivot table setting \emph{headache intensity} in relation to cluster affiliation.
 %
-The employment status is a feature relating to many different lifestyle factors such as income or nutrition as well as age and might act as confounder.
-
+Cluster 1 subjects report a much higher chance for heavy headaches than other subjects.
+%Another \emph{multivariate analysis} using a pivot table set gender and employment status in relation to clustering affiliation\add{.} 
+%
+%\add{It s}hows that cluster~8 contains mostly women and also has a larger unemployment rate (see Figure~\ref{fig:hypothesisfree}), while the overall employment rate of women and men in the data set is almost exactly 50\%.
+%
+%While all observed features seem to be plausible associations related to back pain, the values indicate that cluster~8 contains subjects with chronic back pain radiating to the legs.
+%
+%Metabolic parameters, such as blood fat and blood sugar, are also possibly associated features.
+%
+%The employment status is a feature relating to many different lifestyle factors such as income or nutrition as well as age and might act as confounder.
+\\\\
+The experts emphasized the importance of methods providing overview over the data for hypothesis generation.
+%
+With the presented \emph{IVA} approaches they were quickly able to confirm medical knowledge as well as elaborate new hypothesis.
 % TODO: Contingency Matrix or Adjecency Matrix
-\com{00.44 Clustering-Ergebnis Weiblich und Arbeitspensum Alter}
+%\com{00.44 Clustering-Ergebnis Weiblich und Arbeitspensum Alter}
 
 \subsection{Case 2: Hypothesis-based analysis}
 If the user proposes a hypothesis about a relation between a non-image feature regarding shape, the workflow slightly differs from the hypothesis-free analysis.
 %
 The starting point follows the \emph{feature investigation} pattern, where a feature of interest is selected by dragging it into the canvas area and viewing the subject's distribution as well as their shape differences.
-\paragraph{Analysis 1}
-The radiologist performed a \emph{feature investigation} by dragging the age variable into the canvas area, observing that age-bins 36-52 years and 52-68 years are nearly identical to the global mean, while 20-36 years and 68-84 years differ in size.
+% \paragraph{Analysis 1.}
+% The radiologist performed a \emph{feature investigation} by dragging the age variable into the canvas area, observing that age-bins 36-52 years and 52-68 years are nearly identical to the global mean, while 20-36 years and 68-84 years differ in size.
+% %
+% Performing a \emph{multivariate analysis} by selecting only female subjects via the additionally added gender feature it was observed, that distance was closest to subjects of 68-84 years old and largest to 20-36 years old.
+% %
+% The expert argued that this is most likely due to the shrinking of the spine with increasing age, making it more similar to the female average spine which is smaller than the global average \com{(00.29)}.
+% %
+% 
+\paragraph{Analysis 1.}
+Hypothesis: ``\emph{Back pain is associated with age and lumbar spine shape}''.
+%Hypothesis: "Back pain is associated with age and therefore there differences in the lumbar spine shape are observable." 
+\com{TODO Image Mosaic Plot Age, Backpain}.
 %
-Performing a \emph{multivariate analysis} by selecting only female subjects via the additionally added gender feature it was observed, that distance was closest to subjects of 68-84 years old and largest to 20-36 years old.
-%
-The expert argued that this is most likely due to the shrinking of the spine with increasing age, making it more similar to the female average spine which is smaller than the global average \com{(00.29)}.
-%
-
-\paragraph{Analysis 2.}
-Hypothesis: "Back pain is associated with age and therefore there differences in the lumbar spine shape are observable." \com{TODO Image Mosaic Plot Age, Backpain}.
-To validate this hypothesis, a \emph{multivariate analysis} was performed by introducing the dichotomous feature "\emph{Did you experience backpain in the last three moth?}" together with the age as mosaic plot by dropping both features on the canvas area.
+To validate this hypothesis, a \emph{multivariate analysis} was performed by introducing the dichotomous feature ``\emph{Did you experience back pain in the last three month?}'' together with the age as mosaic plot by dropping both features on the canvas area.
 %
 The experts were not able to observe the expected effect in the visualization.
 %
 Reasons for this are twofold.
 %
-For one, age influences the lumbar spine shape very heavily, as seen in Fig~\ref{?}, while the differences between subjects with and without back pain are small.
+For one, age influences the lumbar spine shape very heavily, as seen in Fig~\ref{ToDoA}, while the differences between subjects with and without back pain are small.
 %
 The major difference seen in the visualization are therefore presented by the age feature, masking differences via the back pain parameter.
 
 The second explanation is the commonality of back pain in our society.
 %
-As seen in Fig~\ref{?}, subjects reporting back pain are even the majority, which makes it difficult to extract parameters which reliably describe back pain.
+As seen in Fig~\ref{ToDoA}, subjects reporting back pain are even the majority, which makes it difficult to extract parameters which reliably describe back pain.
 %
 A \emph{local investigation} using the contingency table showed a strong association between back pain with gender and body height.
 %
@@ -1192,67 +1215,107 @@ Body height was explained to be a confounder for gender, since female subjects s
 The analysis solely based on shape only accentuated gender differences, not in back pain.
 %This makes it hard to analyze shape related features for this disease
 %
-A next step would be to use a variable describing the strength of back pain and only analyzing strong back pain!
-%
+The next step is to use a variable describing the strength of back pain and only analyzing strong back pain!
 
-\com{ToDo: Ability to better create sub groups would be useful as well as better segmentation}
+The epidemiologists pointed out that they would like to see a more intuitive and fast way to select subgroups based on different features to make full use of the analysis capabilities.
+%
+We discuss this in detail in Section~\ref{Lessons Learned}.
 %gender, use of pain medications. this would be good for future work, providing a better way to subdivide the data set and construct groups. The presented method is very good to gain an overview
 
 %
 %\com{Video 00.29. Analysis of Gender and Age - older subjects are closer to females, younger to males. This is due to shrinking of the spine in the aging process.}
 %\com{Backpain three month > age. There are more subjects reporting backpain than those who dont. Since influences heavily the average shape - since most people have back pain, the average shape already is associated with back pain, which makes it difficult to extract parameters which reliably describe back pain. (1.05) The radiologist pointed out that for the mosaic view it would be beneficial to abstract the shape and curvature and categorize it into shapes s, i form. It was also pointed out that in the plot back pain>age, back pain can not be differenciated because the difference is mainly encoded via the age, more variables need to be added (gender, use of pain medications. this would be good for future work, providing a better way to subdivide the data set and construct groups. The presented method is very good to gain an overview).}
 
-\paragraph{Analysis 3}
-\com{ToDo: Needs to be rewritten}
-\begin{figure}[htb]
- \centering
- %\includegraphics[width=1.5in]{figures/InteractionLoop}
- \includegraphics[width=3.5in]{figures/hypothesisbased}
- \caption{(a) Dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
- %
- Mean shapes between the groups show no difference.
- %
- (b) Shape-based clustering for all subjects who suffered from back pain yields 6 groups. 
- %
- Note that the difference in subject count is due to the missing shape information for some subjects.
- %
-% The total count of subjects in (b) is smaller 
- }
- \label{fig:hypopthesisbased}
-\end{figure}
+\paragraph{Analysis 2.}
+Hypothesis: ``\emph{Back pain is related to lumbar spine deformation.}''.
 %
-In our use case, epidemiologists were interested in the dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
+The previously discussed analysis puts the suitability of the lumbar spine segmentation for analyzing back pain into question.
 %
-The mean shapes of the resulting visualization show no difference between the two groups (see Figure~\ref{fig:hypopthesisbased} (a)).
+The results of the analysis lead to this analysis.
 %
-Either there are no differences or the variance information was lost in the mean shape calculation.
+This hypothesis is analyzed by dropping the feature ``\emph{Did you experience back pain in the past three months?}'' into the canvas are, as seen in previous Fig.~\ref{ToDoA}.
 %
-Since the focus is on subjects suffering from back pain, the clustering results of these subjects are then drawn into the canvas area, yielding six clusters as seen in Figure~\ref{fig:hypopthesisbased} (b).
+Then, the features derived from the clustering results for both subject groups are dropped into the canvas area as well (Fig.~\ref{ToDoB} (a)).
 %
-Cluster 5 stood out for having a so-called \emph{hyperlordosis}, a strong curvature of the lumbar spine associated with back pain.
+While the clustering algorithm finds only three homogenous cluster close to the mean shape for subjects reporting no back pain.
+%
+The cluster analysis for back pain yields diverse clusters with various pathological shape classes.
+%
+Cluster~5 represents most of the subjects and is very similar to the global mean shape.
+%
+Cluster~1 and 2 present a \emph{hyperlordosis}, a strong curvature of the lumbar spine, while Cluster 3 and 4 present a more straight shape.
+%
+A \emph{multivariate analysis} using the pivot tables put gender and strong back pain in context to cluster affiliation (Fig.~\ref{ToDoB} (b)). 
+%
+It shows, that subjects in Cluster~1, 2 and 6 reporting strong back pain while at the same time they also have a considerably higher share of females.
+%
+To check for unusual correlations, the expert opened the \emph{Cram\'{e}r's V} contingency table.
+%
+It depicted strong association with \emph{body fat}, \emph{body weight} and \emph{blood pressure} (Cluster~1) \emph{alcohol consumption} and \emph{attentiveness disorder} (Cluster~2), and \emph{amount of sleep} (Cluster~6).
+%
+For the experts, these observations are a starting point for a number of new hypothesis about possible relationships, for example association between overweight and Cluster~1.
+%
+\\\\
+In summary it can be stated that hypothesis-driven analysis leads to hypothesis generation by design of the tool.
+%
+It is not designed to statistically validate hypothesis like statistical processors.
+%
+It rather triggers the analysis of potentially associated features with a pathology of interest.
+%Zusammenfassend kann gesagt werden, dass hypothesenanalyse und hypothesengenerierung durch das design des Tools hand in hand gehen, es istn icht dafür geeignet statistisch bis ins detail hypothesen zu validieren, sondern triggert eher die analyse potentiell assoziierter variablen, die später verfeinert werden.
+%
+%By introducing the \emph{gender} feature and selecting all male subjects it was shown, that Cluster 1, 2 and 6 pr
+%\emph{Multivariate analysis} using \emph{Cram\'{e}r's V} contingency values highlighted relationships of this cluster with joint degeneration, meat eating habits, preoccupation, back pain, neck or shoulder pain and waist circumference.
 
-\emph{Multivariate analysis} using \emph{Cram\'{e}r's V} contingency values highlighted relationships of this cluster with joint degeneration, meat eating habits, preoccupation, back pain, neck or shoulder pain and waist circumference.
-%
-Since the prior selection only yields subjects that report back pain, the pain indicators specify the pain localization for the subjects.
+% \paragraph{Analysis 3}
+% \com{ToDo: Needs to be rewritten}
+% \begin{figure}[htb]
+%  \centering
+%  %\includegraphics[width=1.5in]{figures/InteractionLoop}
+%  \includegraphics[width=3.5in]{figures/hypothesisbased}
+%  \caption{(a) Dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
+%  %
+%  Mean shapes between the groups show no difference.
+%  %
+%  (b) Shape-based clustering for all subjects who suffered from back pain yields 6 groups. 
+%  %
+%  Note that the difference in subject count is due to the missing shape information for some subjects.
+%  %
+% % The total count of subjects in (b) is smaller 
+%  }
+%  \label{fig:hypopthesisbased}
+% \end{figure}
+% %
+% In our use case, epidemiologists were interested in the dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
+% %
+% The mean shapes of the resulting visualization show no difference between the two groups (see Figure~\ref{fig:hypopthesisbased} (a)).
+% %
+% Either there are no differences or the variance information was lost in the mean shape calculation.
+% %
+% Since the focus is on subjects suffering from back pain, the clustering results of these subjects are then drawn into the canvas area, yielding six clusters as seen in Figure~\ref{fig:hypopthesisbased} (b).
+% %
+% Cluster 5 stood out for having a so-called \emph{hyperlordosis}, a strong curvature of the lumbar spine associated with back pain.
+% 
+% \emph{Multivariate analysis} using \emph{Cram\'{e}r's V} contingency values highlighted relationships of this cluster with joint degeneration, meat eating habits, preoccupation, back pain, neck or shoulder pain and waist circumference.
+% %
+% Since the prior selection only yields subjects that report back pain, the pain indicators specify the pain localization for the subjects.
+% 
+% It is well known that overweight is a risk factor for back pain.
+% %
+% While the BMI is a key figure for assessing height and weight of a subject, it does not tell anything about how the weight is distributed in the body.
+% %
+% Our epidemiological collaborators were interested in the correlation with waist circumference presented by this group.
+% %
+% Our finding follows the recent trends indicating that BMI is not a good measure for assessing the body shape, since healthy weight is dependent on many other measures \cite{Ahima2013}.
+% %
+% It indicates that the waist circumference rather than the BMI interacts with unusually shaped spines for subjects with lumbar back pain.
+% %
+% The influence of the parameter is now in the focus of further analysis.
 
-It is well known that overweight is a risk factor for back pain.
-%
-While the BMI is a key figure for assessing height and weight of a subject, it does not tell anything about how the weight is distributed in the body.
-%
-Our epidemiological collaborators were interested in the correlation with waist circumference presented by this group.
-%
-Our finding follows the recent trends indicating that BMI is not a good measure for assessing the body shape, since healthy weight is dependent on many other measures \cite{Ahima2013}.
-%
-It indicates that the waist circumference rather than the BMI interacts with unusually shaped spines for subjects with lumbar back pain.
-%
-The influence of the parameter is now in the focus of further analysis.
-
-\com{00.46 Second: Analysis of Female subjects via clustering, selction of cluster 2, analysis using Body weight and Age. Clustering Result if 1 gives large distance between other subjects. 00.49 How are can the differences be explained?}
-\com{00.46 Feedback Body-Size/Body weight. Some features are sparse, suggestion was made to use quantile/quintile, resulting in equally occupied results. This also depends on what the user is intersted in - for clinical use the outliers may be interesting (57.30). (58.30) From perspective of a radiologists, quartile and quintiles make sense when establishing reference values for diseases; clinical relevant parameter, einflussfaktoren oder risikofaktoren zu identifizieren, je nach dem welche hypothese man verwendet.}
+%\com{00.46 Second: Analysis of Female subjects via clustering, selection of cluster 2, analysis using Body weight and Age. Clustering Result if 1 gives large distance between other subjects. 00.49 How are can the differences be explained?}
+%\com{00.46 Feedback Body-Size/Body weight. Some features are sparse, suggestion was made to use quantile/quintile, resulting in equally occupied results. This also depends on what the user is intersted in - for clinical use the outliers may be interesting (57.30). (58.30) From perspective of a radiologists, quartile and quintiles make sense when establishing reference values for diseases; clinical relevant parameter, einflussfaktoren oder risikofaktoren zu identifizieren, je nach dem welche hypothese man verwendet.}
 
 % ---------------------------------------------------------------------------------------------------------
-\subsection{Further Feedback and Lessons Learned}
-\com{ToDo: Noch einmal auf die VDAR Results eingehen}
+\subsection{Further Feedback and Lessons Learned} \label{Lessons Learned}
 %\com{ToDo: Lessons Learned der einzelnen Cases - Fokus bei Hypothesenfreier Analyse muss etwa eine gute Übersichtsvisualisierung sein, da es genau das ist was den Epidemiologen hierzu im Moment fehlt}
 %
 Both domain experts concluded positively over the benefits of the \emph{IVA} approach when analyzing image based cohort study data.
@@ -1263,20 +1326,23 @@ One expert emphasized the way the image data is included into information visual
 %
 The domain experts see another great potential in communicating insights efficiently using the presented visualizations \com{(1.08)}.
 %
-The experts proposed to improve the visual comparison between image data representations by abstracting them into representative land marks, such as centers of the vertebrae and cardinal points of the lumbar spine canal.
-%
 \paragraph{Multivariate analysis is most important for hypothesis generation.}
 Both experts emphasized the potential of the \emph{multivariate analysis} capabilities of the adjacency matrix for getting insight into a large amount of features simultaneously.
 %
 It is also useful to verify established but still controversial risk factors, such as the metabolic syndrome for coronary heart disease and whether the data set provides even more suitable risk factors \com{(39.32)}.
 %
 Creating adjacency matrices for sub groups, such as different age bins can help to characterize the aging process by deriving age-specific risk factors.
+
+\emph{Multivariate analysis} can also be improved by more ways of brushing the data as well as creating sub groups for comparison as a result of the hypothesis-driven analysis case.
+%
+To small feature ranges resulting in very sparse groups could potentially hinder the ability to calculate statistical resilient measures, since they require a minimum amount of subjects exhibiting the selected feature ranges.
+%This also has to respect the number of subjects available for epidemiological studies
 %
 %\paragraph{Hypothesis driven analysis would benefit from more advanced grouping.}
 %While the existing brushing and linking techniques already allow the comparison of image data 
-\com{(TODO weitere Unterteilung der Variablen und anschließende Anbindung an Statistik Tools)}
+%\com{(TODO weitere Unterteilung der Variablen und anschließende Anbindung an Statistik Tools)}
 
-\paragraph{Segmenation quality is crucial.}
+\paragraph{Segmentation quality is crucial.}
 The radiologist pointed out the unusual strong similarity of the L3 vertebrae throughout the population.
 %
 The medical explanation is that it represents a angular point of curvature of the lumbar spine.
@@ -1288,8 +1354,10 @@ The experts also emphasized that associations related to shape strongly depend o
 The lumbar spine model used in this case study captures deformation of the spine canal well, but lacks precise definition in vertebrae height and shape.
 %
 Since deformation of the spine canal is commonly the last pathological stage of pathological lumbar spine deformation and is preceded by vertebrae deformation, the system would strongly benefit from more precise segmentation results capturing these prior changes.
+%
+For the visual comparison itself, the radiologist proposed an abstraction the representation them into representative land marks, such as centers of the vertebrae and cardinal points of the lumbar spine canal.
 
-\paragraph{Usage of different Categorizations depending on expected outcome.}
+\paragraph{Usage of different categorizations depending on expected outcome.}
 When categorizing numerical variables into equal groups it is possible to create very sparse categories due to outliers, for example when analyzing body weight.
 %
 These outliers are of high interest for finding pathological subjects, but not wanted when new parameters describing risk factors are established.
@@ -1305,6 +1373,13 @@ The web-based approach for both implementing the prototype as well as getting fe
 Since the software does not need to be compiled, small changes can even be made on the fly during a testing session.
 %
 The large data base associated with image based epidemiological data remains on the server machine and has not to be moved tediously using external hard disks.
+%
+This approach is well suited for the \emph{VDAR} approach to assess user thought processes using the think aloud technique.
+%The \emph{VDAR} approach to assess user thought processes using the think aloud technique worked well with the web-based approach for both implementing the prototype as well as getting feedback via voice over ip conference calls worked very well.
+\\\\
+Since it is an entirely different approach to their usual workflows which are heavily influenced by statistical tools, it is to highlight that they had fun browsing through the data set in the presented manner and to dig out new information about the data.
+%
+This underlines the accessibility of \emph{IVA} tools, which amplifies the natural curiosity of the domain experts in complex medical feature associations.
 %\com{ToDo Fazit über Web-Austausch, das Experten begeistert davon waren und dass es hervorragend funktioniert. Kleine Änderungen können sogar live programmiert werden ohne das etwas neu kompiliert werden muss (hier wäre ein Beispiel nett, z.B. Größe der Schrift irgendwo. Außerdem bringt der Browser viele Funktionen mit, wie z.B. die Suchfunktionen.)}
 %She also pointed out the benefits of an automatic categorization of the subjects into shape groups.%$$, which allows for even faster comparison.
 %\com{Employ a more abstract visualization of the spine to capture reliable information and enable better comparison between subjects}
@@ -1575,6 +1650,7 @@ Shape-based clustering assesses the variability of a anatomical structure in the
 
 Our clinical partners from the \texttt{SHIP} are for the first time able to assess shape information of the lumbar spine and its influence to diseases.
 %
+\com{This needs to be adjusted to fit the new Application section}
 Findings from analyzing lumbar back pain using the \emph{IVA} approach range from deriving shape-based groups of subjects to detailed description of features potentially associated with the disease, such as waist circumference, thyroid nodules and blood fat values.
 %
 Other somatometric features, such as BMI, are not as influential as expected.

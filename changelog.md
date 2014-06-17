@@ -4,6 +4,7 @@ Changelog
 ToDo Submission:
 * Remove Packages
 * remove the keyword "Visualization System and Toolkit Design"
+* Cramers V Contingency Values are calles "Contingency Pane"
 
 Chapter 3 - Epidemiological Data
 --------------------------------
@@ -20,6 +21,10 @@ Background
 Implementation
 --------------
 * Due to the lack of space we did not expand the `Implementation` section. Also Reviewer 2 and Reviewer 1 made contrary statements about whether the section should be extended or shortened.
+
+Evaluation
+----------
+* We conducted an evaluation with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
 
 Minor
 -----
