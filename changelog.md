@@ -1,6 +1,8 @@
 ToDo Fragen
 
 * Bernhard möchte "qualitative case study" in "qualitative evaluation" umbenennen. Bekommen wir dann nicht Probleme, weil wir mit dem Wort Evaluierung den Mund vielleicht etwas zu voll nehmen?
+	* Antwort: Wir sollten bereits von begin an davon sprechen, dass wir Back Pain als Case für unser Programm verwenden. Am Ende: Weitere in Aussicht!
+	* Qualitative Case Study streichen - nur von Case Study sprechen!
 
 Changelog
 =========
@@ -14,9 +16,10 @@ Abstract
 --------
 The abstract was shortened as requested by Reviewer 3, moving parts into the introduction.
 
-Chapter 3 - Epidemiological Data
---------------------------------
-Enhanced former subjection "2.2 Epidemiological Data" as requested by the primary reviewer and promoted it to be a section on its own.
+Epidemiological Data (TODO: "Three points () < updaten")
+--------------------
+(Enhanced former subjection "2.2 Epidemiological Data" as requested by the primary reviewer and promoted it to be a section on its own.).
+Reviewer 1 missed a section focusing on the data and challenges about them. The Reviewer also pointed out, that there is information about the data at three points (2.2, 4.1, 5.2).
 
 Fig. 3
 ------

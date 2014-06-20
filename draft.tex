@@ -234,7 +234,7 @@ We applied our approach to a data set compiled to analyze diseases related to th
 %
 This data set comprises 127 features and 2 sequences of MRI data from 2,333 patients.
 %
-\add{We implement the presented methods using modern web technologies, such as \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}, making them easily accessible for the domain experts.
+\add{We implemented the presented methods using modern web technologies, such as \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}, making them easily accessible for the domain experts.
 %
 This aims to trigger a fast feedback loop between us and the epidemiologists.}
 
@@ -317,9 +317,25 @@ Statistical tools such as \texttt{SPSS}\footnote{Product of IBM; \url{http://ibm
 %
 Graphic data representation is largely used to present results rather than gaining insight.
 	
-\section{Epidemiological Data} \label{EpidemiologicalData}
+\subsection{Epidemiological Data} \label{EpidemiologicalData}
 \com{Primary Reviewer Feedback: Another weakness is on the data analysis; while there is information about the data within the text (including 2.2, 4.1, and 5.2) I would like to see a section that focuses on the data and the challenges thereof.
 This chapter needs to be enhanced! Maybe own section!}
+\begin{itemize}
+	\item \com{OpenRefine erwaehnen? Wurde von uns ja nicht mehr verwendet}
+	\item \com{"I was unsure which type of Image data you had - a better description and the analysis of the data would help here"}
+	\item \com{Export from SPSS to CSV/JSON - "How do you ensure the semantics of the data is carried over (e.g. for ordinal data)"}
+\end{itemize}
+\add{Access to epidemiological data is limited and usually controlled by ethics committees.
+%
+Large studies, such as the SHIP require written proposals reasoning about each requested features and the expected outcome.
+%
+Since the number of features and modalities is steadily increasing, the epidemiological community is aware of the lack of specialized analysis methods, making an acceptance more likely.
+%In our experience, the applying for a large amount of features required for a \underline{IVA} system requires 
+%
+Due to the high sensibility of the data, all identity revealing information of a person, such as name or place of residence is anonymized.
+}
+% --- PARAGRAPH ---
+
 Epidemiological data are highly heterogenous and incomplete.
 %
 Information about medical history and examinations, genetic conditions, geographical data, questionnaire results and image data yield a complex data space for each subject.
@@ -337,7 +353,7 @@ Dichotomous data can also be derived by aggregating features to yield only two m
 %
 Medical examinations mostly comprise categorical (e.g. levels of back pain) and continuous values (e.g. age or body size).
 
-\subsection{Image acquisition} \label{ImageAcquisition} Imaging techniques involving ionizing radiation for the subject are not suitable for ethical reasons.
+\subsubsection{Image acquisition} \label{ImageAcquisition} Imaging techniques involving ionizing radiation for the subject are not suitable for ethical reasons.
 %
 Therefore, MRI is the main method for collecting cohort study imaging data.
 %
@@ -348,7 +364,10 @@ This often yields image resolutions inferior to those of clinical day-to-day pra
 %The equipment used to gather medical image data is not updated or changed during a longitudinal study to ensure comparability in and between acquisition cycles.
 The equipment used to gather medical image data is \rem{kept, if possible, on the initial software and hardware version} \add{not updated or changed} during a longitudinal study to ensure comparability in and between acquisition cycles.
 
-\subsection{Image analysis} \label{ImageAnalysis} Decisions have to be made on how image data are \emph{compared} and \emph{quantified}.
+\subsubsection{Image analysis} \label{ImageAnalysis}
+\com{Take up huge amount of space!}
+%
+Decisions have to be made on how image data are \emph{compared} and \emph{quantified}.
 %
 Segmentation masks representing the voxels of an anatomical structure would be ideal, since many different key figures, e.g., volume, largest diameter or aspect ratio, can be derived from them.
 %
@@ -369,14 +388,6 @@ Morphometric information from landmarks comprises thickness, diameter or length 
 % - DATA TYPES\\
 % 	- dichotomous data\\
 % \\
-% - Missing Data\\
-% - Follow-Up Questions?\\
-% - grouping essential\\
-% - problems when analyzing image data\\
-% 	- what are Problems there\\
-% 	- how can shape be included?\\
-% 	- show image data of multiple subjects
-
 
 \subsection{The Study of Health in Pomerania (SHIP)}
 After the pioneering Rotterdam study (started in 1990), several MR imaging study initiatives have evolved.
@@ -399,6 +410,29 @@ The protocols for examining the subjects between \texttt{SHIP} and \texttt{SHIP-
 %
 The overall examination time for each person attending the study is two days.
 
+% \subsection{Data Analysis Challenges}
+% The challenges of analyzing epidemiological data are diverse.
+% %
+% Risk factors of a disease are rarely limited to one epidemiological feature and most often feature combinations.
+% %
+% Confounding effects between these features need to be identified and eliminated, which requires large experience of the experts.
+% %
+% Analyzing large heterogenous feature spaces is difficult due to missing techniques providing \emph{overview visualizations}, forcing epidemiologists to stick to their hypothesis-driven workflow described in Section~\ref{EpidemiologicalWorkflow}.
+%
+% Another great problem is how image data is analyzed in context with non-image data.
+% %
+% Epidemiological use of image data is for the most part restricted
+
+% - Missing Data\\
+% - Follow-Up Questions?\\
+% - grouping essential\\
+% - problems when analyzing image data\\
+% 	- what are Problems there\\
+% 	- how can shape be included?\\
+% 	- show image data of multiple subjects
+% ---------------------------------------------------------------------------------
+% ----------------------------------- Section -------------------------------------
+% ---------------------------------------------------------------------------------
 \section{Prior and Related Work}
 Designing a visualization, which conveys all data aspects equally, is challenging.
 %
@@ -621,13 +655,19 @@ Data obtained using questionnaires or medical tests are often stored using stati
 %
 Exporting the data in the respective tool to a CSV file and then converting it to file types that are easily manageable, such as JSON or XML, makes it readable for all modern programming languages.
 %
-This can be achieved by using data wrangling tools such as \texttt{OpenRefine}\footnote{Developed by Google, Open Source; \url{http://openrefine.org}}, which also validate the data (find missing data, clean up bad formatting, transform scales).
+%This can be achieved by using data wrangling tools such as \texttt{OpenRefine}\footnote{Developed by Google, Open Source; \url{http://openrefine.org}}, which also validate the data (find missing data, clean up bad formatting, transform scales).
 %
-%Including the data dictionary, which stores information about each manifestation of a feature, helps to get a detailed description of data variables and the meaning and unit of measurement of their values.
-%A data dictionary stores information about each manifestation of a feature and is stored as lookup table to get a detailed description of data variables and the meaning and unit of measurement of their values
 A data dictionary stores information about each manifestation of a feature.
 %
 Detailed description of data variables, its meaning as well as unit of measurement are stored as a lookup table.
+%
+\add{
+Since it lacks export methods for data dictionaries, we used \texttt{SPSS} to export our data to the 'SAS v9+' format, which writes out the data labels and saved the data values as non-labeled CSV.
+%
+A short script combined both data sources to a JSON file.
+%
+The data types had to be transferred manually.
+}
 %Exporting the data dictionary, which stores information about each manifestation of a feature, is also an important step to get a detailed description of data variables and the meaning and unit of measurement of their values.
 %
 Missing data are denoted using error codes indicating their cause ranging from ethical to medical and personal issues (recall Subsection~\ref{EpidemiologicalData}).
@@ -670,7 +710,13 @@ Morphometric features are derived to allow for statistical comparison of the tis
  % \includegraphics[width=3.5in]{figures/visualization}
  %\includegraphics[width=1\textwidth]{figures/visualization}
  \includegraphics[width=1\textwidth, resolution=300]{figures/visualization}
- \caption{\com{Add: Explanation of the color coding}(Left) Screenshot from the front-end, which is divided as follows: (a) The sidebar containing all features as well as the groups defined in the analysis process; (b) the canvas area where features can be added via drag and drop and the visualization can be chosen automatically according to the data type; (c) the interactive pivot table showing the exact numbers for each displayed feature combination. The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop. Dropping the \emph{gender} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
+ \caption{\com{Add: Explanation of the color coding, ToDo: Selektion in Abbildung 3 einbauen und daran Selektion erklären}
+ %
+ (Left) Screenshot from the front-end, which is divided as follows: (a) The sidebar containing all features as well as the groups defined in the analysis process; (b) the canvas area where features can be added via drag and drop and the visualization can be chosen automatically according to the data type; (c) the interactive pivot table showing the exact numbers for each displayed feature combination.
+ %
+ The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop.
+ %
+ Dropping the \emph{gender} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
  }
  \label{fig:visualization}
 \end{figure*}
@@ -729,16 +775,16 @@ In the following sections we present the different parts of our proposed \emph{I
 % \subsection{System Structure and Design} \label{Structure and Workflow}
 \subsection{ToDo Rename.System Structure and Design} \label{Structure and Workflow}
 % \begin{itemize}
-% 	\item [?] Was sind die requirements des tools?
-% 	\item [?] how it was decided to create this particular design
-% 	\item which kind of User interaction was made?
-% 	\item Spezielle Anforderungen durch Webseitenformat, weggehen von allgemeinen UI Elementen wie Menubar, keine Rechtsklickmenüs.
-% 	\item Entschieden eine saubere UI zu bauen, Unterscheide durch Whitespace akzentuieren. Interface in Fig. 3 zu sehen.
-% 	\item Wie wird interagiert, wie wird gebrusht, was wird gelinkt?
-% 	\item wie wird das Clustering initialisiert?
+% 	\item [x] Was sind die requirements des tools?
+% 	\item [x] how it was decided to create this particular design
+% 	\item [x] which kind of User interaction was made?
+% 	\item [x] Spezielle Anforderungen durch Webseitenformat, weggehen von allgemeinen UI Elementen wie Menubar, keine Rechtsklickmenüs.
+% 	\item [x] Entschieden eine saubere UI zu bauen, Unterscheide durch Whitespace akzentuieren. Interface in Fig. 3 zu sehen.
+% 	\item [x] Wie wird interagiert, wie wird gebrusht, was wird gelinkt?
+% 	\item [x] wie wird das Clustering initialisiert?
 % 	\item auf Kontingenzmatrix mit verweisen als Teil des Interfaces (dieses auch noch anpassen)
 % \end{itemize}
-Early it became that we have to rely a lot on online communication with our clinical partners due to their busy schedule and our large spatial distance towards each other.
+Early it became clear that we have to rely a lot on online communication with our clinical partners due to their busy schedule and our large spatial distance towards each other.
 %
 Hence we build our system using modern web technologies, described in detail in Section~\ref{implementation}.
 %
@@ -763,7 +809,7 @@ We divide the workspace into four major parts, as illustrated in Figure~\ref{fig
 	%
 	\item The interactive \emph{pivot table} gives detailed numerical information of the features in the canvas view. This view on the data comes natural to epidemiologists.
 	%
-	\item The \emph{contingency view} depicts relations for features in the canvas in an adjacency matrix.
+	\item The \emph{contingency view} depicts relations for features in the canvas in an adjacency matrix and a \emph{contingency list}.
 \end{itemize}
 
 \paragraph{System Layout}
@@ -825,7 +871,18 @@ Mapping the distance from a group mean shape to the global mean using color allo
 This is an important information to the epidemiologist, because until now they were not able rapidly validate shape differences based on non-image features.
 %
 If a feature is dropped on an existing plot, the visualization changes dynamically to properly make them comparable (Figure~\ref{fig:visualization} (right)).
+% --- PARAGRAPH ---
+
+Subject groups can be brushed via a double-click on it's representative in the visualizations.
 %
+Holding down the shift key allows to select multiple manifestations at once.
+%
+Brushed groups act as reference for the shape-visualization, calculating distances based on the mean-shape of the brushed selection.
+%
+%This allows to highlight distances between subjects
+The share of subjects of this sub group is linked to all other views (Figure~\ref{fig:visualization} (left)).
+%
+If the user for example selects all female subjects in a visualization of gender distribution, all other displayed meshes are color coded with their distance to the female mean and the share of female subjects is highlighted in the information visualization.
 %Elements can be brushed using 
 %Each plot can be brushed using widgets.
 %
@@ -889,8 +946,19 @@ Contingency is visualized using an interactive adjacency matrix with association
 The distinction whether an association is a confounder or an effect, depends on the context defined by the hypothesis and is a decision to be made by the domain expert.
 %
 The contingency matrix visualization is an appropriate \emph{overview} visualization, something the epidemiological community lacks and is in great need of.
-%\com{Contingency Matrix excellent for Overview}
-\paragraph{Initialization and Interaction}
+
+\paragraph{Contingency Pane}
+Dropping a feature into the canvas area adds an entry for each manifestation of it to the \emph{contingency matrix}.
+%
+Testing sessions revealed that it was very tedious to open the matrix every time a new feature is added. 
+%A simple list of features, which correlate with the last added feature.
+%
+The result was the \emph{contingency pane}, a table containing correlating features for the last added visualizations in descending order of the \emph{Cram\'{e}r's V} value.
+%
+\emph{Contingency pane} entries can be dragged and dropped into the \emph{canvas area} just like features in the \emph{sidebar}.
+% Build after user request
+%
+\paragraph{Initialization and Clustering}
 Using feature suggestion allows to initialize the system with a set of potentially interesting. visualizations.
 %
 After testing and domain expert feedback we dropped this idea.
@@ -900,10 +968,13 @@ Reasons for this are twofold.
 Very often are high correlations obvious, such as gender with menstrual status.
 %
 Also, we observed that the variables of interest is dependent on the specialization of the domain expert (explained in detail in Section~\ref{application}).
+% --- PARAGRAPH ---
 
 Subject clustering is triggered automatically for each variable after it was added to the canvas by the user.
 %
 A status indicator at the bottom of the screen keeps the user informed about the pending clustering result, since the process can take up to ten seconds.
+%
+Clustering result are listed in their own category in the \emph{sidbar}.
 %Since a clustering process can take up to ten seconds, a status indicator at the bottom of the screen keeps the user informed.
 %
 %\com{Clustering also automatically triggered}
