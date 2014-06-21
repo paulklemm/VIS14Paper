@@ -3,6 +3,7 @@ ToDo Fragen
 * Bernhard möchte "qualitative case study" in "qualitative evaluation" umbenennen. Bekommen wir dann nicht Probleme, weil wir mit dem Wort Evaluierung den Mund vielleicht etwas zu voll nehmen?
 	* Antwort: Wir sollten bereits von begin an davon sprechen, dass wir Back Pain als Case für unser Programm verwenden. Am Ende: Weitere in Aussicht!
 	* Qualitative Case Study streichen - nur von Case Study sprechen!
+* Nach Variables suchen und schauen, ob man es durch Features ersetzen kann
 
 Changelog
 =========
