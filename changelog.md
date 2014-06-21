@@ -15,27 +15,33 @@ ToDo Submission:
 
 Abstract
 --------
-The abstract was shortened as requested by Reviewer 3, moving parts into the introduction.
 
-Epidemiological Data (TODO: "Three points () < updaten")
+* [Reviewer 3] The abstract was shortened as requested by Reviewer 3, moving parts into the introduction.
+
+Epidemiological Data
 --------------------
-(Enhanced former subjection "2.2 Epidemiological Data" as requested by the primary reviewer and promoted it to be a section on its own.).
-Reviewer 1 missed a section focusing on the data and challenges about them. The Reviewer also pointed out, that there is information about the data at three points (2.2, 4.1, 5.2).
+
+* [Reviewer 1] Reviewer 1 requested more details about the data and the challenges thereof.
+	* We enhanced Section '2.2 Epidemiological Data' with challenges associated with epidemiological data.
+	* Section '6.1 The Lumbar Spine Data Set' now describes the data in more detail.
 
 Fig. 3
 ------
 
-* Reviewer 2 noted that "In Figure 3 left there are 4 body size groups but on the right and in  the small image above the arrow there are only 3 groups." This is due to the the mapping on gender, the size-group 139-153.5 cm is only populated by women, while 182.5-197 contains only men.
+* [Reviewer 2] Reviewer 2 noted that "In Figure 3 left there are 4 body size groups but on the right and in  the small image above the arrow there are only 3 groups." This is due to the the mapping on gender, the size-group 139-153.5 cm is only populated by women, while 182.5-197 contains only men.
 
 Background
 ----------
 
-* Information about `Simpsons Paradox` added. Reviewer 2 pointed out a possible relation between confounders and Simpsons Paradox. The Reviewer is right, since Simpsons Paradox is a very extreme case of a confounder (http://www.bmj.com/content/309/6967/1480).
+* [Reviewer 2] Information about `Simpsons Paradox` added. Reviewer 2 pointed out a possible relation between confounders and Simpsons Paradox. The Reviewer is right, since Simpsons Paradox is a very extreme case of a confounder (http://www.bmj.com/content/309/6967/1480).
 
 Implementation
 --------------
 
 * Due to the lack of space we did not expand the `Implementation` section. Also Reviewer 2 and Reviewer 1 made contrary statements about whether the section should be extended or shortened.
+* [Reviewer 3] The R shiny package does allow to use R code on the web, but in a very closed manner, you have to use their System (and ideally the RStudio IDE) to make this work. If you are interested in usages of R in a web context outside of Shiny, you can have a look at (RServe)[http://rforge.net/Rserve/]. I made an interface a year ago for RServe to Node.js, but its more a proof of concept thing (https://github.com/Powernap/rserve-js-Interface). For this work it was way easier though to implement the statistics algorithms from scratch, eliminating the need to work with another local server, like RServe.
+    * These possibilities are now denoted in the Implementation section.
+  [Reviewer 3] The reviewer suggested a note on the browser compatibility. Our system works fine with all modern browser, including Opera. Therefore we did not differentiate between the different browsers. We added a note in the text, that the user needs an updated browser to use the framework.
 
 Case Study
 ----------

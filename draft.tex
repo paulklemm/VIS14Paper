@@ -110,7 +110,7 @@ We propose an Interactive Visual Analysis (\emph{IVA}) approach that enables epi
 %
 This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D shape renderings with epidemiological data representations such as pivot tables and key figures as association measures.
 %(Validation).
-The presented concepts are applied expert-guided to gather and evaluate hypotheses about the aging process of the lumbar spine.
+The presented concepts are applied by experts to gather and evaluate hypotheses about the aging process of the lumbar spine.
 %
 %(Results). 
 It allows a more flexible comparison between image and non-image data.
@@ -744,9 +744,7 @@ Morphometric features are derived to allow for statistical comparison of the tis
 %-------------------------------- /Figure -------------------------------
 Our proposed \emph{IVA} workflow consists of three major steps as illustrated in Figure~\ref{fig:InteractionLoop}: Feature selection, visualization and brushing.
 %
-A hypothesis-driven analysis usually starts with the selection of features.
-%
-A feature selection derived from a shape-based clustering, which creates shape groups.
+A hypothesis-driven analysis usually starts with the selection of features, or shape groups derived from a shape-based clustering.
 %
 \emph{Hypothesis generation} with focus on image data starts with a shape-based clustering.
 %
@@ -824,13 +822,13 @@ Since the previously described \emph{IVA} workflow allows for many different way
 % \subsubsection{System Structure}
 We divide the workspace into four major parts, as illustrated in Figure~\ref{fig:visualization} and \ref{fig:similarity}.
 \begin{itemize}
-	\item The \emph{canvas} holding all visualizations. Elements can be added, arranged, resized and removed freely.
+		\item The \emph{sidebar}, which contains all epidemiological features. As cluster results group features like categorical features and are part of the sidebar as well (\add{Fig.~\ref{fig:visualization} (a)}).
 	%
-	\item The \emph{sidebar}, which contains all epidemiological features. As cluster results group features like categorical features and are part of the sidebar as well.
+	\item The \emph{canvas} holding all visualizations. Elements can be added, arranged, resized and removed freely (\add{Fig.~\ref{fig:visualization} (b))}.
 	%
-	\item The interactive \emph{pivot table} gives detailed numerical information of the features in the canvas view. This view on the data is familiar to epidemiologists.
+	\item The interactive \emph{pivot table} gives detailed numerical information of the features in the canvas view. This view on the data is familiar to epidemiologists (\add{Fig.~\ref{fig:visualization} (c)}).
 	%
-	\item The \emph{contingency view} depicts relations for features in the canvas in an adjacency matrix and a \emph{contingency list}.
+	\item The \emph{contingency view} depicts relations for features in the canvas in an adjacency matrix (\add{Fig.~\ref{fig:similarity}}) and a \emph{contingency list}.
 \end{itemize}
 
 \paragraph{System Layout}
@@ -912,7 +910,7 @@ If the user for example selects all female subjects in a visualization of gender
 \paragraph{Pivot Tables.}
 Pivot tables are frequently used to present the data in epidemiological publications.
 %
-Epidemiologists are used to process groups based on table representations.
+Epidemiologists are used to analyze groups based on table representations.
 %
 Thus, we decided to introduce an interactive pivot table.
 %
@@ -1032,7 +1030,13 @@ In addition to the obvious advantages of web technologies, the following aspects
 \end{itemize}
 These advantages do not come without drawbacks.
 %
-Due to missing ports of sophisticated and specialized libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{http://vtk.org}} or \texttt{R}\footnote{Open Source; \url{http://r-project.org}} for statistics, many standard methods need to be written from scratch.
+Sophisticated libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{http://vtk.org}} or \texttt{R}\footnote{Open Source; \url{http://r-project.org}} for statistics, are either not available at all or only accessible through complex client-server systems.
+%
+Therefore, many standard methods had to be written from scratch.
+%
+\add{The user needs a fully updated modern web browser, which supports these new technologies, such as WebGL.}
+%Due to missing ports of sophisticated and specialized libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{http://vtk.org}} or \texttt{R}\footnote{Open Source; \url{http://r-project.org}} for statistics, many standard methods need to be written from scratch.
+%Due to missing ports of sophisticated and specialized libraries/languages, such as the \texttt{Visualization Toolkit} (\texttt{VTK})\footnote{Developed by Kitware Inc; \url{http://vtk.org}} or \texttt{R}\footnote{Open Source; \url{http://r-project.org}} for statistics, many standard methods need to be written from scratch.
 %
 
 The back-end is written using \texttt{NodeJS}\footnote{Developed by Joyent Inc, \url{http://nodejs.org}}, which is based on the Google V8 Javascript runtime environment.
@@ -1089,7 +1093,11 @@ Characterizing the healthy aging process of the spine is a long-term goal for de
 \subsection{The Lumbar Spine Data Set}
 We divide the data set into image and non-image data.
 %
-There are 127 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features.
+\add{
+There are 127 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features for 6.753 subjects (4.420 from \texttt{SHIP-Trend-0} and 2.333 from \texttt{SHIP-2}).
+%
+Since data acquisition protocols between these two cohorts are identical, the features between the two cohorts are comparable.
+}
 %
 \add{The data contains 30 metric, 7 nominal, 29 ordinal and 62 dichotomous epidemiological features.
 %
@@ -1107,10 +1115,11 @@ Therefore some manifestations are sparsely populated, which makes statistical ev
 }
 %
 
-The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
+The MRI image data was acquired for each subject on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
 %
-%The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
-The spine protocol consisted of sagittal T1- and T2-weighted turbo-spin-echo sequences with rather large slice distance only sufficient for characterizing the lumbar spine \cite{Hegenscheid2013}.
+\add{The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
+}
+%The spine protocol consisted of sagittal T1- and T2-weighted turbo-spin-echo sequences with rather large slice distance only sufficient for characterizing the lumbar spine \cite{Hegenscheid2013}.
 
 \subsubsection{Data Preprocessing} \label{application:Data Preprocessing}
 The data are preprocessed as described in Section~\ref{Data Preprocessing}.
@@ -1153,7 +1162,7 @@ The registered models capture resilient information about the shape of the lumba
 %
 Due to incorrect initialization, strongly deformed spines, contrast differences and artifacts, the model was not able to detect lumbar spines for all subjects.
 %
-We obtained and worked with 983 tetrahedron models of the lumbar spine.
+We obtained and worked with 2.540 tetrahedron models of the lumbar spine.
 %
 For clustering purposes, we extracted the centerline of the lumbar spine canal, which captures information about lordosis and scoliosis (the medical terms for spine curvature \cite{Klemm2013VMV}).
 
@@ -1537,257 +1546,6 @@ This approach is well suited for the \emph{VDAR} approach to assess user thought
 Since it is an entirely different approach to their usual workflows which are heavily influenced by statistical tools, it is to highlight that they had fun browsing through the data set in the presented manner and to dig out new information about the data.
 %
 This underlines the accessibility of \emph{IVA} tools, which amplifies the natural curiosity of the domain experts in complex medical feature associations.
-%\com{ToDo Fazit über Web-Austausch, das Experten begeistert davon waren und dass es hervorragend funktioniert. Kleine Änderungen können sogar live programmiert werden ohne das etwas neu kompiliert werden muss (hier wäre ein Beispiel nett, z.B. Größe der Schrift irgendwo. Außerdem bringt der Browser viele Funktionen mit, wie z.B. die Suchfunktionen.)}
-%She also pointed out the benefits of an automatic categorization of the subjects into shape groups.%$$, which allows for even faster comparison.
-%\com{Employ a more abstract visualization of the spine to capture reliable information and enable better comparison between subjects}
-%
-%Since many large population studies incorporate medical image data this gains importance.
-%\com{1.08 It was pointed out that this technique is also good for epidemiological publication because it is often more insigthfull to show these images instead of long tables.}
-
-%\com{Small User Interface Suggestions: Search-Bar for Subjects, making the elements of the contingency matrix selectable; See which Subject is currently selected}
-%\com{Enhancement contingency matrix: Display exact value of correlations, also information about distribution. More focus on this}
-%\com{Außerdem ein Anwendungsgebiet für die Matrix: Einschätzen metabolisches syndrom, eine Menge von Risikofaktoren die für Koronare Herzkrankheit Marker darstellen und die bereits länger in der Kritik sind. Hier kann getestet werden, ob es hierfür nicht bessere Indikatoren noch geben kann! (39.32)}
-%\com{Also mosaic plots can be incorporated for several sub groups to see where the main differences are (for different age groups to characterize age)}
-%\com{1.20 More exact segmentations are useful since curvature changes are often the last change happening in a pathological process, after local deformations of the vertebrae}
-
-
-% ---------------------------------------------------------------------------------------------------------------------------------------
-% ---------------------------------------------------------------------------------------------------------------------------------------
-% ---------------------------------------------------------------------------------------------------------------------------------------
-% \section{Old Application Section}
-% %
-% This section describes how our presented \emph{IVA} workflow is used for an epidemiological use case.
-% %
-% We applied the presented set of techniques to a data set compiled to analyze lower back pain. 
-% %
-% This is one of the most common reasons for an adult to see a physician in the Western civilization \cite{Backpain}.
-% %
-% Epidemiological analysis of lumbar back pain, such as the work of Harreby et al. \cite{Harreby1996}, is largely focused on non-image information.
-% %
-% In comparable studies, only a few shape-related features are included \cite{Lang2011}.
-% %
-% To our knowledge, this is the first approach, where shape-related information of the whole lumbar spine is analyzed along with other epidemiological features.
-% %
-% Determining risk factors in this area can lead to \cite{Fletcher2012}:
-% \begin{itemize}
-% 	\item a better understanding of effects of preventive measures such as occupational health and safety regulations,
-% 	\item prognostic features for diagnosis and treatment of lumbar back pain, and
-% 	\item determination of particularly affected risk groups.
-% \end{itemize}
-% % Determining risk factors in this area can lead to \cite{Fletcher2012} (evtl. weglassen, Dopplung bei Epidemiological Background?):
-% % \begin{itemize}
-% % 	\item a better understanding of effects of preventive measures such as occupational health and safety regulations
-% % 	\item prognostic features for diagnosis and treatment of lumbar back pain
-% % 	\item determination of particularly effected risk groups
-% % \end{itemize}
-% %
-% Characterizing the healthy aging process of the spine is a long-term goal for determining age-normalized probabilities for spine-related diseases by incorporating individual risk factors.
-% 
-% Data confidentiality and ethical reasons prohibit us from accessing the complete \texttt{SHIP} feature space.
-% %
-% Our epidemiological collaborators compiled a feature list, which is a tradeoff between complexity and limitations of the responsible ethics committee.
-% %
-% \subsection{The Lumbar Spine Data Set}
-% We divide the data set into image and non-image data.
-% %
-% There are 127 features describing diagnosed diseases, lifestyle factors, women-specific factors, pain indicators, laboratory values and somatometric features.
-% %
-% The image data was acquired on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
-% %
-% %The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence (676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
-% The spine protocol consisted of sagittal T1- and T2-weighted turbo-spin-echo sequences with rather large slice distance only sufficient for characterizing the lumbar spine \cite{Hegenscheid2013}.
-% 
-% \subsection{Data Preprocessing} \label{application:Data Preprocessing}
-% The data are preprocessed as described in Section~\ref{Data Preprocessing}.
-% %
-% \paragraph{Non-Image Data.} 
-% 
-% To ensure a fast and easy data access outside of statistical processors like \texttt{SPSS}, the data was exported to the JSON file format.
-% %
-% Each feature is stored as an object containing: 
-% \begin{itemize}
-% 	\item the data as array of values--categorical data and error codes are stored using IDs,
-% 	\item the data type (continuous, nominal, ordinal, dichotomous),
-% 	\item a detailed description of the feature, and
-% 	\item the data dictionary translating value or error IDs to the actual values.
-% \end{itemize}
-% %
-% % Binning: https://www.researchgate.net/post/What_metric_best_captures_the_information_loss_when_binning_a_large_data-set_into_a_histogram_representation
-% Continuous variables are discretized to allow for \emph{Cram\'{e}r's V} contingency coefficient assessment.
-% %
-% In consultation with the collaborating epidemiologists, we set the number of groups to five, to allow for contingency assessment.
-% 
-% \paragraph{Image Data.} \label{Image-Data}
-% The lumbar spine was detected in the image data using a hierarchical finite element method by Rak et al. \cite{Rak2013}.
-% %
-% This semi-automatic method requires the user to initialize the tetrahedron-based finite element models (FEM) with a click on the L3 vertebra.
-% %
-% Two user-defined landmarks on the top and bottom of the L3 vertebra are used to obtain an initial height estimation of the model.
-% %
-% It uses a weighted sum of T1- and T2-weighted MR images to detect the lumbar spine shape.
-% %
-% The registered models capture resilient information about the shape of the lumbar spine canal as well as the position of the L1-L5 vertebrae \cite{Klemm2013VMV}.
-% %
-% Due to incorrect initialization, strongly deformed spines, contrast differences and artifacts, the model was not able to detect lumbar spines for all subjects.
-% %
-% We obtained and worked with 983 tetrahedron models of the lumbar spine.
-% %
-% For clustering purposes, we extracted the centerline of the lumbar spine canal, which captures information about lordosis and scoliosis (the medical terms for spine curvature \cite{Klemm2013VMV}).
-% 
-% \subsection{Shape Visualization and Clustering}
-% %
-% The tetrahedron-based detection model described in Section~\ref{application:Data Preprocessing} consists of corresponding grid points for each structure instance.
-% %
-% This allows for calculation of shape distance and similarity.
-% %
-% This information is used to calculate mean shapes as described in Section~\ref{Interaction- and Visualization Techniques}.
-% 
-% Shape distance is mapped onto color.
-% %
-% For dichotomous variables, the color codes distances between mean shapes of the two groups, for variables with more than two manifestations it encodes the distance to the global mean shape of all subjects (see Figure~\ref{fig:hypothesisfree}).
-% \\\\
-% Shape-based clustering is carried out via agglomerative hierarchical clustering of the spine canal centerlines (recall Section~\ref{application:Data Preprocessing} and \cite{Klemm2013VMV}).
-% %
-% Since the ``correct'' number of clusters in a given group is unknown, an estimate is computed by means of the knee/elbow method \cite{Salvador2004}.
-% %
-% The method has proven to produce sound results on a preliminary data set and was able to reproduce textbook knowledge \cite{Klemm2013VMV}.
-% 
-% \subsection{Exploratory Analysis of the Lumbar Spine Data Set}
-% %
-% Expert-guided analysis assessed the suitability of our approach for supporting both hypothesis-free analysis as well as hypothesis generation. 
-% %
-% The use of \emph{IVA} patterns as presented in Section~\ref{Image Centric Cohort Study Data in Interactive Visual Analysis Context} is denoted accordingly.
-% %
-% \subsubsection{Hypothesis-Free Analysis} \label{Hypothesis free Analysis}
-% \begin{figure}[htb]
-%  \centering
-%  %\includegraphics[width=1.5in]{figures/InteractionLoop}
-%  \includegraphics[width=3.5in]{figures/hypothesisfree}
-%  \caption{(a) Clustering result of all subjects. The bar chart height indicates the number of subjects in the cluster. The difference to the mean shape is color-coded, whereas blue represents no difference and red a large difference. (b) A pivot table relates cluster results to gender and employment status. Cluster 8 is striking because of the high proportion of women, while cluster 2, 3, 4 contain almost only men.}
-%  \label{fig:hypothesisfree}
-% \end{figure}
-% %
-% Analyzing the data set without prior hypothesis requires a starting point giving an overview over the data first \cite{Shneiderman1996}.
-% %
-% Shape-based hypothesis-free exploration starts with the \emph{local investigation} pattern by a shape grouping step using shape-based clustering.
-% %
-% The results for this step can be seen in Figure~\ref{fig:hypothesisfree} (a).
-% 
-% Cluster 9 represents subjects with average shape.
-% %
-% Other shapes differ with respect to size, such as cluster 2, 3, 8, 10 where the last one also represents a more straight spine, which is usual for subjects with larger body size.
-% %
-% Cluster 4, 5, 7 contain outliers, characterized by their unusual shape and small number.
-% %
-% Cluster 8 has the second largest number of elements and was therefore of special interest.
-% %
-% Performing a \emph{multivariate analysis} by looking at \emph{Cram\'{e}r's V} contingency values of cluster~8 reveals associations of this group with employment status, gender, body size, age, thyroid nodules and blood fat value.
-% %
-% Another \emph{multivariate analysis} using a pivot table set gender and employment status in relation to clustering affiliation\add{.} 
-% %
-% \add{It s}hows that cluster~8 contains mostly women and also has a larger unemployment rate (see Figure~\ref{fig:hypothesisfree}), while the overall employment rate of women and men in the data set is almost exactly 50\%.
-% %
-% While all observed features seem to be plausible associations related to back pain, the values indicate that cluster~8 contains subjects with chronic back pain radiating to the legs.
-% %
-% Metabolic parameters, such as blood fat and blood sugar, are also possibly associated features.
-% %
-% The employment status is a feature relating to many different lifestyle factors such as income or nutrition as well as age and might act as confounder.
-% \\\\
-% While this approach does not assume any hypothesis, the 127 epidemiological features were selected by domain experts with a wide range on potential influential factors.
-% %
-% This filtering step based on expert experience rules out possible confounder and useless associations and it is therefore arguable whether this represents a disadvantage \cite{Wiley2008}.
-% %It is arguable whether this first filtering step, which is purely based on expert experience, represents a disadvantage, since it rules out many parameters possibly associated with the presented features, but the value of this knowledge would be small \cite{Wiley2008}.
-% %
-% % While this approach does not assume any hypothesis, the data are met with a selection bias when compiling the list of related features by the domain experts.
-% % %
-% % It is arguable if this first filtering step, which is purely based on expert experience, is really a disadvantage, since it rules out many parameters which may interact with the presented features but the value of this knowledge would be small \cite{Wiley2008}.
-% 
-% \subsubsection{Hypothesis-Based Analysis} \label{Hypothesis based Analysis}
-% \begin{figure}[htb]
-%  \centering
-%  %\includegraphics[width=1.5in]{figures/InteractionLoop}
-%  \includegraphics[width=3.5in]{figures/hypothesisbased}
-%  \caption{(a) Dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
-%  %
-%  Mean shapes between the groups show no difference.
-%  %
-%  (b) Shape-based clustering for all subjects who suffered from back pain yields 6 groups. 
-%  %
-%  Note that the difference in subject count is due to the missing shape information for some subjects.
-%  %
-% % The total count of subjects in (b) is smaller 
-%  }
-%  \label{fig:hypopthesisbased}
-% \end{figure}
-% %
-% If the user proposes a hypothesis about a relation between a non-image feature regarding shape, the workflow slightly differs from the hypothesis-free analysis.
-% %
-% The starting point follows the \emph{feature investigation} pattern, where a feature of interest is selected by dragging it into the canvas area and viewing the subject's distribution as well as their shape differences.
-% %
-% In our use case, epidemiologists were interested in the dichotomous questionnaire answer to ``\emph{Did you experience back pain in the past three months?}''.
-% %
-% The mean shapes of the resulting visualization show no difference between the two groups (see Figure~\ref{fig:hypopthesisbased} (a)).
-% %
-% Either there are no differences or the variance information was lost in the mean shape calculation.
-% %
-% Since the focus is on subjects suffering from back pain, the clustering results of these subjects are then drawn into the canvas area, yielding six clusters as seen in Figure~\ref{fig:hypopthesisbased} (b).
-% %
-% Cluster 5 stood out for having a so-called \emph{hyperlordosis}, a strong curvature of the lumbar spine associated with back pain.
-% 
-% \emph{Multivariate analysis} using \emph{Cram\'{e}r's V} contingency values highlighted relationships of this cluster with joint degeneration, meat eating habits, preoccupation, back pain, neck or shoulder pain and waist circumference.
-% %
-% Since the prior selection only yields subjects that report back pain, the pain indicators specify the pain localization for the subjects.
-% 
-% It is well known that overweight is a risk factor for back pain.
-% %
-% While the BMI is a key figure for assessing height and weight of a subject, it does not tell anything about how the weight is distributed in the body.
-% %
-% Our epidemiological collaborators were interested in the correlation with waist circumference presented by this group.
-% %
-% Our finding follows the recent trends indicating that BMI is not a good measure for assessing the body shape, since healthy weight is dependent on many other measures \cite{Ahima2013}.
-% %
-% It indicates that the waist circumference rather than the BMI interacts with unusually shaped spines for subjects with lumbar back pain.
-% %
-% The influence of the parameter is now in the focus of further analysis.
-% 
-% \subsubsection{Follow-Up Tasks and Concluding Domain-Expert Feedback}
-% %
-% Correlation does not automatically imply causation. %\cite{Tufte2003}.
-% %
-% In particular, when large amounts of attributes are automatically checked for strong correlations, just by chance hundreds of them reach at least a moderately significant correlation, such as $p>0.05$.
-% %Defining a causal relationship solely based on observed correlations of two features is \emph{cum hoc ergo propter hoc}--correlation does not automatically imply causation \cite{Tufte2003}.
-% %
-% The observed correlations need to be carefully checked for confounders and medical soundness.
-% %
-% Statisticians validate causal inferences of the drawn conclusions.
-% 
-% Features that potentially interact with a disease-related condition need to be validated.
-% %
-% To increase the probability of the observation not to be random and to avoid \emph{overfitting}, they are cross-checked for associations in \texttt{SHIP-TREND} as a second, independent population sample, which was examined with methods identical to \texttt{SHIP}.
-% \\\\
-% The prototype was demonstrated to the domain experts (with background on epidemiology and radiology) via screen sharing.
-% %
-% The software was operated by a computer scientist following instructions of the domain experts.
-% %
-% The presented methods guide the attention to features that are not in the focus of attention and expectance of clinical researchers.
-% %
-% The explorative nature of the methods work well for gathering associations possibly acting as confounder, as outcome of a disease or as an actual cause or risk factor.
-% %"\emph{Correlation does not imply causation}" is a famous saying in statistics, meaning that correlation does not necessarily imply causal relationships \cite{}.
-% %
-% This distinction is hard to make and requires a lot of clinical experience.
-% %
-% The combination of multiple views with shape information helps to connect many different information sources to make the large information spaces cognitively feasible.
-% %
-% Displaying MRI scans for the subjects in the outlier cluster is promising because they are highly likely to exhibit pathologies.
-% %
-% %We plan to include a \texttt{DICOM}-viewer to meet this wish.
-% 
-% % - Describe steps from gathering Information from the raw image files (segmentation, abstraction, visualization)\\
-% % - Problem of sparse differences - Visualization has to be more abstract to emphasize the differences.\\
-% % - Input of Epidemiologists goes here!\\
-% ---------------------------------------------------------------------------------------------------------------------------------------
-% ---------------------------------------------------------------------------------------------------------------------------------------
-% ---------------------------------------------------------------------------------------------------------------------------------------
 
 \section{Summary and Conclusion}
 % TODO: Future work Bulletliste zusammenkürzen
