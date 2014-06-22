@@ -183,8 +183,7 @@ Longitudinal population-based studies, such as the Study of Health in Pomerania 
 %
 The cohort consists of several thousands of people who are randomly selected to avoid any bias.
 %
-\rem{Due to this random selection, the majority of the cohort does not suffer from a specific health problem.}
-\add{The subjects are selected without focus on a certain disease.}
+The subjects are selected without focus on a certain disease.
 %
 A large size of the cohort is therefore essential to investigate differences between healthy and diseased people.
 %
@@ -227,16 +226,14 @@ Our contributions are:
 	\item highlighting interesting subject groups and feature associations using shape-based clustering and statistical contingency measures,
 %	\item an implementation of the presented methods in a web framework based on \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}.
 \end{itemize}
-%
-\rem{The easy exchange of developed methods driven by modern web technologies intends to trigger a fast feedback loop between computer scientists and epidemiologists}.
 % http://wiki.infowiss.net/Gulf_of_execution ?
 We applied our approach to a data set compiled to analyze diseases related to the lumbar spine and aim to determine features, which indicate pathological changes.
 %
 This data set comprises 127 features and 2 sequences of MRI data from 2,333 patients.
 %
-\add{We implemented the presented methods using modern web technologies, such as \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}, making them easily accessible for the domain experts.
+We implemented the presented methods using modern web technologies, such as \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}, making them easily accessible for the domain experts.
 %
-This aims to trigger a fast feedback loop between us and the epidemiologists.}
+This aims to trigger a fast feedback loop between us and the epidemiologists.
 
 \section{Epidemiological Background} \label{MedicalAndTechnicalBackground}
 % Wer ist an epidemiologischen Studien beteiligt?\\
@@ -363,7 +360,7 @@ The most obvious example are women-specific questions about menstrual status or 
 Follow-up examinations or questions about conditions like medications taken after a diagnosed disease also yield features only available for a small amount of subjects.
 %
 
-Indicators for medical conditions as well as questions about a subject's lifestyle are \rem{also} often \emph{dichotomous}--they have two manifestations (\emph{Yes} or \emph{No}).
+Indicators for medical conditions as well as questions about a subject's lifestyle are often \emph{dichotomous}--they have two manifestations (\emph{Yes} or \emph{No}).
 %
 Dichotomous data can also be derived by aggregating features to yield only two manifestations (e.g. subjects younger or older than 50 years).
 %
@@ -387,7 +384,7 @@ The image quality is a tradeoff between accuracy and affordability \cite{Preim20
 This often yields image resolutions inferior to those of clinical day-to-day practice, which makes their analysis more challenging.
 %
 %The equipment used to gather medical image data is not updated or changed during a longitudinal study to ensure comparability in and between acquisition cycles.
-The equipment used to gather medical image data is \rem{kept, if possible, on the initial software and hardware version} \add{not updated or changed} during a longitudinal study to ensure comparability in and between acquisition cycles.
+The equipment used to gather medical image data is not updated or changed during a longitudinal study to ensure comparability in and between acquisition cycles.
 
 \subsubsection{Image analysis} \label{ImageAnalysis}
 \com{Take up huge amount of space!}
@@ -496,7 +493,7 @@ Given the number of features of epidemiological data sets and their different ma
 The principal component analysis (PCA) and similar techniques are able to reduce the dimensions by extracting most expressive components, but make the influence of each variable hard to convey.
 \\\\
 %Their focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes the work of Turkay and colleagues closest to ours albeit our emphasis on processing models derived from medical image data segmentation and variables with categorical manifestations \cite{Turkay2013}.
-\rem{Their} \add{Turkay and colleagues \cite{Turkay2013}} focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes \rem{the work of Turkay and colleagues} \add{their work} closest to ours albeit our emphasis is on processing models derived from medical image data segmentation and variables with categorical manifestations \rem{\cite{Turkay2013}}.
+Turkay and colleagues \cite{Turkay2013} focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes their work closest to ours albeit our emphasis is on processing models derived from medical image data segmentation and variables with categorical manifestations.
 %
 Their methods aim to amplify a hypothesis generation process for analyzing data of a Norwegian aging study.
 %
@@ -519,15 +516,15 @@ Our approach sticks more to the information extracted from the segmented image d
 % Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
 
 \paragraph{Visualizing Image and Non-Image Data. }
-Gresh \rem{and colleagues} \add{et al. \cite{Gresh2000}} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
+Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
 %
-Blaas \rem{and colleagues} \add{et al. \cite{Blaas2007}} presented a similar system which analyzed medical image data and variables derived from them using views from the feature and physical space.
+Blaas et al. \cite{Blaas2007} presented a similar system which analyzed medical image data and variables derived from them using views from the feature and physical space.
 %
 They incorporated data mining methods such as dividing the data space by using a k-nearest neighbor technique and the PCA.
 %
-Steenwijk \rem{and colleagues} \add{et al. \cite{Steenwijk2010}} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
+Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
 %
-Zhang \rem{and colleagues} \add{et al. \cite{Zhang2012}} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
+Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
 %
 Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
 
@@ -544,11 +541,11 @@ Histograms, bar charts, scatterplots and heat maps are used to visualize variabl
 %
 %The inspiration on the chosen visualization techniques stems from this publication.
 %
-Dai \rem{and colleagues} \add{et al. \cite{Dai2005}} explored risk factors by incorporating choropleth maps of epidemiological features (e.g., mortality rates in a region) with parallel coordinates, bar charts and scatterplots with integrated regression lines.
+Dai et al. \cite{Dai2005} explored risk factors by incorporating choropleth maps of epidemiological features (e.g., mortality rates in a region) with parallel coordinates, bar charts and scatterplots with integrated regression lines.
 %
 Their findings yielded a \emph{Concept Map}, which linked cancer-related associations via graph edges.
 %
-Chui \rem{and colleagues} \add{et al. \cite{Chui2011}} visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factor differences in age and gender.
+Chui et al. \cite{Chui2011} visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factor differences in age and gender.
 
 \paragraph{Commercial Data Visualization.}
 Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \url{http://tableausoftware.com}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \url{http://spotfire.tibco.com}} provide a rich user interface that enables a Visual Analytics approach.
@@ -561,9 +558,9 @@ These systems with their origin in business intelligence applications do not sup
 \paragraph{Visualizing Shape Variance.}
 Comparing tissue between many subjects requires shape variance visualizations.
 %
-Caban \rem{and colleagues} \add{et al. \cite{Caban2011}} investigated the suitability of variance visualizations of shape distribution models and concluded that users favor spherical glyph representations over deformation grids and likelihood volumes.
+Caban et al. \cite{Caban2011} investigated the suitability of variance visualizations of shape distribution models and concluded that users favor spherical glyph representations over deformation grids and likelihood volumes.
 %
-The distribution of shapes in a space derived from a PCA is plotted by Busking \rem{and colleagues} \add{et al. \cite{Busking2010a}} in a 2D-projected plane of the space.
+The distribution of shapes in a space derived from a PCA is plotted by Busking et al. \cite{Busking2010a} in a 2D-projected plane of the space.
 %
 Interpolated views can be created by the user in a separate view as well as comparisons in a contour view.
 %
@@ -579,7 +576,7 @@ We incorporate the idea of combining 3D shape rendering with information visuali
 %
 %The data needs to abstracted or summarized in order to work in this context.
 %
-Hermann \rem{and colleagues} \add{et al. \cite{Hermann2014}} identify local deformation changes by investigating shape-related differences on rodent mandibles.
+Hermann et al. \cite{Hermann2014} identify local deformation changes by investigating shape-related differences on rodent mandibles.
 %
 User-specified regions of interests are mapped to associated anatomic covariation using tensor visualization.
 %Anatomic covariation induced by user input is displayed using tensors 
@@ -768,6 +765,9 @@ Morphometric features are derived to allow for statistical comparison of the tis
  The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop.
  %
  Dropping the \emph{gender} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
+ %
+ \com{3d-Koordinatensystem Kodierung durch Farbe (grün, rot, nuancen)}
+ %The lumbar spine models encode distance to the mean model using  \emph{color} 
  }
  \label{fig:visualization}
 \end{figure*}
@@ -799,7 +799,7 @@ A sample workflow using interaction and visualization techniques described in th
 %
 The suitability of an interaction and visualization technique for epidemiological data depends on its ability to intuitively compare multiple data features at once while highlighting new associations.
 %
-The methods have to use domain language and reflect \add{the} routines \rem{of}\add{that} epidemiologists \add{take} in order to be incorporated into their research.
+The methods have to use domain language and reflect the routines that epidemiologists take in order to be incorporated into their research.
 %
 Visual evaluations of data are therefore as important as methods allowing for numerical data analysis.
 %
@@ -911,11 +911,11 @@ Therefore we follow the convention to use bins of equal size.
 
 %
 %
-Following Tufte's concept of \emph{small multiples} \cite{Tufte1983}, \add{information derived from the} medical image data are directly incorporated into the plot by including color-coded mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
+Following Tufte's concept of \emph{small multiples} \cite{Tufte1983}, information derived from the medical image data are directly incorporated into the plot by including color-coded mean shapes for each manifestation (Figure~\ref{fig:visualization} (b)).
 %
 The 3D plots can be navigated using standard mouse input, the camera is synchronized between all views to enable direct comparison.
 %
-Mapping the distance from a group mean shape to the global mean using color allows to assess local shape changes (Figure~\ref{fig:visualization} (e)).
+The distance from a group mean shape is mapped to the global mean using color allows to assess local shape changes (Figure~\ref{fig:visualization}).
 %
 This is an important information to the epidemiologist, because until now they were not able rapidly validate shape differences based on non-image features.
 %
@@ -1204,7 +1204,7 @@ For clustering purposes, we extracted the centerline of the lumbar spine canal, 
  %
  (a) Mean curvature of lumbar spine canal plotted against the mean shape of 58-74 years old female subjects (light-blue bars).
  %
- Note the high amount of this subject group in the third group. The last group only contains four outlier-subjects.
+ Note the high amount of this subject group relative to the total count in the third group compared. The last group only contains four outlier-subjects.
  %
  (b) Clustering of all subjects yields seven groups, where Cluster~4 assembles the mean. The light blue bars indicate the share of females in the group.
  %
