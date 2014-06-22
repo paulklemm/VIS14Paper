@@ -486,8 +486,26 @@ Online, 2014.\\\\
 %
 \textbf{Reviewer 3}
 What the prior work section needs at the end is a paragraph stating how their work differs from the work they summarise i.e. it uses more non-image data than Turkay and uses different visualisations, and more importantly differentiation from Steenwijk et al’s very similar work (saying they use a different meaning for the word “cohort” does not seem justification enough, given the large overlap), only then can we be sure there is a novel contribution here.}
-%Designing a visualization, which conveys all data aspects equally, is challenging.
+
+\add{%Multiple coordinated views are appropriate for analyzing epidemiological data, because it suits Baldonado et al's \emph{Rule of Diversity} \cite{Baldonado2000}.
 %
+This section describes prior and related work and covers a broad range of visual analysis methods covering both image and non-image data.
+%
+We divide these section accordingly and also present lessons learned and from each publication.\\
+% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
+Baldonado et al. \cite{Baldonado2000} presented rules for designing multiple coordinated views.
+%
+They point out the cost-benefit-tradeoff introduced by cognitive overhead when connecting multiple views over more complex single views introduced by tasks, such as view comparison or context switching.
+%
+LESSON LEARNED HIERAUS??
+%
+Weaver et al extracted guidelines for cross-filtering multiple views by incorporating \emph{views} mapping data to visual elements, \emph{brushes} for selecting these elements and \emph{switches} linking brushing results between \emph{views}.
+%
+Our system follows the same rules for selecting subject groups, but our goal is to judge feature relations and potential outcomes.
+}
+%Designing a visualization, which conveys all data aspects equally, is challenging.
+% --- PARAGRAPH ---
+
 Given the number of features of epidemiological data sets and their different manifestations, the strength of different visualization techniques needs to be combined \cite{Buja91, Konyha2009}.
 %
 The principal component analysis (PCA) and similar techniques are able to reduce the dimensions by extracting most expressive components, but make the influence of each variable hard to convey.
@@ -512,15 +530,27 @@ The method is strongly dependent on the descriptive measures of the epidemiologi
 %\emph{Over-fitting} of hypotheses to the data may be imposed  is a danger pointed out by the authors when hypotheses to the data based on observations of changes in these plots the measure highlights only subsets of statistical changes.
 Hypotheses based on observations of changes in these plots may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
 %
-Our approach sticks more to the information extracted from the segmented image data and variable associations with non-image epidemiological factors.
+%Our approach sticks more to the information extracted from the segmented image data and variable associations with non-image epidemiological factors.
+\add{Our approach is to use information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
 % Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
 
-\paragraph{Visualizing Image and Non-Image Data. }
+\paragraph{Visualizing Image and Non-Image Data.}
+\add{One major focus is the connection of image and non-image data.}
+%TODO aus Steenwijk: Visual data analysis combining multi-dimensional single patient medical data with real-time linked scatter plots and parallel coordi- nates representations was first investigated in the WEAVE system of Gresh et al. [14]. A number of aspects with regards to the specifi- cation of this kind of focus+context visualization were formalized by Doleisch et al. [8].
 Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
 %
-Blaas et al. \cite{Blaas2007} presented a similar system which analyzed medical image data and variables derived from them using views from the feature and physical space.
+%\add{The functionality is limited to project spatial related data to surface renderings of the image data and use By projecting surface models presented in 3D views to information visualizations, such as scatterplots, the authors were to support medical resea}
 %
-They incorporated data mining methods such as dividing the data space by using a k-nearest neighbor technique and the PCA.
+Blaas et al. \cite{Blaas2007} presented a similar system which analyzed medical image data and variables derived from them using views from the feature and physical space.
+% From Blaas2007 - Tasks:
+%- Investigating combinations of features for finding spatial separations of point sets in physical space (segmentation)
+%- Classification of feature point sets (pattern classification)
+%- Finding clusters, patterns, and relations in the data
+\add{In both paper the data points plotted in information visualizations are part of the spatio-temporal domain and have a colocation in the image data, making it possible to plot them onto the image data representation to investigate interesting combinations.
+%
+Epidemiological features often don't have an exact spatial location in the image data.}
+%
+\rem{They incorporated data mining methods such as dividing the data space by using a k-nearest neighbor technique and the PCA.}
 %
 Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
 %
@@ -529,7 +559,7 @@ Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject g
 Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
 
 \paragraph{Visualizing Heterogenous Non-Image Data.}
-Generalized Pairs Plots (\texttt{GPLOM´S}) are an information visualization technique comparing heterogenous features pairwise using a plot-matrix grouped by type \cite{Francois2013}.
+Generalized Pairs Plots (\texttt{GPLOM´S}) are an information visualization technique comparing heterogenous features pairwise using a plot-matrix grouped by type \cite{GPLOMS, Francois2013}.
 %
 They are useful to gain an overview over numerous variables and their distributions.
 %
@@ -620,6 +650,17 @@ This was focused on individual patients and not on cohort study data.
 
 %While we take similar steps when analyzing the data such as employing statistical tests, our data is mostly independent from the medical image data and is not describing it. %--except the variables derived the segmentation model itself.
 While we take similar steps when analyzing the data, such as employing statistical tests, our data are not associated to a geographical or temporal context, which affects the techniques described in the following section.
+\\\\
+\add{The uniqueness of the \emph{IVA} workflow applied to image-based cohort study data compared to the discussed work are twofold.
+%
+(1) We incorporate 3D models abstracting shape information (e.g. for the spine) fused with non-image data visualizations, allowing to analyze local physiological changes related to non-image parameters.
+%
+(2) Epidemiologists already have an well established workflow for statistically validating hypothesis. 
+%
+Therefore, we focus on hypothesis generation by discovering new relationships associated with shape information.
+%
+( (3) Following Weaver et al's data abstraction, we also want to create overview visualizations, that allow an unbiased feature relationship assessment.)
+}
 
 %\section{Interactive Visual Analyis in Cohort Study Data}
 \section{Image Centric Cohort Study Data in Interactive Visual Analysis Context} \label{Image Centric Cohort Study Data in Interactive Visual Analysis Context}
