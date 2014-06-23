@@ -489,27 +489,9 @@ The overall examination time for each person attending the study is two days.
 
 \add{%Multiple coordinated views are appropriate for analyzing epidemiological data, because it suits Baldonado et al's \emph{Rule of Diversity} \cite{Baldonado2000}.
 %
-This section describes prior and related work and covers a broad range of visual analysis methods covering both image and non-image data.
+This section describes prior and related work and covers a broad range of visual analysis methods incorporating both image and non-image data.
 %
-We divide these section accordingly and also present lessons learned and from each publication.\\
-% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
-Lammarsch et al. \cite{Lammarsch2011} create a terminological overview of a VA process and how it is connected.
-%
-They define a model as a representation of system entities, phenomena and processes.
-%
-Further, hypothesis are models, where the results are not compared with real-world data (\emph{validation}).
-%
-The VA process is basis is also reflected in our \emph{IVA}-Loop.\\
-% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
-Baldonado et al. \cite{Baldonado2000} presented rules for designing multiple coordinated views.
-%
-They point out the cost-benefit-tradeoff introduced by cognitive overhead when connecting multiple views over more complex single views introduced by tasks, such as view comparison or context switching.
-%
-LESSON LEARNED HIERAUS??
-%
-Weaver et al extracted guidelines for cross-filtering multiple views by incorporating \emph{views} mapping data to visual elements, \emph{brushes} for selecting these elements and \emph{switches} linking brushing results between \emph{views}.
-%
-Our system follows the same rules for selecting subject groups, but our goal is to judge feature relations and potential outcomes.
+%We divide these section accordingly and also present lessons learned and from each publication.\\
 }
 %Designing a visualization, which conveys all data aspects equally, is challenging.
 % --- PARAGRAPH ---
@@ -534,27 +516,27 @@ These transform dimensions into data points and make them comparable with respec
 %The technique was applied to features obtained by segmenting the brain into 45 parts and measure the voxel number, volume and properties of the intensity values.
 %
 The method is strongly dependent on the descriptive measures of the epidemiological factors.
-
+%
 %\emph{Over-fitting} of hypotheses to the data may be imposed  is a danger pointed out by the authors when hypotheses to the data based on observations of changes in these plots the measure highlights only subsets of statistical changes.
 Hypotheses based on observations of changes in these plots may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
 %
 %Our approach sticks more to the information extracted from the segmented image data and variable associations with non-image epidemiological factors.
-\add{Our approach is to use information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
+\add{Our approach uses information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
 % Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
 
 \paragraph{Visualizing Image and Non-Image Data.}
-\add{One major focus is the connection of image and non-image data.}
+%\add{One major focus is the connection of image and non-image data.}
 %TODO aus Steenwijk: Visual data analysis combining multi-dimensional single patient medical data with real-time linked scatter plots and parallel coordi- nates representations was first investigated in the WEAVE system of Gresh et al. [14]. A number of aspects with regards to the specifi- cation of this kind of focus+context visualization were formalized by Doleisch et al. [8].
 Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
 %
 %\add{The functionality is limited to project spatial related data to surface renderings of the image data and use By projecting surface models presented in 3D views to information visualizations, such as scatterplots, the authors were to support medical resea}
 %
-Blaas et al. \cite{Blaas2007} presented a similar system which analyzed medical image data and variables derived from them using views from the feature and physical space.
+Blaas et al. \cite{Blaas2007} presented a similar system, which also analyzed medical image data and variables derived from them using views from the feature and physical space.
 % From Blaas2007 - Tasks:
 %- Investigating combinations of features for finding spatial separations of point sets in physical space (segmentation)
 %- Classification of feature point sets (pattern classification)
 %- Finding clusters, patterns, and relations in the data
-\add{In both paper the data points plotted in information visualizations are part of the spatio-temporal domain and have a colocation in the image data, making it possible to plot them onto the image data representation to investigate interesting combinations.
+\add{The parameter in both paper are part of the spatio-temporal domain and have a colocation in the image data, making it possible to plot them onto the image data representation to investigate interesting combinations.
 %
 Epidemiological features often don't have an exact spatial location in the image data.}
 %
@@ -562,22 +544,21 @@ Epidemiological features often don't have an exact spatial location in the image
 %
 Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
 %
-\add{Information about medical image data is incorporated via mapper, which extract comparable metrics about the data.
+\add{Information about medical image data is incorporated via mappers, which extract comparable metrics about the data.
 %
-Display of medical data is possible for single subjects, for example to look at outliers.
+Medical image data can be displayed individually for subjects, e.g. for analyzing outliers.
+%Display of medical data is possible for single subjects, for example to look at outliers.
 %
-While we use a similar approach when analyzing non-image data, our analysis process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
+While we use a similar approach when analyzing non-image data, our process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
 
 \paragraph{Visualizing Heterogenous Non-Image Data.}
 Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
 %
 Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
 %
-\add{The paper also states little about kind of data used and how the system reacts to it, probably due to the short length.
+\add{Due to the short paper length, detail is missing on the data type and their algorithm of identifying similar subjects works or what and if they employ statistical measures.
 %
-We employ the idea of adding features via drag and drop into a working area.
-%
-Unfortunately, the author don't go into detail about how their algorithm of identifying similar subjects works or what and if they employ statistical measures.}
+We employ the idea of adding features via drag and drop into a canvas area.}
 
 Generalized Pairs Plots (\texttt{GPLOM´S}) are an information visualization technique comparing heterogenous features pairwise using a plot-matrix grouped by type \cite{GPLOMS, Francois2013}.
 %
@@ -585,13 +566,14 @@ They are useful to gain an overview over numerous variables and their distributi
 %
 Histograms, bar charts, scatterplots and heat maps are used to visualize variable combinations with regard to their type.
 %
-\add{The resulting matrix provides a good \emph{overview visualization} but uses up a lot of screen space when applied to our data, which consists of 127 features.}
+\add{The resulting matrix provides a \emph{overview visualization}, but requires a lot of screen space for many features (127 in our application scenario).}
 %
 %Brushing, linking and filtering are feasible with \texttt{GPLOMS}, but have limitations such as making only one category brushable at a time.
 %
 %We applied this technique to our data and it shows promising potential for simultaneously visualizing many different variables. %but does not fit in the scope of this paper.
 %
-\add{The inspiration on the chosen visualization techniques stems from this publication.}
+\add{We incorporate the idea of adaptive type-dependent visualizations.}
+%\add{The inspiration on the chosen visualization techniques stems from this publication.}
 %
 Dai et al. \cite{Dai2005} explored risk factors by incorporating choropleth maps of epidemiological features (e.g., mortality rates in a region) with parallel coordinates, bar charts and scatterplots with integrated regression lines.
 %
@@ -603,7 +585,8 @@ We employ the use of small multiples in this publication for incorporating heter
 %
 Chui et al. \cite{Chui2011} visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factor differences in age and gender.
 %
-\add{The work shows well, how different visualization modalities allow to get insight into these data sets, while focusing on the time-aspect, which is not present for our data.}
+\add{%The connection of time series plots with histograms and heat maps allows for fast insight into complex relationships and 
+While the works shows, how different visualization modalities provide insight into these data sets, it focuses on the time aspect, which is not present for our data.}
 
 \paragraph{Commercial Data Visualization.}
 Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \url{http://tableausoftware.com}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \url{http://spotfire.tibco.com}} provide a rich user interface that enables a Visual Analytics approach.
@@ -681,9 +664,27 @@ This was focused on individual patients and not on cohort study data.
 %
 
 %While we take similar steps when analyzing the data such as employing statistical tests, our data is mostly independent from the medical image data and is not describing it. %--except the variables derived the segmentation model itself.
-While we take similar steps when analyzing the data, such as employing statistical tests, our data are not associated to a geographical or temporal context, which affects the techniques described in the following section.
+\rem{While we take similar steps when analyzing the data, such as employing statistical tests, our data are not associated to a geographical or temporal context, which affects the techniques described in the following section.}
+% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
+A workflow and definition of terminology of Visual Analysis (VA) techniques is provided by Lammarsch et al. \cite{Lammarsch2011}.
+%
+They define a model as a representation of system entities, phenomena and processes and hypothesis as models whose outcomes are not compared with real-world data (\emph{validation}).
+%
+The VA-process is also reflected in our \emph{IVA}-Loop.\\
+% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
+Baldonado et al. \cite{Baldonado2000} presented rules for designing multiple coordinated views.
+%
+They point out the cost-benefit-tradeoff introduced by the cognitive overhead by mentally connecting multiple views over more complex single views. %introduced by tasks, such as view comparison or context switching.
+%
+LESSON LEARNED HIERAUS??
+%
+Weaver et al. \cite{Weaver2010} extracted guidelines for cross-filtering multiple views by incorporating \emph{views} mapping data to visual elements, \emph{brushes} for selecting these elements and \emph{switches} for linking brushing results between \emph{views}.
+%
+Our system follows the same rules for selecting subject groups, but our goal is to judge feature relations and potential outcomes.
 \\\\
-\add{The uniqueness of the \emph{IVA} workflow applied to image-based cohort study data compared to the discussed work are twofold.
+\com{Dieser Abschnitt wurde hinzugefuegt, weil mehrere Reviewer meinten, dass der Related Work Teil zu wenig die Einzigartigkeit der Arbeit hervorbringt.}
+%Related work focused on epidemiological data often deals with time-dependent data, hypothesis generation by guidance through parameter suggestions is seldom.
+\add{The uniqueness of the \emph{IVA} workflow applied to image-based cohort study data compared to the discussed work are threefold.
 %
 (1) We incorporate 3D models abstracting shape information (e.g. for the spine) fused with non-image data visualizations, allowing to analyze local physiological changes related to non-image parameters.
 %
@@ -691,7 +692,7 @@ While we take similar steps when analyzing the data, such as employing statistic
 %
 Therefore, we focus on hypothesis generation by discovering new relationships associated with shape information.
 %
-( (3) Following Weaver et al's data abstraction, we also want to create overview visualizations, that allow an unbiased feature relationship assessment.)
+(3) Overview visualizations using statistical abstractions aim to provide an unbiased feature relationship assessment.
 }
 
 %\section{Interactive Visual Analyis in Cohort Study Data}
@@ -1124,10 +1125,11 @@ To provide a fast communication loop between method development and expert input
 In addition to the obvious advantages of web technologies, the following aspects are crucial for our work:
 \begin{itemize}
 %	\item No additional software needs to be installed, most people use a decent state-of-the-art web browser, even on mobile devices.
-	\item The client-server structure allows for employing heavy computation on a capable server machine and transfering results to the client.
-	\item Since image data for several thousand subjects requires hundreds of gigabytes disk space, it can remain safely on the server and elements can be transferred on demand.
+	\item The client-server structure allows for employing heavy computation on a server machine and transferring results to the client.
+	\item \add{Disk-space demanding image data remains on the server and elements can be transferred on demand.}
+	%\item Since image data for thousands of subjects requires hundreds of gigabytes disk space, it can remain safely on the server and elements can be transferred on demand.
 	%
-	High confidentiality standards of the data can be met by restricting access via an account system.
+	High confidentiality standards of the data are met by \add{password protecting the access.}%restricting access via an account system.
 	\item Recent developments in \emph{WebGL} applications running in browsers with near-native performance push the development further into to the web resulting in many open source libraries, which are well documented, rich in examples and driven by active communities. We use \emph{WebGL} for rendering shape information.
 %	\item Web technologies are free.
 \end{itemize}
@@ -1244,7 +1246,7 @@ Each feature is stored as an object containing:
 	\item the data as array of values--categorical data and error codes are stored using IDs,
 	\item the data type (continuous, nominal, ordinal, dichotomous),
 	\item a detailed description of the feature, and
-	\item the data dictionary translating value or error IDs to the actual values.
+	\item the data dictionary translating value or error IDs to values.
 \end{itemize}
 %
 % Binning: https://www.researchgate.net/post/What_metric_best_captures_the_information_loss_when_binning_a_large_data-set_into_a_histogram_representation
@@ -1646,7 +1648,7 @@ The large data base associated with image-based epidemiological data remains on 
 This approach is well suited for the \emph{VDAR} approach to assess user thought processes using the think aloud technique.
 %The \emph{VDAR} approach to assess user thought processes using the think aloud technique worked well with the web-based approach for both implementing the prototype as well as getting feedback via voice over ip conference calls worked very well.
 \\\\
-Since it is an entirely different approach to their usual workflows which are heavily influenced by statistical tools, it is to highlight that they had fun browsing through the data set in the presented manner and to dig out new information about the data.
+Since it is an entirely different approach to their usual workflows, which are heavily influenced by statistical tools, it is to highlight that they had fun browsing through the data set in the presented manner and to dig out new information about the data.
 %
 This underlines the accessibility of \emph{IVA} tools, which amplifies the natural curiosity of the domain experts in complex medical feature associations.
 
@@ -1673,20 +1675,19 @@ Findings from analyzing lumbar back pain using the \emph{IVA} approach range fro
 %
 Other somatometric features, such as BMI, are not as influential as expected.
 %
-\\\\\
-A number of improvements is left open for future work, e.g.,
+\add{A number of improvements is left open for future work, such as shape brushing methods to intuitively query subjects using image data or the inclusion of more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots).}
 
-\begin{itemize}
-%	\item dynamic discretization of continuous variables to better fit the data distributions
-	\item shape brushing methods to intuitively query subjects using image data,
-	\item the inclusion of more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots), or
-	%\item calculation of contingency differences for selected sub groups--highlighting how the feature correlation changes for a given group
-	%\item integration of further visualization techniques, which incorporate both image and non-image data
-	%\item support of control groups to check the resilience of observations \cite{Fletcher2012}.
-%	\item understand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
-%	\item investigate which parts of the methods are applied by domain experts and what aspecunderstand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
-	\item adapt the shape visualization to explore other organ data with different variance type (such as texture of liver or white/gray matter distribution in the brain).
-\end{itemize}
+% \begin{itemize}
+% %	\item dynamic discretization of continuous variables to better fit the data distributions
+% 	\item shape brushing methods to intuitively query subjects using image data,
+% 	\item the inclusion of more statistical methods and views that are familiar to the epidemiologists (odds ratios, box plots), or
+% 	%\item calculation of contingency differences for selected sub groups--highlighting how the feature correlation changes for a given group
+% 	%\item integration of further visualization techniques, which incorporate both image and non-image data
+% 	%\item support of control groups to check the resilience of observations \cite{Fletcher2012}.
+% %	\item understand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
+% %	\item investigate which parts of the methods are applied by domain experts and what aspecunderstand how the existing methods are applied to the data, iteratively adapt to the epidemiologiical workflow
+% 	\item adapt the shape visualization to explore other organ data with different variance type (such as texture of liver or white/gray matter distribution in the brain).
+% \end{itemize}
 % These benefits 
 % - Future Work: Matrix-View of differences - more intuitive\\
 % - UI more flexible by hiding UI-panes
@@ -1714,7 +1715,9 @@ They allow a fast exchange between users and developers and employ many differen
 Visual analysis shows to be a promising way to clear the view on complex epidemiological data to uncover its secrets.
 
 %% if specified like this the section will be committed in review mode
+\begin{small}
 \acknowledgments{SHIP is part of the Community Medicine Research net of the University of Greifswald, Germany, which is funded by the Federal Ministry of Education and Research (grant no. 03ZIK012), the Ministry of Cultural Affairs as well as the Social Ministry of the Federal State of Mecklenburg-West Pomerania. Whole-body MR imaging was supported by a joint grant from Siemens Healthcare, Erlangen, Germany and the Federal State of Mecklenburg-Vorpommern. The University of Greifswald is a member of the ‘Centre of Knowledge Interchange’ program of the Siemens AG. This work was supported by the DFG Priority Program 1335: Scalable Visual Analytics.}
+\end{small}
 \clearpage
 \newpage
 \bibliographystyle{abbrv}
