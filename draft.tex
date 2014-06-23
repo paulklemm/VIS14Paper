@@ -456,42 +456,50 @@ The overall examination time for each person attending the study is two days.
 % ----------------------------------- Section -------------------------------------
 % ---------------------------------------------------------------------------------
 \section{Prior and Related Work}
-\com{\textbf{Reviewer 1}: The related work section includes merely a set of related tools. I would have liked to see a more comprehensive section that discusses the previous related work in more detail and describes why they are important and relevant to this work and how your work differs or improves upon theirs.\\
-%
-Quality: The work contains many references. But there are potentially some missing; e.g, the framework talks about utilizing multiple coordinated views (although the details of what is actually linked is vague) and therefore cited papers such as Baldonado's work in AVI 2000, or Roberts 2007 on Coordinated multiple views, or Weaver's Cross-filtered Views for multidimensional visual analysis 2010 should be cited. The paper really proposes a framework; however it was unclear how this was implemented into the presented system. Therefore this should be improved.\\\\
-%
-\textbf{Reviewer 2}
-- I would suggest to also cite the original Generalized Pairs Plot and 
-not only the adaptation as GPLOMS [21]: J. W. Emerson and W. A. Green. 
-gpairs: The Generalized Pairs Plot, 2012. R package version 1.1.\\
-%
-- A related process model for Visual Analytics that focuses on hypotheses 
-and models: T. Lammarsch, W. Aigner, A. Bertone, S. Miksch, and A. Rind, 
-“Towards a Concept how the Structure of Time can Support the Visual 
-Analytics Process,” in Proceedings of International Workshop on Visual 
-Analytics (EuroVA 2011) in conjunction with EuroVis 2011, Goslar, 
-Germany, 2011, pp. 9–12.\\
-%
-- VISITORS is related work in visualization of medical variables of 
-cohorts: D. Klimov, Y. Shahar, and M. Taieb-Maimon, “Intelligent 
-visualization and exploration of time-oriented data of multiple 
-patients,” Artificial Intelligence in Medicine, vol. 49, no. 1, pp. 
-11–31, May 2010.\\
-%
-- another, forthcoming related paper: P. Angelelli, S. Oeltze, C. Turkay, 
-J. Haasz, E. Hodneland, A. Lundervold, A. Lundervold, B. Preim, and H. 
-Hauser, “Interactive Visual Analysis of Heterogeneous Cohort Study 
-Data,” IEEE Computer Graphics and Applications, vol. Early Access 
-Online, 2014.\\\\
-%
-\textbf{Reviewer 3}
-What the prior work section needs at the end is a paragraph stating how their work differs from the work they summarise i.e. it uses more non-image data than Turkay and uses different visualisations, and more importantly differentiation from Steenwijk et al’s very similar work (saying they use a different meaning for the word “cohort” does not seem justification enough, given the large overlap), only then can we be sure there is a novel contribution here.}
+% \com{\textbf{Reviewer 1}: The related work section includes merely a set of related tools. I would have liked to see a more comprehensive section that discusses the previous related work in more detail and describes why they are important and relevant to this work and how your work differs or improves upon theirs.\\
+% %
+% Quality: The work contains many references. But there are potentially some missing; e.g, the framework talks about utilizing multiple coordinated views (although the details of what is actually linked is vague) and therefore cited papers such as Baldonado's work in AVI 2000, or Roberts 2007 on Coordinated multiple views, or Weaver's Cross-filtered Views for multidimensional visual analysis 2010 should be cited. The paper really proposes a framework; however it was unclear how this was implemented into the presented system. Therefore this should be improved.\\\\
+% %
+% \textbf{Reviewer 2}
+% - I would suggest to also cite the original Generalized Pairs Plot and
+% not only the adaptation as GPLOMS [21]: J. W. Emerson and W. A. Green.
+% gpairs: The Generalized Pairs Plot, 2012. R package version 1.1.\\
+% %
+% - A related process model for Visual Analytics that focuses on hypotheses
+% and models: T. Lammarsch, W. Aigner, A. Bertone, S. Miksch, and A. Rind,
+% “Towards a Concept how the Structure of Time can Support the Visual
+% Analytics Process,” in Proceedings of International Workshop on Visual
+% Analytics (EuroVA 2011) in conjunction with EuroVis 2011, Goslar,
+% Germany, 2011, pp. 9–12.\\
+% %
+% - VISITORS is related work in visualization of medical variables of
+% cohorts: D. Klimov, Y. Shahar, and M. Taieb-Maimon, “Intelligent
+% visualization and exploration of time-oriented data of multiple
+% patients,” Artificial Intelligence in Medicine, vol. 49, no. 1, pp.
+% 11–31, May 2010.\\
+% %
+% - another, forthcoming related paper: P. Angelelli, S. Oeltze, C. Turkay,
+% J. Haasz, E. Hodneland, A. Lundervold, A. Lundervold, B. Preim, and H.
+% Hauser, “Interactive Visual Analysis of Heterogeneous Cohort Study
+% Data,” IEEE Computer Graphics and Applications, vol. Early Access
+% Online, 2014.\\\\
+% %
+% \textbf{Reviewer 3}
+% What the prior work section needs at the end is a paragraph stating how their work differs from the work they summarise i.e. it uses more non-image data than Turkay and uses different visualisations, and more importantly differentiation from Steenwijk et al’s very similar work (saying they use a different meaning for the word “cohort” does not seem justification enough, given the large overlap), only then can we be sure there is a novel contribution here.}
 
 \add{%Multiple coordinated views are appropriate for analyzing epidemiological data, because it suits Baldonado et al's \emph{Rule of Diversity} \cite{Baldonado2000}.
 %
 This section describes prior and related work and covers a broad range of visual analysis methods covering both image and non-image data.
 %
 We divide these section accordingly and also present lessons learned and from each publication.\\
+% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
+Lammarsch et al. \cite{Lammarsch2011} create a terminological overview of a VA process and how it is connected.
+%
+They define a model as a representation of system entities, phenomena and processes.
+%
+Further, hypothesis are models, where the results are not compared with real-world data (\emph{validation}).
+%
+The VA process is basis is also reflected in our \emph{IVA}-Loop.\\
 % --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
 Baldonado et al. \cite{Baldonado2000} presented rules for designing multiple coordinated views.
 %
@@ -554,28 +562,48 @@ Epidemiological features often don't have an exact spatial location in the image
 %
 Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
 %
+\add{Information about medical image data is incorporated via mapper, which extract comparable metrics about the data.
+%
+Display of medical data is possible for single subjects, for example to look at outliers.
+%
+While we use a similar approach when analyzing non-image data, our analysis process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
+
+\paragraph{Visualizing Heterogenous Non-Image Data.}
 Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
 %
 Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
+%
+\add{The paper also states little about kind of data used and how the system reacts to it, probably due to the short length.
+%
+We employ the idea of adding features via drag and drop into a working area.
+%
+Unfortunately, the author don't go into detail about how their algorithm of identifying similar subjects works or what and if they employ statistical measures.}
 
-\paragraph{Visualizing Heterogenous Non-Image Data.}
 Generalized Pairs Plots (\texttt{GPLOM´S}) are an information visualization technique comparing heterogenous features pairwise using a plot-matrix grouped by type \cite{GPLOMS, Francois2013}.
 %
 They are useful to gain an overview over numerous variables and their distributions.
 %
 Histograms, bar charts, scatterplots and heat maps are used to visualize variable combinations with regard to their type.
 %
+\add{The resulting matrix provides a good \emph{overview visualization} but uses up a lot of screen space when applied to our data, which consists of 127 features.}
+%
 %Brushing, linking and filtering are feasible with \texttt{GPLOMS}, but have limitations such as making only one category brushable at a time.
 %
 %We applied this technique to our data and it shows promising potential for simultaneously visualizing many different variables. %but does not fit in the scope of this paper.
 %
-%The inspiration on the chosen visualization techniques stems from this publication.
+\add{The inspiration on the chosen visualization techniques stems from this publication.}
 %
 Dai et al. \cite{Dai2005} explored risk factors by incorporating choropleth maps of epidemiological features (e.g., mortality rates in a region) with parallel coordinates, bar charts and scatterplots with integrated regression lines.
 %
 Their findings yielded a \emph{Concept Map}, which linked cancer-related associations via graph edges.
 %
+\add{While their goal to identify possible risk factors using socio-economic and health data is similar to ours, they focus on iteratively refining defined hypothesis and also focus on geographical data.
+%
+We employ the use of small multiples in this publication for incorporating heterogenous data types for comparability.}
+%
 Chui et al. \cite{Chui2011} visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factor differences in age and gender.
+%
+\add{The work shows well, how different visualization modalities allow to get insight into these data sets, while focusing on the time-aspect, which is not present for our data.}
 
 \paragraph{Commercial Data Visualization.}
 Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \url{http://tableausoftware.com}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \url{http://spotfire.tibco.com}} provide a rich user interface that enables a Visual Analytics approach.
@@ -602,9 +630,9 @@ The distance to the mean shape is color-coded.
 %
 We incorporate the idea of combining 3D shape rendering with information visualization techniques.
 %
-%Applying our data sets to this technique yielded a cluttered shape space due to the many subjects.
+\add{Applying our data sets to this technique yielded a cluttered shape space due to the many subjects.
 %
-%The data needs to abstracted or summarized in order to work in this context.
+The data needs to abstracted or summarized in order to work in this context.}
 %
 Hermann et al. \cite{Hermann2014} identify local deformation changes by investigating shape-related differences on rodent mandibles.
 %
@@ -618,12 +646,12 @@ This method enables rapid hypotheses validation and was able to reproduce textbo
 %
 %By plotting p-values in ventricle surfaces, Chou and colleagues were able to map disease-associated values directly on a 3D tissue representations \cite{Chou2009}.
 %
-%This requires a geographic colocation of associated features.
+\add{This requires a geographic colocation of associated features.}
 %
 
 % *********************** Our own Work ***********************
 % Prior Work
-\paragraph{SHIP Data Analysis.}
+\paragraph{Prior Work.}
 Klemm et al. \cite{Klemm2013VMV} visualized lumbar spine variabilities based on a semi-automatic shape detection algorithm of 490 participants of the \texttt{SHIP-2} cohort.
 %
 Hierarchical agglomerative clustering divided the population into shape-related groups.
@@ -634,9 +662,13 @@ This work focuses on incorporating these derived data as new features of the ove
 %
 When applying clustering techniques to the non-image data it was found that \texttt{k-Prototypes} and \texttt{DBSCAN} are appropriate in the epidemiological context, but is strongly dependent on the chosen variables and distance measure \cite{Klemm2014BVM}.
 %
+\com{Hier noch einer Einschaetzung, oder reicht das schon?}
+%
 Niemann et al. \cite{Niemann2014} presented an interactive data mining tool for the assessment of risk factors of hepatic steatosis, the fatty liver disease.
 %
 Association rules created by data mining methods can be analyzed interactively with their tool and highlight potentially overlooked features.
+%
+\add{We combine the idea of suggesting potentially interesting features by adding them to the \emph{IVA}-workflow in order to amplify hypothesis generation.}
 % *********************** / Our own Work ***********************
 
 \paragraph{Interactive Visual Analysis}
@@ -780,7 +812,7 @@ Morphometric features are derived to allow for statistical comparison of the tis
 %-------------------------------- Figure --------------------------------
 \begin{figure}[htb]
  \centering
- \includegraphics[width=3.0in]{figures/InteractionLoop}
+ \includegraphics[width=2.3in]{figures/InteractionLoop}
  \caption{Detailed \emph{IVA Loop} as extension from Figure~\ref{fig:WorkflowComparison}.
  %
  Usually starting with a selection of a feature of interest (user-driven or via data mining techniques), the data are mapped using a visualization technique appropriate for the selected data types.
