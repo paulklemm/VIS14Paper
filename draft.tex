@@ -92,11 +92,6 @@
 %% Abstract section.
 \abstract{%
 %(The problem).
-\com{ToDo: Reviewer-Feedback: The abstract should be formulated more concisely and focus on What? 
-Why? How? What follows?}
-Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease-specific risk factors.
-%
-Cohort studies comprise of heterogenous variables (\emph{features}) describing the medical condition as well as demographic and lifestyle factors and more recently, medical image data.
 %
 %The data are analyzed using a priori defined hypotheses to find statistically significant correlations between features (\emph{associations}).
 %
@@ -105,20 +100,47 @@ Cohort studies comprise of heterogenous variables (\emph{features}) describing t
 %
 %The statistically driven epidemiological workflow only allows to determine \emph{associations} between image-derived metrics, such as distances extracted from landmarks of the segmentation model.
 %\\\\
-%(New Solution).
-We propose an Interactive Visual Analysis (\emph{IVA}) approach that enables epidemiologists to examine both image-based as well as non-image data, e.g., sociodemographic features and attributes derived from the image data.
+% ----------- OLD ABSTRACT ---------
+% Epidemiological population studies impose information about a set of subjects (a \emph{cohort}) to characterize disease-specific risk factors.
+% %
+% Cohort studies comprise of heterogenous variables (\emph{features}) describing the medical condition as well as demographic and lifestyle factors and more recently, medical image data.
+% %(New Solution).
+% We propose an Interactive Visual Analysis (\emph{IVA}) approach that enables epidemiologists to examine both image-based as well as non-image data, e.g., sociodemographic features and attributes derived from the image data.
+% %
+% This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D shape renderings with epidemiological data representations such as pivot tables and key figures as association measures.
+% %(Validation).
+% The presented concepts are applied by experts to gather and evaluate hypotheses about the aging process of the lumbar spine.
+% %
+% %(Results).
+% It allows a more flexible comparison between image and non-image data.
+% %
+% %(Implications).
+% The new framework enables hypotheses validation and generation by incorporating human pattern recognition as well as data mining methods.
+% %
+% Using all reliable information from the image segmentation linked to non-image features aims to unveil \emph{associations} by applying an iterative analysis approach.
+% ----------- /OLD ABSTRACT ---------
+\add{
+Large-scale longitudinal epidemiological studies investigate groups of people with common characteristics or experiences (a cohort) to characterize health and identify disease-specific risk factors.
 %
-This is achieved by combining brushing and linking enabled coordinated information visualization views and interactive 3D shape renderings with epidemiological data representations such as pivot tables and key figures as association measures.
-%(Validation).
-The presented concepts are applied by experts to gather and evaluate hypotheses about the aging process of the lumbar spine.
+Cohort study data comprise thousands of individuals and hundreds of heterogenuous variables, describing the medical condition as well as demographic and lifestyle factors, and more recently, medical image data.
 %
-%(Results). 
-It allows a more flexible comparison between image and non-image data.
+In the standard epidemiological workflow, a hypothesis is given and validated by analyzing a subset of possibly relevant variables over manually defined subgroups of the cohort, e.g., based on age or body weight.
 %
-%(Implications).
-The new framework enables hypotheses validation and generation by incorporating human pattern recognition as well as data mining methods.
+A potential impact of the neglected variables remains unnoticed, data-driven group definition is not supported, and capabilities for integrating the image data into the analysis are missing.\\
 %
-Using all reliable information from the image segmentation linked to non-image features aims to unveil \emph{associations} by applying an iterative analysis approach.
+We propose an Interactive Visual Analysis (IVA) approach that enables epidemiologists to rapidly investigate the entire data pool for both, hypothesis validation and generation.
+%
+Furthermore, we suggest a strategy for incorporating the image data which involves shape-based object detection and the derivation of attributes describing the object shape.
+%
+The concurrent investigation of image-based and non-image data is realized in a web-based multiple coordinated view system, comprising standard views from information visualization and epidemiological data representations such as pivot tables.
+%
+To account for the numerous categorical variables, a mosaic plot is integrated.
+%
+The views are equipped with brushing facilities and augmented by 3D shape renderings of the segmented objects, e.g., each bar in a histogram is overlayed with a mean shape of the associated subgroup of the cohort.
+%
+We integrate clustering of variables and object shape for data-driven subgroup definition and statistical key figures for measuring the association between variables.
+%
+We demonstrate the IVA approach by validating and generating hypotheses related to lower back pain and the aging process of the lumbar spine.}
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
