@@ -854,15 +854,22 @@ Morphometric features are derived to allow for statistical comparison of the tis
  % \includegraphics[width=3.5in]{figures/visualization}
  %\includegraphics[width=1\textwidth]{figures/visualization}
  \includegraphics[width=1\textwidth, resolution=300]{figures/visualization}
- \caption{\com{Add: Explanation of the color coding, ToDo: Selektion in Abbildung 3 einbauen und daran Selektion erklären}
+ \caption{
  %
- (Left) Screenshot from the front-end, which is divided as follows: (a) The sidebar containing all features as well as the groups defined in the analysis process; (b) the canvas area where features can be added via drag and drop and the visualization is chosen automatically according to the data type; (c) the interactive pivot table showing the exact numbers for each displayed feature combination.
+ (Left) Screenshot from the front-end, which is divided as follows: (a) The sidebar containing all features as well as the groups defined in the analysis process; (b) the canvas area where features can be added via drag and drop and the visualization is chosen automatically according to the data type; (c) the interactive pivot table showing the exact numbers for each displayed feature combination; \add{(d) Buttons to open panes containing the contingency matrix, contingency pane and pivot table}.
  %
  The data displayed is used to analyze the lumbar spine. Features can be added freely on the canvas via drag and drop.
  %
  Dropping the \emph{gender} parameter on the already plotted \emph{body size} container creates a mosaic plot combining both features (right).
  %
- \com{3d-Koordinatensystem Kodierung durch Farbe (grün, rot, nuancen)}
+ \add{In a prior step, the user selected all subjects with diagnosed thyroid disorder.
+ %
+ These subjects are shown as shade in the visualization, denoting their share.
+ %Their shares are denoted in the bar chart as blue and the mosaic plot as dark shade.
+ %
+ Subjects between 153.5--170~cm body size are more affected by thyroid disorder (box plot) and are mostly female (mosaic plot).}
+ %
+ \add{Distance to the mean mesh of subjects with thyroid disorder is encoded as red for x axis, blue to y axis and green to z axis.}
  %The lumbar spine models encode distance to the mean model using  \emph{color} 
  }
  \label{fig:visualization}
