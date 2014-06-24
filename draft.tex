@@ -478,6 +478,71 @@ The overall examination time for each person attending the study is two days.
 % ----------------------------------- Section -------------------------------------
 % ---------------------------------------------------------------------------------
 \section{Prior and Related Work}
+
+This section describes prior and related work and covers visual analysis 
+methods incorporating both image and non-image data. 
+
+\paragraph{Visual Analysis of Image and Non-Image Data.}
+
+Our work is closest to that of Steenwijk \cite{Steenwijk2010}, Turkey \cite{Turkay2013}, and Angelelli \cite{Angelelli2014} and colleagues\add{, who employ multiple coordinated view systems for the analysis of cohort study.}
+%
+%They employ multiple coordinated view systems for the analysis of cohort study data and demonstrate their approaches based on an aging study \cite{Turkay2013, Angelelli2014} and a cohort of patients suspected of having a special type of rheumatic disease \cite{Steenwijk2010}.
+
+Steenwijk et al. \cite{Steenwijk2010} propose a relational database to organize cohort study data for a visual analysis based on linked views such as parallel coordinates, scatterplots and time plots.
+%
+Information about medical image data is incorporated via mappers, which extract comparable metrics about the data.
+%
+Medical image data can be displayed individually for subjects, e.g., for analyzing outliers.
+%
+\add{While we use a similar approach when analyzing non-image data, our process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
+%
+
+Turkey et al. \cite{Turkay2013} present \emph{hypothesis generation} based on descriptive statistics of the data dimensions.
+%
+Key figures describing the distribution of data values, e.g., standard deviation and interquartile range, are computed per dimension and analyzed by pairs in a \emph{deviation plot}.
+%
+%Dimensions can represent non-image data as well as variables derived from image data, e.g., volume of a brain structure.
+%
+The \emph{dual analysis} of data items and dimensions in multiple linked views led to several hypotheses in analysis sessions with domain experts.
+%
+%Care must be taken when observing changes in the deviation plot since the resulting hypotheses may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
+Hypotheses based on observations in the deviation plot may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
+%
+\add{Our approach uses information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
+
+Angelelli et al. \cite{Angelelli2014} focus on a suitable data organization for the interactive visual analysis of heterogeneous cohort study data.
+%
+\rem{They propose a data-cube based model able to handle partially overlapping data subsets during the interactive visualization.}
+%
+Brain image data was integrated into the analysis by first, segmenting brain regions and tracking neural pathways and then, deriving attributes from both, e.g., volume and fractional anisotropy.
+%
+The data-cube model facilitates the seamless integration of heterogeneous image-based and non-image data.
+%
+A multiple coordinated view framework linked spatial and non-spatial data views.
+%
+%The approach is a demonstrated by a case-study analysis of selected aspects of brain connectivity.
+% --- Steffens Fazit ---
+Our integration of image data into the analysis is similar to the work of Steenwijk \cite{Steenwijk2010} and Angelelli \cite{Angelelli2014} and colleagues.
+%
+While they offer a single spatial view for visualizing image-based information of one subgroup of the cohort, we provide multiple, small views showing the information of subgroups and its respective deviation from the entire cohort.
+%
+We also integrate the data-driven definition of subgroups using clustering, statistically-based suggestions of potentially interesting features, and adaptive feature visualization. %tailored to epidemiological data, e.g., a mosaic plot for the frequent categorical variables.
+% %
+% %Another unique characteristic is our web-based implementation and the integration of D3.js.
+% %
+% %The latter offers an extensive set of information visualization plots, which are at the disposal of our system.
+% %
+% --- / Steffens Fazit ---
+
+Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
+%
+Blaas et al. \cite{Blaas2007} presented a similar system, which also analyzed medical image data and variables derived from them using views from the feature and physical space.
+%
+Both works are restricted to the analysis of one case at a time and to non-image data with a unique spatial reference, e.g., voltage simulated across the heart muscle.
+%
+In epidemiology, multiple cases must be concurrently investigated and non-image data often lacks a spatial reference, such as gender and age.
+%
+
 % \com{\textbf{Reviewer 1}: The related work section includes merely a set of related tools. I would have liked to see a more comprehensive section that discusses the previous related work in more detail and describes why they are important and relevant to this work and how your work differs or improves upon theirs.\\
 % %
 % Quality: The work contains many references. But there are potentially some missing; e.g, the framework talks about utilizing multiple coordinated views (although the details of what is actually linked is vague) and therefore cited papers such as Baldonado's work in AVI 2000, or Roberts 2007 on Coordinated multiple views, or Weaver's Cross-filtered Views for multidimensional visual analysis 2010 should be cited. The paper really proposes a framework; however it was unclear how this was implemented into the presented system. Therefore this should be improved.\\\\
@@ -509,71 +574,71 @@ The overall examination time for each person attending the study is two days.
 % \textbf{Reviewer 3}
 % What the prior work section needs at the end is a paragraph stating how their work differs from the work they summarise i.e. it uses more non-image data than Turkay and uses different visualisations, and more importantly differentiation from Steenwijk et al’s very similar work (saying they use a different meaning for the word “cohort” does not seem justification enough, given the large overlap), only then can we be sure there is a novel contribution here.}
 
-\add{%Multiple coordinated views are appropriate for analyzing epidemiological data, because it suits Baldonado et al's \emph{Rule of Diversity} \cite{Baldonado2000}.
+% ------------------ OLD SECTION ---------------------
+% \add{%Multiple coordinated views are appropriate for analyzing epidemiological data, because it suits Baldonado et al's \emph{Rule of Diversity} \cite{Baldonado2000}.
+% %
+% This section describes prior and related work and covers visual analysis methods incorporating both image and non-image data.
+% %
+% %We divide these section accordingly and also present lessons learned and from each publication.\\
+% }
+% %Designing a visualization, which conveys all data aspects equally, is challenging.
+% % --- PARAGRAPH ---
 %
-This section describes prior and related work and covers visual analysis methods incorporating both image and non-image data.
+% Given the number of features of epidemiological data sets and their different manifestations, the strength of different visualization techniques needs to be combined \cite{Buja91, Konyha2009}.
+% %
+% The principal component analysis (PCA) and similar techniques are able to reduce the dimensions by extracting most expressive components, but make the influence of each variable hard to convey.
+% \\\\
+% %Their focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes the work of Turkay et al. closest to ours albeit our emphasis on processing models derived from medical image data segmentation and variables with categorical manifestations \cite{Turkay2013}.
+% Turkay et al. \cite{Turkay2013} focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes their work closest to ours albeit our emphasis is on processing models derived from medical image data segmentation and variables with categorical manifestations.
+% %
+% Their methods aim to amplify a hypothesis generation process for analyzing data of a Norwegian aging study.
+% %
+% Statistical measures of continuous features, such as mean, standard deviation, skewness, or inter-quartile range, are used to create \emph{dimension plots}. %that make them comparable with respect to the derived descriptive measures, such as voxel number of a segmented structure.
+% %
+% These transform dimensions into data points and make them comparable with respect to the derived descriptive measures, making them comparable.
+% %
+% %This not only allows for comparing all continuous variables in a single plot but make their distribution change comprehensible.
+% %
+% %This requires a good descriptive measure which captures the kind of change the user is interested in or which reflects unexpected data behavior.
+% %
+% %The technique was applied to features obtained by segmenting the brain into 45 parts and measure the voxel number, volume and properties of the intensity values.
+% %
+% The method is strongly dependent on the descriptive measures of the epidemiological factors.
+% %
+% %\emph{Over-fitting} of hypotheses to the data may be imposed  is a danger pointed out by the authors when hypotheses to the data based on observations of changes in these plots the measure highlights only subsets of statistical changes.
+% Hypotheses based on observations of changes in these plots may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
+% %
+% %Our approach sticks more to the information extracted from the segmented image data and variable associations with non-image epidemiological factors.
+% \add{Our approach uses information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
+% % Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
 %
-%We divide these section accordingly and also present lessons learned and from each publication.\\
-}
-%Designing a visualization, which conveys all data aspects equally, is challenging.
-% --- PARAGRAPH ---
+% \paragraph{Visual Analysis of Image and Non-Image Data.}
+% %\add{One major focus is the connection of image and non-image data.}
+% %TODO aus Steenwijk: Visual data analysis combining multi-dimensional single patient medical data with real-time linked scatter plots and parallel coordi- nates representations was first investigated in the WEAVE system of Gresh et al. [14]. A number of aspects with regards to the specifi- cation of this kind of focus+context visualization were formalized by Doleisch et al. [8].
+% Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
+% %
+% %\add{The functionality is limited to project spatial related data to surface renderings of the image data and use By projecting surface models presented in 3D views to information visualizations, such as scatterplots, the authors were to support medical resea}
+% %
+% Blaas et al. \cite{Blaas2007} presented a similar system, which also analyzed medical image data and variables derived from them using views from the feature and physical space.
+% % From Blaas2007 - Tasks:
+% %- Investigating combinations of features for finding spatial separations of point sets in physical space (segmentation)
+% %- Classification of feature point sets (pattern classification)
+% %- Finding clusters, patterns, and relations in the data
+% \add{The parameter in both paper are part of the spatio-temporal domain and have a colocation in the image data, making it possible to plot them onto the image data representation to investigate interesting combinations.
+% %
+% Epidemiological features often don't have an exact spatial location in the image data.}
+% %
+% Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
+% %
+% \add{Information about medical image data is incorporated via mappers, which extract comparable metrics about the data.
+% %
+% Medical image data can be displayed individually for subjects, e.g. for analyzing outliers.
+% %Display of medical data is possible for single subjects, for example to look at outliers.
+% %
+% While we use a similar approach when analyzing non-image data, our process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
+% ------------------ / OLD SECTION ---------------------
 
-Given the number of features of epidemiological data sets and their different manifestations, the strength of different visualization techniques needs to be combined \cite{Buja91, Konyha2009}.
-%
-The principal component analysis (PCA) and similar techniques are able to reduce the dimensions by extracting most expressive components, but make the influence of each variable hard to convey.
-\\\\
-%Their focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes the work of Turkay and colleagues closest to ours albeit our emphasis on processing models derived from medical image data segmentation and variables with categorical manifestations \cite{Turkay2013}.
-Turkay and colleagues \cite{Turkay2013} focus on \emph{hypothesis generation} using parallel assessment of multiple data features makes their work closest to ours albeit our emphasis is on processing models derived from medical image data segmentation and variables with categorical manifestations.
-%
-Their methods aim to amplify a hypothesis generation process for analyzing data of a Norwegian aging study.
-%
-Statistical measures of continuous features, such as mean, standard deviation, skewness, or inter-quartile range, are used to create \emph{dimension plots}. %that make them comparable with respect to the derived descriptive measures, such as voxel number of a segmented structure.
-%
-These transform dimensions into data points and make them comparable with respect to the derived descriptive measures, making them comparable.
-%
-%This not only allows for comparing all continuous variables in a single plot but make their distribution change comprehensible.
-%
-%This requires a good descriptive measure which captures the kind of change the user is interested in or which reflects unexpected data behavior.
-%
-%The technique was applied to features obtained by segmenting the brain into 45 parts and measure the voxel number, volume and properties of the intensity values.
-%
-The method is strongly dependent on the descriptive measures of the epidemiological factors.
-%
-%\emph{Over-fitting} of hypotheses to the data may be imposed  is a danger pointed out by the authors when hypotheses to the data based on observations of changes in these plots the measure highlights only subsets of statistical changes.
-Hypotheses based on observations of changes in these plots may impose \emph{overfitting} to the data because the measures highlight only parts of the statistical changes.
-%
-%Our approach sticks more to the information extracted from the segmented image data and variable associations with non-image epidemiological factors.
-\add{Our approach uses information extracted from the segmented image data (such as 3D meshes) and variable associations with non-image epidemiological factors.}
-% Disadvantage - Nur 2 abgeleitete Variablen sichtbar, schlecht mit anderen Variablen in Verbindung zu bekommen (müsste jedoch auch gehen) - viele Dinge gehen durch die Abstraktion aber auch flöten!
-
-\paragraph{Visualizing Image and Non-Image Data.}
-%\add{One major focus is the connection of image and non-image data.}
-%TODO aus Steenwijk: Visual data analysis combining multi-dimensional single patient medical data with real-time linked scatter plots and parallel coordi- nates representations was first investigated in the WEAVE system of Gresh et al. [14]. A number of aspects with regards to the specifi- cation of this kind of focus+context visualization were formalized by Doleisch et al. [8].
-Gresh et al. \cite{Gresh2000} proposed \texttt{WEAVE}, one of the first systems which concurrently analyzed medical image and non-image data using linked views.
-%
-%\add{The functionality is limited to project spatial related data to surface renderings of the image data and use By projecting surface models presented in 3D views to information visualizations, such as scatterplots, the authors were to support medical resea}
-%
-Blaas et al. \cite{Blaas2007} presented a similar system, which also analyzed medical image data and variables derived from them using views from the feature and physical space.
-% From Blaas2007 - Tasks:
-%- Investigating combinations of features for finding spatial separations of point sets in physical space (segmentation)
-%- Classification of feature point sets (pattern classification)
-%- Finding clusters, patterns, and relations in the data
-\add{The parameter in both paper are part of the spatio-temporal domain and have a colocation in the image data, making it possible to plot them onto the image data representation to investigate interesting combinations.
-%
-Epidemiological features often don't have an exact spatial location in the image data.}
-%
-\rem{They incorporated data mining methods such as dividing the data space by using a k-nearest neighbor technique and the PCA.}
-%
-Steenwijk et al. \cite{Steenwijk2010} employ a relational database to organize the data for visualizing subject data using linked views such as parallel coordinates, scatterplots and time plots.
-%
-\add{Information about medical image data is incorporated via mappers, which extract comparable metrics about the data.
-%
-Medical image data can be displayed individually for subjects, e.g. for analyzing outliers.
-%Display of medical data is possible for single subjects, for example to look at outliers.
-%
-While we use a similar approach when analyzing non-image data, our process also includes \emph{overview visualizations} and statistical suggestions of potentially interesting features.}
-
-\paragraph{Visualizing Heterogenous Non-Image Data.}
+\paragraph{Visual Analysis of Heterogenous Non-Image Data.}
 Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
 %
 Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
@@ -649,7 +714,7 @@ User-specified regions of interests are mapped to associated anatomic covariatio
 %
 This method enables rapid hypotheses validation and was able to reproduce textbook knowledge.
 %
-%By plotting p-values in ventricle surfaces, Chou and colleagues were able to map disease-associated values directly on a 3D tissue representations \cite{Chou2009}.
+%By plotting p-values in ventricle surfaces, Chou et al. were able to map disease-associated values directly on a 3D tissue representations \cite{Chou2009}.
 %
 \add{This requires a geographic colocation of associated features.}
 %
@@ -680,14 +745,13 @@ Association rules created by data mining methods can be analyzed interactively w
 % Interactive Visual Analysis - Steffens Paper
 The strength of the \emph{IVA} approach described in the next section is its versatility with respect to the application field \cite{Konyha2009}.
 %
-Oeltze et al. \cite{Oeltze2007} combined a linked view representation of results from a statistical analysis with feature localizations of the tissue perfusion. % with the goal of its evaluation.
+Oeltze et al. proposed a multiple coordinated view approach for the analysis of medical perfusion data \cite{Oeltze2007} and biological multi-channel fluorescence microscopy data \cite{Oeltze2011}.
 %
-This was focused on individual patients and not on cohort study data. 
+The approach is restricted to the investigation of a single subject at a time.
 %
-
 %While we take similar steps when analyzing the data such as employing statistical tests, our data is mostly independent from the medical image data and is not describing it. %--except the variables derived the segmentation model itself.
-\rem{While we take similar steps when analyzing the data, such as employing statistical tests, our data are not associated to a geographical or temporal context, which affects the techniques described in the following section.}
-% --- PARAGRAPH --- % TODO Add Paragraph when removing ADD
+% --- PARAGRAPH --- 
+
 A workflow and definition of terminology of Visual Analysis (VA) techniques is provided by Lammarsch et al. \cite{Lammarsch2011}.
 %
 They define a model as a representation of system entities, phenomena and processes and hypothesis as models whose outcomes are not compared with real-world data (\emph{validation}).
@@ -698,13 +762,10 @@ Baldonado et al. \cite{Baldonado2000} presented rules for designing multiple coo
 %
 They point out the cost-benefit-tradeoff introduced by the cognitive overhead by mentally connecting multiple views over more complex single views. %introduced by tasks, such as view comparison or context switching.
 %
-LESSON LEARNED HIERAUS??
-%
 Weaver et al. \cite{Weaver2010} extracted guidelines for cross-filtering multiple views by incorporating \emph{views} mapping data to visual elements, \emph{brushes} for selecting these elements and \emph{switches} for linking brushing results between \emph{views}.
 %
 Our system follows the same rules for selecting subject groups, but our goal is to judge feature relations and potential outcomes.
 \\\\
-\com{Dieser Abschnitt wurde hinzugefuegt, weil mehrere Reviewer meinten, dass der Related Work Teil zu wenig die Einzigartigkeit der Arbeit hervorbringt.}
 %Related work focused on epidemiological data often deals with time-dependent data, hypothesis generation by guidance through parameter suggestions is seldom.
 \add{The uniqueness of the \emph{IVA} workflow applied to image-based cohort study data compared to the discussed work are threefold.
 %
@@ -1256,7 +1317,7 @@ Therefore some manifestations are sparsely populated, which makes statistical ev
 
 The MRI data was acquired for each subject on a 1.5~Tesla scanner (Magnetom Avanto; Siemens Medical Solutions, Erlangen, Germany) by four trained technicians in a standardized way.
 %
-\add{The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence ($1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013.} %(676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
+\add{The spine protocol consisted of a sagittal T1-weighted turbo-spin-echo sequence ($1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}. %(676 / 12 [repetition time msec / echo time msec]; 150$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) and a sagittal T2-weighted turbo-spin-echo sequence (3760 / 106 [repetition time msec / echo time msec]; 180$^\circ$ flip angle; 500~mm field of view; $1.1\times1.1\times4.0~mm$ voxels) \cite{Hegenscheid2013}.
 }
 %The spine protocol consisted of sagittal T1- and T2-weighted turbo-spin-echo sequences with rather large slice distance only sufficient for characterizing the lumbar spine \cite{Hegenscheid2013}.
 
