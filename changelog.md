@@ -51,6 +51,11 @@ Case Study
 * For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
 * Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
 
+References
+----------
+
+* Publication 
+
 Minor
 -----
 
