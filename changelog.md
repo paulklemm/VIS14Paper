@@ -33,7 +33,8 @@ Fig. 3
 Background
 ----------
 
-* [Reviewer 2] Information about `Simpsons Paradox` added. Reviewer 2 pointed out a possible relation between confounders and Simpsons Paradox. The Reviewer is right, since Simpsons Paradox is a very extreme case of a confounder (http://www.bmj.com/content/309/6967/1480).
+* [Reviewer 2] Information about `Simpsons Paradox` added. Reviewer 2 pointed out a possible relation between confounders and Simpsons Paradox. The Reviewer is right, since Simpsons Paradox is a very extreme case of a confounder (http://www.bmj.com/content/309/6967/1480). We added information about this to the background chapter, but due to space problems we had to remove it again. This paper is to recommend :[19] S. A. Julious and M. A. Mullee. Confounding and simpson’s paradox. BMJ, 309(6967):1480–1481, 12 1994. Here is the text, which was cut:
+		* An extreme form of confounding is called \emph{Simpson's Paradox} \cite{SimpsonsParadox}, where the confounder reverses the observed effect between two features. A famous example is the Berkeley University gender bias case, where significantly less women were admitted. Analysis later showed that women applied mostly for strongly restricted subjects and when only looking at acceptance divided by departments there was actually a small bias toward women.
 
 Implementation
 --------------
