@@ -1,3 +1,7 @@
+Removed
+=======
+
+
 ToDo Fragen
 
 * Bernhard möchte "qualitative case study" in "qualitative evaluation" umbenennen. Bekommen wir dann nicht Probleme, weil wir mit dem Wort Evaluierung den Mund vielleicht etwas zu voll nehmen?
