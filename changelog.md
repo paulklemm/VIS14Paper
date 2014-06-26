@@ -1,28 +1,14 @@
-Removed
-=======
-
-
-ToDo Fragen
-
-* Bernhard möchte "qualitative case study" in "qualitative evaluation" umbenennen. Bekommen wir dann nicht Probleme, weil wir mit dem Wort Evaluierung den Mund vielleicht etwas zu voll nehmen?
-	* Antwort: Wir sollten bereits von begin an davon sprechen, dass wir Back Pain als Case für unser Programm verwenden. Am Ende: Weitere in Aussicht!
-	* Qualitative Case Study streichen - nur von Case Study sprechen!
-* Nach Variables suchen und schauen, ob man es durch Features ersetzen kann
-
 Changelog
 =========
 
-ToDo Submission:
-* Remove Packages
-* remove the keyword "Visualization System and Toolkit Design"
-* Cramers V Contingency Values are calles "Contingency Pane"
+ToDo Submission: * remove the keyword "Visualization System and Toolkit Design"
 
 Summary
 =======
 
-At first, we'd like to thank all reviewer for the detailed feedback on this paper. It helped us to create a much better publication! The work underwent substantial changes and enhancements. We extended the data used, made a new qualitative evaluation, revised all figures and focus on a more precise distinction to related work.
+At first, we'd like to thank all reviewers for the detailed feedback on this paper. The work underwent substantial changes and enhancements. We extended the data, made a new qualitative evaluation, revised all figures and focus on a more precise distinction to related work.
 
-This cover letter is divided into two parts. The first highlights major changes to the paper. The second part covers the reviewer feedback with our inline comments to the individual reviews.
+This cover letter is divided into two parts. The first highlights major changes to the paper. The second part covers the reviewer feedback with our inline comments to the individual reviews, which are for the most parts pointers to the first section to reduce redundancy.
 
 Changes
 =======
@@ -32,7 +18,7 @@ The Data
 
 * We extended the analysis to more subjects. We now cover 6,753 subjects and 2,440 segmented lumbar spine shapes. This allows for more statistical resilient results.
 	* Since the blind submission, received new data from the SHIP and included it into our system
-* As the epidemiologists are very enthusiastic about the work, there are currently a few applications for new data sets. Unfortunately, these processes take very long and most likely have to happen in an iterative way. But it demonstrates well, that epidemiologists are really interested in such systems
+* As the epidemiologists are enthusiastic about the work, there are currently a few applications for new data sets. Unfortunately, these processes take very long and most likely have to happen in an iterative way. But it demonstrates well, that epidemiologists are really interested in such systems
 
 Abstract
 --------
@@ -55,7 +41,7 @@ Related Work
 ------------
 
 * We reworked the related Work section completely. It now reflects on the impact of each presented publication to our work.
-* The section concludes by highlighting the uniqueness of our work, compared with the presented papers.
+* The section concludes by highlighting the uniqueness of our work
 * We added the following publications as requested by the reviewers:
 	* T.Lammarsch, W.Aigner, A.Bertone, S.Miksch, and A.Rind. Towards a concept how the structure of time can support the visual analytics process. In Proc. of the Int. Workshop Visual Analytics, pages 9–12, 2011.
 	* P. Angelelli, S. Oeltze, C. Turkay, J. Haasz, E. Hodneland, A. Lundervold, B. Preim, and H. Hauser. Interactive visual analysis of heterogeneous cohort study data. IEEE Computer Graphics and Applications, 2014. in print.
@@ -63,7 +49,7 @@ Related Work
 	* C. Weaver. Cross-filtered views for multidimensional visual analysis. IEEE Transactions on Visualization and Computer Graphics, 16(2):192– 204, 2010.
 	* J. W. Emerson, W. A. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham. The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91, 2013.
 * [Reviewer 1] We choose Baldonado's work on coordinated multiple views over the one of Roberts, since we found it fitted better for our paper.
-* [Reviewer 2] We decided against including Intelligent visualization and exploration of time-oriented data of multiple patients of Klimov et al.. It's major focus in on analyzing time-oriented data and the efficient selection of subject groups sharing a certain condition and tracking it over time. It relies heavily on hypothesis based data analysis. Since we ran out of space, we did not include this work, because we cover publication based on the time factor and explained the difference of our approach on these works.
+* [Reviewer 2] We decided against including Intelligent visualization and exploration of time-oriented data of multiple patients of Klimov et al.. It's major focus in on analyzing time-oriented data and the efficient selection of subject groups sharing a certain condition and tracking it over time. It relies heavily on hypothesis-based data analysis. Since we ran out of space, we did not include this work, because we cover publication based on the time factor and explained the difference of our approach on these works.
 
 System Design and Implementation
 --------------------------------
@@ -85,11 +71,11 @@ Implementation
     * These possibilities are now denoted in the Implementation section.
   [Reviewer 3] The reviewer suggested a note on the browser compatibility. Our system works fine with all modern browser, including Opera. Therefore we did not differentiate between the different browsers. We added a note in the text, that the user needs an updated browser to use the framework.
 
-Case Study
-----------
+Application and Qualitative Evaluation
+--------------------------------------
 
-* The qualitative evaluation was put forth as weak point of our work, so we replaced it almost completely.
-* We conducted an case study with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
+* The qualitative evaluation was put forth as weak point of our work. Thus we replaced it almost completely.
+* We conducted an qualitative evaluation with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
 * The complete section was rewritten with the reviewer feedback in mind. The first section represents the kind of case study we conduct, followed by details about the participants as well as the setup and procedure.
 * For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
 * Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
@@ -107,22 +93,9 @@ Minor
 Revisions sorted by Reviewer
 ============================
 
+Note: We refer to parts of the summary in square brackets to reduce redundancy.
+
 Summary Rating 
-
-5 (Accept to either track: This paper is acceptable to the Conference track, and could be considered for the TVCG track after minor revisions.) 
-
-The Summary Review 
-
-The reviewers recommend that this paper is scored 5: "accept to either 
-track". While there is slight disagreement with the reviewers' scores, 
-and that there are definitely several corrections and improvements to be 
-made, after discussion the reviewers are all in agreement that the paper 
-should be recommended for publication at VAST, and have agreed an overall 
-score of 5 for this paper. 
-
-This paper demonstrates a good framework to help epidemiologists analyse 
-their data. The tool presents several views, including a cluster view, 
-bar chart and pivot table. 
 
 The authors must address several issues within this paper to make this 
 work suitable for publication at VAST 2014, as follows: 
@@ -142,7 +115,7 @@ Response
 --------
 
 * We reworked the related Work section completely. It now reflects on the impact of each presented publication to our work.
-* The section concludes by highlighting the uniqueness of our work, compared with the presented papers.
+* The section concludes by highlighting the uniqueness of our work
 
 2) Improve references. Add references as listed by R1, R2 specifically.
 Response
@@ -155,7 +128,7 @@ Response
 	* C. Weaver. Cross-filtered views for multidimensional visual analysis. IEEE Transactions on Visualization and Computer Graphics, 16(2):192– 204, 2010.
 	* J. W. Emerson, W. A. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham. The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91, 2013.
 * [Reviewer 1] We choose Baldonado's work on coordinated multiple views over the one of Roberts, since we found it fitted better for our paper.
-* [Reviewer 2] We decided against including Intelligent visualization and exploration of time-oriented data of multiple patients of Klimov et al.. It's major focus in on analyzing time-oriented data and the efficient selection of subject groups sharing a certain condition and tracking it over time. It relies heavily on hypothesis based data analysis. Since we ran out of space, we did not include this work, because we cover publication based on the time factor and explained the difference of our approach on these works.
+* [Reviewer 2] We decided against including Intelligent visualization and exploration of time-oriented data of multiple patients of Klimov et al.. It's major focus in on analyzing time-oriented data and the efficient selection of subject groups sharing a certain condition and tracking it over time. It relies heavily on hypothesis-based data analysis. Since we ran out of space, we did not include this work, because we cover publication based on the time factor and explained the difference of our approach on these works.
 
 3) Add a section on Design (see R1) that describes what design decisions you made, what the requirements of the tool are, how the layout was designed etc. why on the web, and also include a figure showing the complete design (see R2).
 Response
@@ -170,8 +143,8 @@ Response
 Response
 --------
 
-* The qualitative evaluation was put forth as weak point of our work, so we replaced it almost completely.
-* We conducted an case study with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
+* The qualitative evaluation was put forth as weak point of our work. Thus we replaced it almost completely.
+* We conducted an qualitative evaluation with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
 * The complete section was rewritten with the reviewer feedback in mind. The first section represents the kind of case study we conduct, followed by details about the participants as well as the setup and procedure.
 * For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
 * Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
@@ -201,13 +174,7 @@ There are several aspects of the paper that could be improved.
 Response
 --------
 
-* We reworked the related Work section completely. It now reflects on the impact of each presented publication to our work.
-* The section concludes by highlighting the uniqueness of our work, compared with the presented papers. We also added the following publications as requested by the reviewer:
-	* T.Lammarsch, W.Aigner, A.Bertone, S.Miksch, and A.Rind. Towards a concept how the structure of time can support the visual analytics process. In Proc. of the Int. Workshop Visual Analytics, pages 9–12, 2011.
-	* P. Angelelli, S. Oeltze, C. Turkay, J. Haasz, E. Hodneland, A. Lundervold, B. Preim, and H. Hauser. Interactive visual analysis of heterogeneous cohort study data. IEEE Computer Graphics and Applications, 2014. in print.
-	* M. Q. Wang Baldonado, A. Woodruff, and A. Kuchinsky. Guidelines for using multiple views in information visualization. In Proc. of the Working Conference on Advanced Visual Interfaces, pages 110–119. ACM, 2000.
-	* C. Weaver. Cross-filtered views for multidimensional visual analysis. IEEE Transactions on Visualization and Computer Graphics, 16(2):192– 204, 2010.
-	* J. W. Emerson, W. A. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham. The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91, 2013.
+* see [Related Work]
 
 (2) Another weakness is on the data analysis; while there is information about the data within the text (including 2.2, 4.1, and 5.2) I would like to see a section that focuses on the data and the challenges thereof.
 Response
@@ -220,35 +187,27 @@ Response
 Response
 --------
 
-* Section `5 System Design and Implementation` now describes detailed each part of the system, how it was designed and also argues, why we made certain design decisions. These decisions are also supported by expert feedback.
+* see [System Design and Implementation]
 
 (4) the evaluation could be more detailed, and present better what the tool achieves and how a user can operate it, and what each of the views tells the user.
 Response
 --------
 
-* The qualitative evaluation was put forth as weak point of our work, so we replaced it almost completely.
-* We conducted an case study with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
-* The complete section was rewritten with the reviewer feedback in mind. The first section represents the kind of case study we conduct, followed by details about the participants as well as the setup and procedure.
-* For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
-* Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
+* see [Application and Qualitative Evaluation]
 
 Importance: 
 The work is important, in that exploratory tools are required in several domains, and epidemiology appears to be one such area where this would be highly relevant and suitable. The work starts to synthesize other research, e.g., it uses brushing and linking of multivariate data. However, I feel that it is unclear as to what interactive operations are included, what they provide and how a user would operate them. E.g., how is brushing used between views and what does it demonstrate?
 Response
 --------
 
-* Section 5 System Design and Implementation and Fig. 3 now describe the brushing and linking facilities.
-
-Relevance: The work presents a framework, and the implementation is made using web frameworks. This is a relevant implementation strategy and one that will definitely increase in the future. The work will interest VAST practitioners however I feel that there is much detail missing. I am not currently convinced that, in its current form, that this paper is publishable for VAST - however the VAST venue would be suitable, but this paper should be improved to be published here. 
-
-Novelty: The work develops upon known ideas, such as coordinated multiple views, brushing/linking, pivot tables and multi-dimensional statistical 
-analysis techniques. 
+* see [System Design and Implementation] 
+* Fig. 3 now describe the brushing and linking facilities.
 
 Quality: The work contains many references. But there are potentially some missing; e..g, the framework talks about utilizing multiple coordinated views (although the details of what is actually linked is vague) and therefore cited papers such as Baldonado's work in AVI 2000, or Roberts 2007 on Coordinated multiple views, or Weaver's Cross-filtered Views for multidimensional visual analysis 2010 should be cited. The paper really proposes a framework; however it was unclear how this was implemented into the presented system. Therefore this should be improved. 
 Response
 --------
 
-* As described before, we included these paper into the related work section. We choose Baldonado's work on coordinated multiple views over the one of Roberts, since we found it fitted better for our paper.
+* See [Related Work]
 
 Other: 
 Finally the figures could be improved. I felt that it was difficult to understand what the figures were demonstrating - as a reader, what should I be looking at and noticing in the figures, what can I learn from the visualizations? There was no supplementary material.
@@ -257,16 +216,7 @@ Response
 
 * We revised all figures. The evaluation figures were replaced.
 
-Corrections:
-My suggestion is that the paper can be improved through clarifying the unique points of this work, and what is novel in comparison with the related work; include a section on Design, improving the related work (as described above) and including a clearer and more defined analysis section on the epidemiological data that is used in this work. A case study, that demonstrates more clearly how the software is used, and clarification over what the images/figures are representing, and a more comprehensive evaluation of how the users have integrated the software, or used it, in their current work, would also benefit this work 
-substantially.
-Response
---------
-
-* These summarizing suggestions are covered in prior points
-
 Minor corrections: 
-
 Response
 --------
 
@@ -302,7 +252,7 @@ data correlated between views?
 Response
 --------
 
-	* this point was removed. View linking is covered in the design section.
+* this point was removed. View linking is covered in the design section.
 
 * Their focus on hypothesis generation > specify who "Their" refers 
 to 
@@ -339,69 +289,20 @@ this is showing.
 Reviewer 2
 ==========
 
-Overall Rating 
-
-5 (Accept to either track: I would argue strongly for accepting this paper to the Conference track, and would not deplore a decision to have it in the TVCG track.) 
-
-Topic Classification 
-
-Applications of Visual Analysis Techniques 
-
-Best Paper Award 
-
-No 
-
-Contribution to the field of Visual Analytics 
-
-The paper presents a design study using multi-variate abstract data, shapes extracted from image data, and clustering results. It presents a workflow, a design of a tool, and usage scenarios. The contribution of design study papers is often subject of disagreement. Therefore I will base my review on the 3 research contributions described by Sedlmair et al. [2012, p. 2432]: 
-- Problem characterization and abstraction: This is performed well using abstractions from the IVA framework [Oeltze et al. 2012]. 
-- Validated visualization design: The visualization tool is described well. The validation are two usage scenarios and qualitative expert feedback. While these are sufficient, they need to be presented in more detail (see technical soundness below). 
-- Reflection: The paper ends quite abruptly and misses the opportunity to draw lessons learnt and generalize guidelines. (This might be subject for follow-up work.) 
-Therefore, I would argue this is acceptable with minor revisions though not a strong contribution yet. 
-
-Expertise 
-
-3 (Knowledgeable) 
-
-The Review 
-
-=== What are its strengths? === 
-
-- Good insights into the domain and workflows. 
-- Abstraction using the IVA framework. 
-- Foucs on statistical soundness (e.g. overfitting, correlation not 
-causation). 
-
-=== What are its weaknesses? === 
-
 - Details missing in reporting the validation.
 Response
 --------
 
-* The qualitative evaluation was put forth as weak point of our work, so we replaced it almost completely.
-* We conducted an case study with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
-* The complete section was rewritten with the reviewer feedback in mind. The first section represents the kind of case study we conduct, followed by details about the participants as well as the setup and procedure.
-* For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
-* Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
+* see [Application and Qualitative Evaluation]
 
 - More details on interaction: How does one initiate clustering, derive 
 features, or take over features from the contingency matrix. 
 Response
 --------
 
-* Section `5 System Design and Implementation` now describes detailed each part of the system, how it was designed and also argues, why we made certain design decisions. These decisions are also supported by expert feedback.
+* see [System Design and Implementation]
 	* Details about initiation of cluster are also covered
 	* The new Application Section now also covers the use of the contingency matrix
-
-=== Is this work relevant for VAST? If not, what other venues would be 
-appropriate? === 
-
-I would argue that the work is a relevant design study in Visual 
-Analytics, though I would also review it as a similarly rated 
-contribution at IEEE InfoVis and IEEE SciVis. 
-
-=== Is related work adequately referenced and if not what citations 
-should be added? === 
 
 The paper references a good selection of literature. However, some references are wrong or incomplete (see revisions required). In addition, the following paper are related to the presented topics: 
 
@@ -412,8 +313,7 @@ The paper references a good selection of literature. However, some references ar
 Response
 --------
 
-* The publications are added with one exception
-	* We decided against including Intelligent visualization and exploration of time-oriented data of multiple patients of Klimov et al.. It's major focus in on analyzing time-oriented data and the efficient selection of subject groups sharing a certain condition and tracking it over time. It relies heavily on hypothesis based data analysis. Since we ran out of space, we did not include this work, because we cover publication based on the time factor and explained the difference of our approach on these works.
+* see [Related Work]
 
 === Are the technical results sound? Are the methods and techniques 
 described in adequate detail? === 
@@ -424,14 +324,7 @@ The visualization design and technical implementation appear to be sound. The va
 Response
 --------
 
-* The Application part and qualitative evaluation was rewritten as described in a previous point.
-
-=== Is the exposition clear? How could the structure or style of the 
-presentation be improved? ===
-
-cp. revisions required below 
-
-=== Should anything be deleted or condensed from the writeup? === 
+* see [Application and Qualitative Evaluation]
 
 - The abstract should be formulated more concisely and focus on What? 
 Why? How? What follows?
@@ -447,12 +340,6 @@ Response
 
 * Since another review suggested more detail on the implementation, we decided to to leave it as it is include the minor corrections to it.
 
-=== Is the length of the paper appropriate for its contribution? Is it 
-too long or too short? === 
-
-The length is appropriate, though an extra half page would best be 
-dedicated to more details on validation and additional figures. 
-
 === Are the figures informative? === 
 
 - The figures are informative and well captioned. 
@@ -465,15 +352,11 @@ Response
 
 * Figures were revised with this feedback in mind. Figure 3 (left) shows the complete framework and Figure 4 the framework with opened correlation matrix view.
 
-=== Is the (optional) supplementary material helpful? === 
-
-not applicable 
-
 === Minor and Spelling Revisions Required ===
 Response
 --------
 
-* All corrections are included in the publication
+* All corrections are included in the publication.
 
 - The abstract should mention the validation described. 
 - Introduction: The sentence on modern web technology ("The easy ...") is 
@@ -515,36 +398,6 @@ Design".
 Reviewer 3
 ----------
 
-Title: Interactive Visual Analysis of Image-Centric Cohort Study Data 
-
-Reviewer: external 
-
-Overall Rating 
-
-4 (Merit a presentation: I would argue for accepting this paper to the Conference track.) 
-
-Topic Classification 
-
-Applications of Visual Analysis Techniques 
-
-Best Paper Award 
-
-No 
-
-Contribution to the field of Visual Analytics 
-
-The paper describes the integration of visual analytics into an 
-epidemiological workflow that uses different visualisation approaches to 
-previous work. The user can examine a heterogeneous dataset for 
-correlated features, or starting with their own hypothesis, find related 
-features that support or contradict that hypothesis. 
-
-Expertise 
-
-2 (Passing Knowledge) 
-
-The Review 
-
 Summary: The paper describes the integration of visual analytic processes 
 into the workflow of epidemiological studies where data can include 
 medical images and continuous and categorical variables. They explain in 
@@ -562,24 +415,16 @@ sure there is a novel contribution here.
 Response
 --------
 
-* We reworked the related Work section completely. It now reflects on the impact of each presented publication to our work.
-* The section concludes by highlighting the uniqueness of our work, compared with the presented papers.
-* We added the following publications:
-	* T.Lammarsch, W.Aigner, A.Bertone, S.Miksch, and A.Rind. Towards a concept how the structure of time can support the visual analytics process. In Proc. of the Int. Workshop Visual Analytics, pages 9–12, 2011.
-	* P. Angelelli, S. Oeltze, C. Turkay, J. Haasz, E. Hodneland, A. Lundervold, B. Preim, and H. Hauser. Interactive visual analysis of heterogeneous cohort study data. IEEE Computer Graphics and Applications, 2014. in print.
-	* M. Q. Wang Baldonado, A. Woodruff, and A. Kuchinsky. Guidelines for using multiple views in information visualization. In Proc. of the Working Conference on Advanced Visual Interfaces, pages 110–119. ACM, 2000.
-	* C. Weaver. Cross-filtered views for multidimensional visual analysis. IEEE Transactions on Visualization and Computer Graphics, 16(2):192– 204, 2010.
-	* J. W. Emerson, W. A. Green, B. Schloerke, J. Crowley, D. Cook, H. Hofmann, and H. Wickham. The generalized pairs plot. Journal of Computational and Graphical Statistics, 22(1):79–91, 2013.
-
-The work is certainly relevant for VAST as it covers the integration of a 
-visual analytic process into an existing real-world workflow. The paper 
-is generally well written (with a couple of minor issues pointed out 
-below) 
+* see [Related Work]
 
 The technical background to the work is explained adequately (4.4) but I 
 have added a comment below for one particular point. And whether it 
 should count as a contribution in itself is debatable, many if not most 
-visualisation systems now seem to be web-based. 
+visualisation systems now seem to be web-based.
+Response
+--------
+
+* We removed the web implementation as key contribution
 
 I feel the section on the Automated Feature Suggestion could be expanded, 
 it seems to be one of the most visual pieces of the work and shows 
@@ -666,8 +511,7 @@ of the system i.e. made use of the contingency matrix view as well.
 Response
 --------
 
-* We extended the analysis to more subjects. We now cover 6.753 subjects and 2.440 segmented lumbar spine shapes. This allows for more statistical resilient results.
-* As the epidemiologists are very enthusiastic about the work, there are currently a few applications for new data sets. Unfortunately, these processes take very long and most likely have to happen in an iterative way. But it demonstrates well, that epidemiologists are really interested in such systems
+* see [The Data]
 * The new Application chapter covers use of the contingency matrix as well!
 
 Also, in places in the example given in Section 5 it is difficult to tell 
@@ -681,9 +525,6 @@ Response
 --------
 
 * Both points are now addressed in the application section
-
-Minor: have the references follow on from the end of section 6.(not a new 
-page) 
 
 In summary I would say this paper would need three things to be accepted, 
 which maybe possible in the turn-around for this conference, (but 
@@ -703,54 +544,12 @@ Response
 Secondary Reviewer
 ==================
 
-Title: Interactive Visual Analysis of Image-Centric Cohort Study Data 
-
-Reviewer: secondary 
-
-Overall Rating 
-
-7 (<b>Definite accept (TVCG track):</b> I would argue strongly for accepting this paper.) 
-
-Topic Classification 
-
-Applications of Visual Analysis Techniques 
-
-Best Paper Award 
-
-Yes 
-
-Contribution to the field of Visual Analytics 
-
-First off, after reading quite a few submissions this year, it was a 
-pleasure to review this paper. This is an elegant, professional, 
-polished paper that tells the "story" of IVA with just the right amount 
-of detail and illustration. The authors do a great job describing the 
-design space, contextualize their work in relation to similar efforts, 
-and clearly explain how the visualizations and interaction model supports 
-exploratory analysis of epidemiological data. I liked the mouseover 
-interactions for visual exploration of the adjacency matrix - I'd like 
-that functionality for some of the gnarly data I deal with. I also 
-liked the section on implementation, including the pros and cons of using 
-open web standards for tool development, as well as the comparison of 
-hypothesis-free and hypothesis-directed data analysis. The paper could 
-be strengthened with more detail about developer interactions with domain 
-experts/potential users during the design and prototype activities.
+The paper could be strengthened with more detail about developer interactions with domain experts/potential users during the design and prototype activities.
 Response
 --------
 
 * We now show how expert feedback influenced design decisions in the new section `5 System Design and Implementation`
-* The new application and evaluation section now describes detailed, how the evaluation was carried out and what we learned from their feedback.
-
-Expertise 
-
-2 (Passing Knowledge) 
-
-The Review 
-
-STRENGTHS. This submission is refreshingly well written. It's a very 
-professional, polished discussion of the team's work in designing, 
-developing, and implementing a system for visual interaction with 
-epidemiological data. 
+* The new application and evaluation section now describes detailed, how the evaluation was carried out and what we learned from their feedback. 
 
 WEAKNESSES. Few. The paper would be strengthened by including more 
 detail about the team's interactions with the domain experts; i.e., the 
@@ -761,12 +560,6 @@ Response
 --------
 
 * See previous response.
-
-DISCUSSION. Kudos to the authors for writing a great paper. These 
-authors demonstrate excellent expository skills and appreciate the 
-importance of clarity when presenting the technical details of a 
-scientific visualization domain for a diverse audience. If only all 
-papers were this well written! 
 
 I don't have many comments about the content of the paper; I thought it 
 covered quite a broad range of themes and topics with considerable skill. 
@@ -797,8 +590,4 @@ would make an already strong paper a real standout.
 Response
 --------
 
-* The qualitative evaluation was put forth as weak point of our work, so we replaced it almost completely.
-* We conducted an case study with two domain experts. Due to the high degree of expertise needed to understand the data as well as the epidemiological background it was not possible to consult more specialists-but since both of these experts play major roles in the entire study as well decide, which features and image modalities are included in future acquisition cycles, their feedback is very valuable!
-* The complete section was rewritten with the reviewer feedback in mind. The first section represents the kind of case study we conduct, followed by details about the participants as well as the setup and procedure.
-* For the cases we tried to highlight the user feedback when using the prototype as well as the results. At the end of each case (hypothesis-based and hypothesis-free), we added a short summary of the general user feedback.
-* Subsection "Lessons Learned" goes more into detail of the expert feedback and adds some general thoughts of the experts toward the IVA approach as well, covering some aspects of the future work as well (such as more detailed segmentation masks and enhanced brushing capabilities.)
+* see [Application and Qualitative Evaluation]
