@@ -139,7 +139,7 @@ The concurrent investigation of image-based and non-image data is realized in a 
 %
 The views are equipped with brushing facilities and augmented by 3D shape renderings of the segmented objects, e.g., each bar in a histogram is overlaid with a mean shape of the associated subgroup of the cohort.
 %
-We integrate an \emph{overview visualization}, clustering of features and object shape for data-driven subgroup definition and statistical key figures for measuring the association between features.
+We integrate an overview visualization, clustering of features and object shape for data-driven subgroup definition and statistical key figures for measuring the association between features.
 %
 We demonstrate the \emph{IVA} approach by validating and generating hypotheses related to lower back pain as part of a qualitative evaluation. %and the aging process of the lumbar spine.}
 } % end of abstract
@@ -216,12 +216,14 @@ A large cohort size is essential to investigate differences between healthy and 
 % Therefore results need to be age-adjusted to be comparable.
 % %
 % Confounding variables, are often not obvious at all and characterizing them is already an epidemiological result.
-%
+% TODO - Khonya Paper Venue
+% TODO - Introduction Highlight Overview visualization?
+% TODO - Klemm et al. - Klingt ein bisschen shizophren
 Cohort studies often include medical image data.
 % 
 The concurrent analysis of image data and non-spatial epidemiological factors requires techniques that reach beyond standard statistical methods.
 %
-For instance, segmentation of the image data is required for an analysis of anatomical structure and of possible correlations between this structure and epidemiological factors.
+For instance, segmentation of the image data is required for an analysis of anatomical structure \com{and of possible} correlations between this structure and epidemiological factors.
 %
 Semi-automatic segmentation techniques are promising but also challenging, since the employed modalities, such as magnetic resonance imaging (MRI) and ultrasound, are subject to inhomogeneity and noise.
 % Segmentation of these data enables an anatomical structure analysis and an analysis of possible correlations with other features.
@@ -282,7 +284,7 @@ In this section we describe the epidemiological workflow and associated requirem
  %
  (b) \emph{IVA} tools complement parts of this workflow instead of replacing them.
  %
- The combination of statistical and interactive-driven analysis shows promising potential to unveil information in the data.
+ The combination of statistical and interactive analysis shows promising potential to unveil information in the data.
  %
  %IVA complements this workflow and is used to elaborate the feature selection.
  %
@@ -314,7 +316,7 @@ We focus, on the potential of image data and attempt to support \emph{hypothesis
 
 \emph{Reproducibility} of results is an epidemiological key requirement.
 %
-It is difficult to achieve, since many physicians are involved when thousands of test persons are examined and interviewed.
+It is difficult to achieve, since many physicians are involved when thousands of subjects are examined and interviewed.
 %
 Thus, both intra- and inter-observer variability needs to be low for all aspects of a cohort study examination.
 %
@@ -494,7 +496,7 @@ methods incorporating both image and non-image data.
 
 \paragraph{Visual Analysis of Image and Non-Image Data.}
 
-Our work is closest to that of Steenwijk \cite{Steenwijk2010}, Turkey \cite{Turkay2013}, and Angelelli \cite{Angelelli2014} and colleagues, who employ multiple coordinated view systems for the analysis of cohort study.
+Our work is closest to that of Steenwijk \cite{Steenwijk2010}, Turkey \cite{Turkay2013}, and Angelelli \cite{Angelelli2014} and colleagues, who employ multiple coordinated view systems for the analysis of cohort study data.
 %
 %They employ multiple coordinated view systems for the analysis of cohort study data and demonstrate their approaches based on an aging study \cite{Turkay2013, Angelelli2014} and a cohort of patients suspected of having a special type of rheumatic disease \cite{Steenwijk2010}.
 
@@ -551,7 +553,7 @@ Blaas et al. \cite{Blaas2007} presented a similar system, which also analyzed me
 %
 Both works are restricted to the analysis of one case at a time and to non-image data with a unique spatial reference, e.g., voltage simulated across the heart muscle.
 %
-In epidemiology, multiple cases must be concurrently investigated and non-image data often lacks a spatial reference, such as gender and age.
+In epidemiology, multiple cases must be concurrently investigated and non-image data often lacks a spatial reference, such as gender or age.
 %
 % \com{\textbf{Reviewer 1}: The related work section includes merely a set of related tools. I would have liked to see a more comprehensive section that discusses the previous related work in more detail and describes why they are important and relevant to this work and how your work differs or improves upon theirs.\\
 % %
@@ -650,7 +652,7 @@ In epidemiology, multiple cases must be concurrently investigated and non-image 
 \paragraph{Visual Analysis of Heterogenous Non-Image Data.}
 Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject groups with linked views and batch-processing capabilities for categorizing new subject entries into the data set.
 %
-Their understanding of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
+Their definition of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
 %
 Due to the short paper length, detail is missing on the data type and their algorithm of identifying similar subjects works or what and if they employ statistical measures.
 %
@@ -675,14 +677,14 @@ Dai et al. \cite{Dai2005} explored risk factors by incorporating choropleth maps
 %
 Their findings yielded a \emph{Concept Map}, which linked cancer-related associations via graph edges.
 %
-While their goal to identify possible risk factors using socio-economic and health data similar to ours, they focus on iteratively refining defined hypothesis and on geographical data.
+While their goal to identify possible risk factors using socio-economic and health data is similar to ours, they focus on iteratively refining defined hypothesis and on geographical data.
 %
 We employ the use of small multiples for incorporating heterogenous data types for comparability.
 %
 Chui et al. \cite{Chui2011} visualized associations in time-dependent epidemiological data using time-series plots highlighting risk factor differences in age and gender.
 %
 %The connection of time series plots with histograms and heat maps allows for fast insight into complex relationships and 
-While the works shows, how different visualization techniques provide insight into these data sets, it focuses on the time aspect, which is not present for our data.
+While the work shows, how different visualization techniques provide insight into these data sets, it focuses on the time aspect, which is not present for our data.
 %
 % \paragraph{Commercial Data Visualization.}
 % Commercial systems such as \texttt{Tableau}\footnote{Owned by Tableau Software; \href{http://tableausoftware.com}{\texttt{tableausoftware.com}}} or \texttt{Spotfire}\footnote{Owned by TIBCO; \href{http://spotfire.tibco.com}{\texttt{spotfire.tibco.com}}} provide a rich user interface that enables a Visual Analytics approach.
