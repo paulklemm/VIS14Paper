@@ -286,7 +286,8 @@ The method implementation is web based to allow a fast feedback loop with domain
 % •  Bei klinischen Studien: Ärzte des entsprechenden Fachs
 
 %In this section we describe the epidemiological workflow and requirements.
-This is about the epidemiological workflow and requirements.
+%This is about the epidemiological workflow and requirements.
+This section covers the epidemiological workflow and requirements.
 
 \subsection{Epidemiological Workflow} \label{EpidemiologicalWorkflow}
 \begin{figure}[htb]
@@ -666,7 +667,7 @@ Zhang et al. \cite{Zhang2012} provide a web-based system for analyzing subject g
 %
 Their definition of a cohort differs from the understanding of the term in an epidemiological context by denoting every parameter-divided subject group as individual cohort.
 %
-Due to the short paper length, detail is missing on the data types and their algorithms of identifying similar subjects' works or whether they employ statistical measures.
+Due to the short paper length, detail is missing on the data types and their algorithms of identifying similar subjects or whether they employ statistical measures.
 %
 We employ the idea of adding variables via drag and drop into a canvas area.
 
@@ -739,13 +740,13 @@ This method enables rapid hypotheses validation and was able to reproduce textbo
 %
 %By plotting p-values in ventricle surfaces, Chou et al. were able to map disease-associated values directly on a 3D tissue representations \cite{Chou2009}.
 %
-This requires a geographic colocation of associated variables.
+It requires a spatial colocation of associated variables.
 %
 
 % *********************** Our own Work ***********************
 % Prior Work
 \paragraph{Prior Work.}
-We \cite{Klemm2013VMV} visualized lumbar spine variabilities based on a semi-automatic shape detection algorithm of 490 participants of the \texttt{SHIP-2} cohort.
+We visualized lumbar spine variabilities based on a semi-automatic shape detection algorithm of 490 participants of the \texttt{SHIP-2} cohort \cite{Klemm2013VMV}.
 %
 Hierarchical agglomerative clustering divided the population into shape-related groups.
 %
@@ -945,7 +946,7 @@ Morphometric variables are derived to allow for statistical comparison of the ti
  %
  In a prior step, the user selected all subjects with diagnosed thyroid disorder.
  %
- These subjects are shown as shade in the visualization, denoting their share.
+ These subjects are shown as shade in the visualizations, denoting their share.
  %Their shares are denoted in the bar chart as blue and the mosaic plot as dark shade.
  %
  Subjects between 153.5-170~cm body size are more affected by thyroid disorder (box plot) and are mostly female (mosaic plot).
@@ -1003,7 +1004,7 @@ Early it became clear that we have to rely a lot on online communication due to 
 %
 Hence, we built our system using web technologies. %, described in detail in Section~\ref{implementation}.
 %
-By running the prototypes on server machines, software exchange became as easy as sharing a website link, giving us the opportunity to include the clinical experts in the development process with little effort.
+By running the prototypes on server machines, software exchange became as easy as sharing a weblink, giving us the opportunity to include the clinical experts in the development process with little effort.
 %
 Incorporating the \emph{IVA} workflow for image-centric cohort study data requires \emph{overview visualizations} as well as \emph{multivariate visualizations}, which bring image-derived information in context to non-image variables.
 
@@ -1631,7 +1632,7 @@ The previously discussed analysis questions the suitability of the lumbar spine 
 Therefore, the dichotomous variable ``\emph{Did you experience back pain in the past three months?}'' is dropped into the canvas area. %, as seen in previous Fig.~\ref{ToDoA}.
 %
 %The result oh the shape-based clustering for both subject groups is visualized
-Figure~\ref{fig:application}~(d) shows the results of the automatically triggered shape-based clustering for subject with and without back pain.
+Figure~\ref{fig:application}~(d) shows the results of the automatically triggered shape-based clustering for subjects with and without back pain.
 %Both subject groups (back pain and no back pain) are automatically clustered. The results are dropped into the canvas area as well (Fig.~\ref{fig:application}~d).
 %A shape-based clustering of both subject groups is performed and visualized as well (Fig.~\ref{fig:application}~d).
 %Both subject groups are clustered regarding lumbar spine shape and visualized as well (Fig.~\ref{fig:application}~d).
@@ -1740,7 +1741,7 @@ Too small variable ranges yielding sparse groups could hinder the calculation of
 %While the existing brushing and linking techniques already allow the comparison of image data 
 
 \textbf{Segmentation quality is crucial.}
-The radiologist pointed out the unusual strong similarity of the L3 vertebrae throughout the population.
+KH pointed out the unusual strong similarity of the L3 vertebrae throughout the population.
 %
 The medical explanation is that it represents an angular point of curvature of the lumbar spine.
 %
@@ -1785,7 +1786,7 @@ We presented an \emph{IVA} framework for the analysis of image-centric epidemiol
 %
 Hence, the framework allows both for hypothesis-driven analysis and hypothesis generation.
 %
-The visualization of multivariate data using connected views and different views allows to get fast visual feedback about subject groups.
+The visualization of multivariate data using multiple connected views allows to get fast visual feedback about subject groups.
 %
 Brushing and linking makes the data tangible and adaptable to formulated hypotheses.
 %
