@@ -75,14 +75,23 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{Paul Klemm$^{1}$, Steffen Oeltze-Jafra$^{1}$, Kai Lawonn$^{1}$, Katrin Hegenscheid$^{2}$, Henry V{\"o}lzke$^{2}$, Bernhard Preim$^{1}$}
+\author{Paul Klemm, Steffen Oeltze-Jafra, Kai Lawonn, Katrin Hegenscheid, Henry V{\"o}lzke, Bernhard Preim}
 \authorfooter{
 %% insert punctuation at end of each item
 \item
- $^1$Otto-von-Guericke University Magdeburg, Germany.
+ Paul Klemm, Steffen Oeltze-Jafra, Kai Lawonn, Bernhard Preim are with Otto-von-Guericke University Magdeburg, Germany. E-mail: \{klemm,oeltze,lawonn,preim\}@ovgu.de
 \item
- $^2$Ernst-Moritz-Arndt-University Greifswald, Germany.
+ Katrin Hegenscheid, Henry V{\"o}lzke are with Ernst-Moritz-Arndt University Greifswald, Germany. E-mail: \{katrin.hegenscheid,voelzke\}@uni-greifswald.de
 }
+
+% \author{Paul Klemm$^{1}$, Steffen Oeltze-Jafra$^{1}$, Kai Lawonn$^{1}$, Katrin Hegenscheid$^{2}$, Henry V{\"o}lzke$^{2}$, Bernhard Preim$^{1}$}
+% \authorfooter{
+% %% insert punctuation at end of each item
+% \item
+%  $^1$Otto-von-Guericke University Magdeburg, Germany.
+% \item
+%  $^2$Ernst-Moritz-Arndt-University Greifswald, Germany.
+% }
 
 %other entries to be set up for journal
 \shortauthortitle{Klemm \MakeLowercase{\textit{et al.}}: Interactive Visual Analysis of Image-Centric Cohort Study Data}
@@ -190,7 +199,7 @@ Epidemiology aims at characterizing health and disease by determining risk facto
 %
 Clinical problems, such as the selection of diagnostic tools and efficient treatment, are tackled using results of epidemiological research.
 %
-Also, the introduction of preventive measures in medicine and beyond is based on epidemiological research, where, for example, subgroups with increased risk are identified \cite{Fletcher2012}.
+The introduction of preventive measures in medicine and beyond is also based on epidemiological research, where, for example, subgroups with increased risk are identified \cite{Fletcher2012}.
 %
 Observations made by clinicians in the daily routine are translated into hypotheses for epidemiological research.
 %
@@ -198,9 +207,10 @@ These are used to determine environmental and lifestyle factors as well as medic
 %
 Potentially useful data variables are gathered using structured interviews and clinical examinations.
 %
-Methods like regression analysis are employed to check the attribute list for statistical soundness.
+Methods like regression analysis check the attribute list for statistical soundness.
 %
-\\\\
+%\\\\
+
 Longitudinal population-based studies, such as the Study of Health in Pomerania (SHIP) \cite{Volzke2011}, gather as much information as possible about a defined sample of people (a \emph{cohort}).
 %
 The cohort consists of several thousands of people, randomly selected to avoid any bias.
@@ -262,7 +272,9 @@ We applied our approach to a data set compiled to analyze lower back pain and ai
 %
 This data set comprises 127 variables and 2 sequences of MRI data from 6,753 subjects.
 %
-We implemented the presented methods using modern web technologies to make them easily accessible for the domain experts to enable a fast feedback loop.
+The method implementation is web based to allow a fast feedback loop with domain experts.
+%We implemented the presented methods using modern web technologies to make them easily accessible for the domain experts to enable a fast feedback loop.
+%We implemented the presented methods using modern web technologies to make them easily accessible for the domain experts to enable a fast feedback loop.
 %We implemented the presented methods using modern web technologies, such as \texttt{WebGL}, \texttt{D3.js} and \texttt{NodeJS}, making them easily accessible for the domain experts to enable a fast feedback loop.
 %
 %This aims to trigger a fast feedback loop. %between us and the epidemiologists.
@@ -273,7 +285,8 @@ We implemented the presented methods using modern web technologies to make them 
 % •  Medizinische Informa@ker mit Fokus auf Biometrie und Sta@s@k\\
 % •  Bei klinischen Studien: Ärzte des entsprechenden Fachs
 
-In this section we describe the epidemiological workflow and associated requirements.
+%In this section we describe the epidemiological workflow and requirements.
+This is about the epidemiological workflow and requirements.
 
 \subsection{Epidemiological Workflow} \label{EpidemiologicalWorkflow}
 \begin{figure}[htb]
